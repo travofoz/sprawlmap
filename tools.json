@@ -1,22 +1,113 @@
 {
   "description": "Sprawlmap — Franklin County public land and resource finder. Tool schema for LLM agents.",
   "tools": [
-    {"type":"function","function":{"name":"findPublicParcels","description":"Find public/city-owned parcels near a location. Returns parcels owned by City of Columbus, Franklin County Land Bank, Metro Parks, Board of Education, or other public entities with risk assessment.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"radiusMiles":{"type":"number","default":0.5}},"required":["lat","lon"]}}},
-    {"type":"function","function":{"name":"findNearbyResources","description":"Find nearby amenities via OpenStreetMap: bus stops, laundromats, drinking water, charging, food banks, mental health, restrooms, shelters, dog parks, wifi, hospitals, pharmacies.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"radiusMeters":{"type":"number","default":800},"types":{"type":"array","items":{"type":"string","enum":["bus","laundry","water","power","mental_health","toilet","food_bank","shelter","dog_park","wifi","hospital","pharmacy"]}}},"required":["lat","lon"]}}},
-    {"type":"function","function":{"name":"scoreLocation","description":"Score a location 0-100 for suitability against user needs. 40pts for public land availability + 60pts for needs met.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"needs":{"type":"array","items":{"type":"string"},"example":["bus","laundry","power","dog"]}},"required":["lat","lon","needs"]}}},
-    {"type":"function","function":{"name":"getParcelDetail","description":"Get full parcel detail by PIN from Franklin County Auditor.","parameters":{"type":"object","properties":{"pin":{"type":"string"}},"required":["pin"]}}},
-    {"type":"function","function":{"name":"geocode","description":"Convert address or place name to lat/lon. Biases to Columbus OH automatically.","parameters":{"type":"object","properties":{"query":{"type":"string"}},"required":["query"]}}}
+    {
+      "type": "function",
+      "function": {
+        "name": "findPublicParcels",
+        "description": "Find public/city-owned parcels near a location. Returns parcels with risk assessment. Use codes 640 (municipal) and 605 (land bank) are LOWEST risk. Code 650 (school district) is AVOID - active enforcement.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "lat": {"type": "number", "description": "Latitude"},
+            "lon": {"type": "number", "description": "Longitude"},
+            "radiusMiles": {"type": "number", "default": 0.5, "description": "Search radius in miles"},
+            "includeGeometry": {"type": "boolean", "default": false, "description": "Include polygon geometry for map display"}
+          },
+          "required": ["lat", "lon"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "findNearbyResources",
+        "description": "Find nearby amenities via OpenStreetMap plus hardcoded Columbus resources: bus stops, laundromats, drinking water, charging stations, food banks, mental health, restrooms, shelters, libraries, hospitals, pharmacies.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "lat": {"type": "number"},
+            "lon": {"type": "number"},
+            "radiusMeters": {"type": "number", "default": 800},
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["bus", "laundry", "water", "power", "mental_health", "toilet", "food_bank", "shelter", "dog_park", "wifi", "hospital", "pharmacy", "library"]
+              }
+            }
+          },
+          "required": ["lat", "lon"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "scoreLocation",
+        "description": "Score a location 0-100 for suitability against user needs. 40pts for public land availability + 60pts for needs met.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "lat": {"type": "number"},
+            "lon": {"type": "number"},
+            "needs": {
+              "type": "array",
+              "items": {"type": "string"},
+              "example": ["bus", "laundry", "power", "dog"]
+            }
+          },
+          "required": ["lat", "lon", "needs"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "getParcelDetail",
+        "description": "Get full parcel detail by PIN from Franklin County Auditor API.",
+        "parameters": {
+          "type": "object",
+          "properties": {"pin": {"type": "string", "description": "Parcel ID number"}},
+          "required": ["pin"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "geocode",
+        "description": "Convert address or place name to lat/lon. Automatically biases to Columbus OH.",
+        "parameters": {
+          "type": "object",
+          "properties": {"query": {"type": "string", "description": "Address or place name"}},
+          "required": ["query"]
+        }
+      }
+    }
   ],
   "endpoints": {
-    "parcels":   "https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query",
-    "auditor":   "https://audr-api.franklincountyohio.gov/v1/parcel/{pin}",
-    "overpass":  "https://overpass-api.de/api/interpreter",
+    "parcels": "https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query",
+    "auditor": "https://audr-api.franklincountyohio.gov/v1/parcel/{pin}",
+    "overpass": "https://overpass-api.de/api/interpreter",
     "nominatim": "https://nominatim.openstreetmap.org/search",
     "prop_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin={pin}"
   },
   "risk_levels": {
-    "low":  "LUC 640 or 605 — city-owned or land bank. CPD trespass auth required, rarely filed proactively.",
-    "med":  "LUC 600-699 other — other exempt public entities.",
-    "high": "All others — private property, avoid."
+    "low": "LUC 640 or 605 — City of Columbus or Land Bank. CPD trespass authorization required to arrest. Rarely filed proactively. SAFEST.",
+    "med": "LUC 600-699 other — Other exempt public entities (county, state, township). Verify before use.",
+    "avoid": "LUC 650 — School district. Active enforcement, trespass forms typically on file. DO NOT RECOMMEND.",
+    "high": "Private property. Avoid."
+  },
+  "luc_codes": {
+    "605": "Land Bank/CLRC — LOW risk",
+    "610": "State of Ohio — MED risk",
+    "620": "Franklin County — MED risk",
+    "630": "Township — MED risk",
+    "640": "City of Columbus — LOW risk",
+    "650": "School District — AVOID",
+    "660": "Metro Parks/COTA — MED risk",
+    "670": "Religious/Charitable — MED risk",
+    "680": "Other Exempt — MED risk"
   }
 }
