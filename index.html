@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Sprawlmap</title>
+<title>Sprawlmap — Public Land Finder</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -33,15 +33,15 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
 .badge.high{background:#3d0000;color:#f85149}
 #llm-input{display:flex;gap:6px;padding:8px;border-bottom:1px solid #30363d}
 #llm-input textarea{flex:1;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:6px 8px;font-size:12px;resize:none;height:52px;font-family:inherit}
-#llm-output{overflow-y:auto;padding:10px;font-size:12px;line-height:1.7;color:#c9d1d9;min-height:60px}
+#llm-output{flex:1;overflow-y:auto;padding:10px;font-size:12px;line-height:1.7;color:#c9d1d9}
 #llm-output .thinking{color:#8b949e;font-style:italic}
 #llm-output .answer{white-space:pre-wrap}
-#settings-panel{display:none;position:fixed;inset:0;background:#0d1117f0;z-index:3000;overflow-y:auto;padding:20px}
+#settings-panel{display:none;position:fixed;inset:0;background:#0d1117ee;z-index:3000;overflow-y:auto;padding:20px}
 #settings-panel.open{display:block}
 #settings-panel h2{color:#58a6ff;margin-bottom:16px}
-.sg{margin-bottom:16px}
-.sg label{display:block;font-size:12px;color:#8b949e;margin-bottom:4px}
-.sg select,.sg input{width:100%;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px;font-size:13px}
+.setting-group{margin-bottom:16px}
+.setting-group label{display:block;font-size:12px;color:#8b949e;margin-bottom:4px}
+.setting-group select,.setting-group input{width:100%;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px;font-size:13px}
 #handle{text-align:center;padding:6px;cursor:pointer;color:#8b949e;font-size:18px}
 </style>
 </head>
@@ -66,10 +66,10 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
   </div>
   <div id="pscroll">
     <div id="tab-parcels"><p style="color:#8b949e;font-size:12px">Search an area to see public parcels.</p></div>
-    <div id="tab-resources" style="display:none"><p style="color:#8b949e;font-size:12px">Tap Resources to load.</p></div>
+    <div id="tab-resources" style="display:none"><p style="color:#8b949e;font-size:12px">Toggle resources on the map.</p></div>
     <div id="tab-ask" style="display:none">
       <div id="llm-input">
-        <textarea id="q" placeholder="e.g. 'Public land near a laundromat and bus stop?' or 'Where can I charge a battery near Franklinton?'"></textarea>
+        <textarea id="q" placeholder="e.g. 'Is there public land near a laundromat and bus stop?' or 'Where can I charge a battery near Franklinton?'"></textarea>
         <button class="btn" id="sendQ" style="align-self:flex-end">→</button>
       </div>
       <div id="llm-output"><span class="thinking">Ask anything about this area.</span></div>
@@ -79,17 +79,17 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
 
 <div id="settings-panel">
   <h2>⚙️ Settings</h2>
-  <div class="sg">
+  <div class="setting-group">
     <label>AI Provider</label>
-    <select id="providerSel"></select>
+    <select id="providerSelect"></select>
   </div>
-  <div class="sg">
+  <div class="setting-group">
     <label>Model</label>
-    <select id="modelSel"></select>
+    <select id="modelSelect"></select>
   </div>
-  <div class="sg">
-    <label>API Key <span style="color:#3fb950;font-size:10px">(stored locally only)</span></label>
-    <input type="password" id="apiKeyInp" placeholder="Leave blank for free OpenRouter models"/>
+  <div class="setting-group">
+    <label>API Key <span style="color:#3fb950;font-size:10px">(stored locally, never sent anywhere except the provider)</span></label>
+    <input type="password" id="apiKeyInput" placeholder="Leave blank for free OpenRouter models"/>
   </div>
   <button class="btn green" id="saveSettings" style="width:100%;padding:10px;margin-top:8px">Save</button>
   <button class="btn" id="closeSettings" style="width:100%;padding:10px;margin-top:8px">Cancel</button>
@@ -98,84 +98,82 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
 <script type="module">
 import { LLM, PROVIDERS, saveKey, loadKey, bestAvailable } from './providers.js';
 
-const FC      = 'https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query';
-const OVERPASS= 'https://overpass-api.de/api/interpreter';
-const CARD    = 'https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=';
-const KW      = ['CITY','COLUMBUS','FRANKLIN CO','LAND BANK','METRO PARKS','BOARD OF EDUCATION','LAND REUTILIZATION','CLRC'];
+const FC_FEATURE = 'https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query';
+const OVERPASS   = 'https://overpass-api.de/api/interpreter';
+const PROP_CARD  = 'https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=';
+const PUBLIC_KW  = ['CITY','COLUMBUS','FRANKLIN CO','LAND BANK','METRO PARKS','BOARD OF EDUCATION','LAND REUTILIZATION','CLRC'];
 
-const RES = {
-  bus:    {icon:'🚌',q:'node["highway"="bus_stop"]'},
-  laundry:{icon:'👕',q:'node["shop"="laundry"],node["shop"="dry_cleaning"]'},
-  water:  {icon:'💧',q:'node["amenity"="drinking_water"]'},
-  power:  {icon:'⚡',q:'node["amenity"="charging_station"]'},
-  mental: {icon:'🧠',q:'node["amenity"="mental_health"],node["amenity"="social_facility"]'},
-  toilet: {icon:'🚻',q:'node["amenity"="toilets"]'},
-  food:   {icon:'🥫',q:'node["amenity"="food_bank"],node["social_facility"="food_bank"]'},
-  shelter:{icon:'🏠',q:'node["social_facility"="shelter"]'},
-  dog:    {icon:'🐕',q:'node["leisure"="dog_park"]'},
-  wifi:   {icon:'📶',q:'node["internet_access"="wlan"]'},
+const RESOURCES = {
+  bus:     {label:'Bus Stop',       icon:'🚌',q:'node["highway"="bus_stop"]'},
+  laundry: {label:'Laundromat',     icon:'👕',q:'node["shop"="laundry"],node["shop"="dry_cleaning"]'},
+  water:   {label:'Drinking Water', icon:'💧',q:'node["amenity"="drinking_water"]'},
+  power:   {label:'Charging',       icon:'⚡',q:'node["amenity"="charging_station"]'},
+  mental:  {label:'Mental Health',  icon:'🧠',q:'node["amenity"="mental_health"],node["amenity"="social_facility"]'},
+  toilet:  {label:'Restroom',       icon:'🚻',q:'node["amenity"="toilets"]'},
+  food:    {label:'Food Bank',      icon:'🥫',q:'node["amenity"="food_bank"],node["social_facility"="food_bank"]'},
+  shelter: {label:'Shelter',        icon:'🏠',q:'node["social_facility"="shelter"]'},
+  dog:     {label:'Dog Park',       icon:'🐕',q:'node["leisure"="dog_park"]'},
+  wifi:    {label:'Free WiFi',      icon:'📶',q:'node["internet_access"="wlan"]'},
 };
 
-// fix: leaflet loaded as global from CDN script tag above, not ES module
 const map = L.map('map',{zoomControl:false}).setView([39.9612,-82.9988],13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM',maxZoom:19}).addTo(map);
 L.control.zoom({position:'topright'}).addTo(map);
 
-let pLayer = L.layerGroup().addTo(map);
-let rLayer = L.layerGroup().addTo(map);
-let uMarker = null;
-let curLat = 39.9612, curLon = -82.9988;
+let parcelLayer = L.layerGroup().addTo(map);
+let resLayer    = L.layerGroup().addTo(map);
+let userMarker  = null;
+let currentLat  = 39.9612, currentLon = -82.9988;
 
-const isPublic = o => KW.some(k => (o||'').toUpperCase().includes(k));
-function rc(u,o){const c=parseInt(u||0);if(c===640||c===605)return'low';if(c>=600&&c<700&&isPublic(o))return'med';if(isPublic(o))return'med';return'high';}
-function ll(c){const m={605:'Land Bank ⭐',640:'City of Columbus ⭐⭐',650:'Board of Ed',620:'Franklin Co',660:'Metro Parks/COTA',610:'State of Ohio',680:'Other Exempt'};return m[String(c)]||(parseInt(c)>=600&&parseInt(c)<700?'Exempt Public':`Code ${c}`);}
-function rt(r){return{low:'🟢 LOW — city-owned',med:'🟡 MED — verify',high:'🔴 HIGH — private'}[r];}
-function ss(s){document.getElementById('status').innerHTML=s;}
+const isExempt = c => parseInt(c)>=600 && parseInt(c)<700;
+const isPublic = o => o && PUBLIC_KW.some(k=>(o||'').toUpperCase().includes(k));
+function riskClass(u,o){const c=parseInt(u||0);if(c===640||c===605)return'low';if(c>=600&&c<700&&isPublic(o))return'med';if(isPublic(o))return'med';return'high';}
+function lucLabel(c){const m={605:'Land Bank ⭐',640:'City of Columbus ⭐⭐',650:'Board of Ed',620:'Franklin County',660:'Metro Parks/COTA',610:'State of Ohio',680:'Other Exempt'};return m[String(c)]||(parseInt(c)>=600&&parseInt(c)<700?'Exempt Public':`Code ${c}`);}
+function riskText(r){return{low:'🟢 LOW — city-owned, trespass auth required',med:'🟡 MED — public entity, verify',high:'🔴 HIGH — private, avoid'}[r];}
+function setStatus(s){document.getElementById('status').innerHTML=s;}
 
-async function qParcels(bounds){
+async function queryParcels(bounds){
   const {_southWest:sw,_northEast:ne}=bounds;
-  const where=KW.map(k=>`OWNERNAME1 LIKE '%${k}%'`).join(' OR ');
+  const where=PUBLIC_KW.map(k=>`OWNERNAME1 LIKE '%${k}%'`).join(' OR ');
   const geo=JSON.stringify({xmin:sw.lng,ymin:sw.lat,xmax:ne.lng,ymax:ne.lat,spatialReference:{wkid:4326}});
   const p=new URLSearchParams({where,geometry:geo,geometryType:'esriGeometryEnvelope',spatialRel:'esriSpatialRelIntersects',inSR:4326,outFields:'PARCELID,OWNERNAME1,USECD,SITEADDRESS,ACRES,APPRVALUE,SALEYEAR',returnGeometry:'false',resultRecordCount:80,f:'json'});
-  try{const r=await fetch(`${FC}?${p}`);const d=await r.json();if(d.error)throw new Error(d.error.message);return(d.features||[]).map(f=>f.attributes);}
-  catch(e){ss('❌ Parcel query failed: '+e.message);return[];}
+  try{const r=await fetch(`${FC_FEATURE}?${p}`);const d=await r.json();return(d.features||[]).map(f=>f.attributes);}catch(e){console.error(e);return[];}
 }
 
-function showParcels(parcels){
-  pLayer.clearLayers();
+function renderParcels(parcels){
+  parcelLayer.clearLayers();
   const el=document.getElementById('tab-parcels');
-  if(!parcels.length){el.innerHTML='<p style="color:#8b949e;font-size:12px">No public parcels found.</p>';return;}
-  parcels.sort((a,b)=>({low:0,med:1,high:2})[rc(a.USECD,a.OWNERNAME1)]-({low:0,med:1,high:2})[rc(b.USECD,b.OWNERNAME1)]);
-  el.innerHTML=`<p style="color:#8b949e;font-size:11px;margin-bottom:8px">${parcels.length} public parcels — lowest risk first</p>`;
-  for(const p of parcels){
-    const r=rc(p.USECD,p.OWNERNAME1);
-    const d=document.createElement('div');
-    d.className=`card ${r}`;
-    d.innerHTML=`<span class="badge ${r}">${rt(r)}</span><h3>${p.SITEADDRESS||'(no address)'}</h3><p><b>Owner:</b> ${p.OWNERNAME1||''}<br><b>LUC:</b> ${p.USECD} — ${ll(p.USECD)}<br><b>Acres:</b> ${(p.ACRES||0).toFixed(2)} | <b>Appraised:</b> $${(p.APPRVALUE||0).toLocaleString()}<br><b>Last Sale:</b> ${p.SALEYEAR||'N/A'}<br><a href="${CARD}${p.PARCELID||''}" target="_blank">📋 Property Card</a></p>`;
-    el.appendChild(d);
-  }
+  if(!parcels.length){el.innerHTML='<p style="color:#8b949e;font-size:12px;padding:8px">No public parcels found.</p>';return;}
+  parcels.sort((a,b)=>({low:0,med:1,high:2})[riskClass(a.USECD,a.OWNERNAME1)]-({low:0,med:1,high:2})[riskClass(b.USECD,b.OWNERNAME1)]);
+  el.innerHTML=`<p style="color:#8b949e;font-size:11px;margin-bottom:8px">${parcels.length} public parcels</p>`;
+  parcels.forEach(p=>{
+    const rc=riskClass(p.USECD,p.OWNERNAME1);
+    const card=document.createElement('div');
+    card.className=`card ${rc}`;
+    card.innerHTML=`<span class="badge ${rc}">${riskText(rc)}</span><h3>${p.SITEADDRESS||'(no address)'}</h3><p><b>Owner:</b> ${p.OWNERNAME1||''}<br><b>LUC:</b> ${p.USECD} — ${lucLabel(p.USECD)}<br><b>Acres:</b> ${(p.ACRES||0).toFixed(2)} | <b>Appraised:</b> $${(p.APPRVALUE||0).toLocaleString()}<br><b>Last Sale:</b> ${p.SALEYEAR||'N/A'}<br><a href="${PROP_CARD}${p.PARCELID}" target="_blank">📋 Property Card</a></p>`;
+    el.appendChild(card);
+  });
 }
 
-async function qResources(bounds){
+async function queryResources(bounds,types){
   const {_southWest:sw,_northEast:ne}=bounds;
   const bb=`${sw.lat},${sw.lng},${ne.lat},${ne.lng}`;
-  const queries=Object.values(RES).flatMap(v=>v.q.split(',').map(q=>`${q}(${bb});`));
-  const ql=`[out:json][timeout:25];(${queries.join('')});out center tags;`;
-  try{const r=await fetch(OVERPASS,{method:'POST',body:'data='+encodeURIComponent(ql)});const d=await r.json();return d.elements||[];}
-  catch(e){ss('❌ Resource query failed: '+e.message);return[];}
+  const queries=types.flatMap(t=>(RESOURCES[t]?.q||'').split(',').map(q=>`${q}(${bb});`));
+  const ql=`[out:json][timeout:20];(${queries.join('')});out center;`;
+  try{const r=await fetch(OVERPASS,{method:'POST',body:'data='+encodeURIComponent(ql)});const d=await r.json();return d.elements||[];}catch(e){console.error(e);return[];}
 }
 
-function showResources(els){
-  rLayer.clearLayers();
+function renderResources(elements){
+  resLayer.clearLayers();
   const el=document.getElementById('tab-resources');
-  el.innerHTML=`<p style="color:#8b949e;font-size:11px;margin-bottom:8px">${els.length} resources found</p>`;
-  for(const e of els){
-    const lat=e.lat||e.center?.lat, lon=e.lon||e.center?.lon;
-    if(!lat)continue;
+  el.innerHTML=`<p style="color:#8b949e;font-size:11px;margin-bottom:8px">${elements.length} resources found</p>`;
+  elements.forEach(e=>{
+    const lat=e.lat||e.center?.lat,lon=e.lon||e.center?.lon;
+    if(!lat)return;
     const t=e.tags||{};
     let icon='📍';
     if(t.highway==='bus_stop')icon='🚌';
-    else if(t.shop==='laundry'||t.shop==='dry_cleaning')icon='👕';
+    else if(t.shop==='laundry')icon='👕';
     else if(t.amenity==='drinking_water')icon='💧';
     else if(t.amenity==='charging_station')icon='⚡';
     else if(t.amenity==='toilets')icon='🚻';
@@ -183,89 +181,105 @@ function showResources(els){
     else if(t.social_facility==='shelter')icon='🏠';
     else if(t.leisure==='dog_park')icon='🐕';
     else if(t.internet_access==='wlan')icon='📶';
-    else if(t.amenity==='mental_health'||t.healthcare||t.amenity==='social_facility')icon='🧠';
-    L.marker([lat,lon],{icon:L.divIcon({html:`<span style="font-size:18px;line-height:1">${icon}</span>`,className:'',iconSize:[22,22]})})
-      .addTo(rLayer)
-      .bindPopup(`<b>${icon} ${t.name||t.amenity||t.shop||t.highway||'Resource'}</b>`);
-    const c=document.createElement('div');
-    c.className='card med';
-    c.innerHTML=`<h3>${icon} ${t.name||t.amenity||t.shop||t.highway||'Resource'}</h3><p>${t['addr:street']||lat.toFixed(5)+','+lon.toFixed(5)}</p>`;
-    el.appendChild(c);
-  }
+    L.marker([lat,lon],{icon:L.divIcon({html:`<div style="font-size:16px">${icon}</div>`,className:'',iconSize:[20,20]})}).addTo(resLayer).bindPopup(`<b>${icon} ${t.name||t.amenity||t.shop||t.highway||'Resource'}</b>`);
+    const card=document.createElement('div');
+    card.className='card med';
+    card.innerHTML=`<h3>${icon} ${t.name||t.amenity||t.shop||'Resource'}</h3><p>${t['addr:street']||`${lat.toFixed(5)},${lon.toFixed(5)}`}</p>`;
+    el.appendChild(card);
+  });
 }
 
-async function ask(question){
+async function askLLM(question){
   const out=document.getElementById('llm-output');
   out.innerHTML='<span class="thinking">⏳ Gathering data...</span>';
   const bounds=map.getBounds();
-  const [parcels,resources]=await Promise.all([qParcels(bounds),qResources(bounds)]);
+  const [parcels,resources]=await Promise.all([
+    queryParcels(bounds),
+    queryResources(bounds,Object.keys(RESOURCES))
+  ]);
+  const context={
+    location:{lat:currentLat,lon:currentLon},
+    public_parcels:parcels.map(p=>({address:p.SITEADDRESS,owner:p.OWNERNAME1,luc:p.USECD,luc_label:lucLabel(p.USECD),risk:riskClass(p.USECD,p.OWNERNAME1),acres:p.ACRES,property_card:PROP_CARD+p.PARCELID})),
+    nearby_resources:resources.map(e=>({type:e.tags?.amenity||e.tags?.shop||e.tags?.highway,name:e.tags?.name||null,lat:e.lat||e.center?.lat,lon:e.lon||e.center?.lon}))
+  };
   out.innerHTML='<span class="thinking">⏳ Asking AI...</span>';
   const llm=bestAvailable();
-  if(!llm){out.innerHTML='<span style="color:#f85149">No AI configured. Tap ⚙️ to add a key, or use OpenRouter free tier.</span>';return;}
-  const ctx={location:{lat:curLat,lon:curLon},public_parcels:parcels.map(p=>({address:p.SITEADDRESS,owner:p.OWNERNAME1,luc:p.USECD,luc_label:ll(p.USECD),risk:rc(p.USECD,p.OWNERNAME1),acres:p.ACRES,property_card:CARD+(p.PARCELID||'')})),resources:resources.map(e=>({type:e.tags?.amenity||e.tags?.shop||e.tags?.highway,name:e.tags?.name||null,lat:e.lat||e.center?.lat,lon:e.lon||e.center?.lon}))};
-  const sys=`You are Sprawlmap, a humanitarian field assistant helping people experiencing homelessness find safe public land and resources in Columbus OH. Use the provided real-time data. Be specific — name addresses. LUC 640/605 = lowest risk (city-owned, trespass auth required to enforce). Be direct and practical.`;
+  if(!llm){out.innerHTML='<span style="color:#f85149">No AI provider configured. Tap ⚙️ to add an API key.</span>';return;}
+  const system=`You are Sprawlmap, a humanitarian field assistant helping people experiencing homelessness find safe public land and nearby resources in Columbus, Ohio. Use the provided real-time data to answer questions specifically and practically. LUC 640/605 = lowest risk (city-owned). Be direct and useful.`;
   try{
-    const reply=await llm.chat([{role:'user',content:`Data:\n${JSON.stringify(ctx)}\n\nQuestion: ${question}`}],sys);
+    const reply=await llm.chat([{role:'user',content:`Data:\n${JSON.stringify(context,null,2)}\n\nQuestion: ${question}`}],system);
     out.innerHTML=`<div class="answer">${reply}</div>`;
   }catch(e){out.innerHTML=`<span style="color:#f85149">Error: ${e.message}</span>`;}
 }
 
-// ── Settings ────────────────────────────────────────────────────────────────
-const provSel=document.getElementById('providerSel');
-const modSel=document.getElementById('modelSel');
-const keyInp=document.getElementById('apiKeyInp');
+// ── Settings panel ──────────────────────────────────────────────────────────
+const provSel=document.getElementById('providerSelect');
+const modSel=document.getElementById('modelSelect');
+const keyInp=document.getElementById('apiKeyInput');
 
-for(const [k,v] of Object.entries(PROVIDERS)){
-  const o=document.createElement('option');o.value=k;o.textContent=v.label;provSel.appendChild(o);
-}
-function syncModels(){
+Object.entries(PROVIDERS).forEach(([k,v])=>{
+  const o=document.createElement('option');
+  o.value=k;o.textContent=v.label;
+  provSel.appendChild(o);
+});
+
+function updateModels(){
   const p=PROVIDERS[provSel.value];
   modSel.innerHTML='';
-  for(const m of p.models){const o=document.createElement('option');o.value=m;o.textContent=m;modSel.appendChild(o);}
+  p.models.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;modSel.appendChild(o);});
   keyInp.value=loadKey(provSel.value)||'';
-  keyInp.placeholder=p.keyHint||'optional';
+  keyInp.placeholder=p.keyHint||'';
 }
-provSel.addEventListener('change',syncModels);
-syncModels();
-const sp=localStorage.getItem('scout_provider');
-if(sp&&PROVIDERS[sp]){provSel.value=sp;syncModels();}
-const sm=localStorage.getItem('scout_model');
-if(sm)modSel.value=sm;
+provSel.addEventListener('change',updateModels);
+updateModels();
 
-document.getElementById('settingsBtn').onclick=()=>document.getElementById('settings-panel').classList.add('open');
-document.getElementById('closeSettings').onclick=()=>document.getElementById('settings-panel').classList.remove('open');
-document.getElementById('saveSettings').onclick=()=>{
+document.getElementById('settingsBtn').addEventListener('click',()=>document.getElementById('settings-panel').classList.add('open'));
+document.getElementById('closeSettings').addEventListener('click',()=>document.getElementById('settings-panel').classList.remove('open'));
+document.getElementById('saveSettings').addEventListener('click',()=>{
   saveKey(provSel.value,keyInp.value.trim());
   localStorage.setItem('scout_provider',provSel.value);
   localStorage.setItem('scout_model',modSel.value);
   document.getElementById('settings-panel').classList.remove('open');
-  ss('✅ Settings saved');
-};
+  setStatus('✅ Settings saved');
+});
 
-// ── Map controls ─────────────────────────────────────────────────────────────
-document.getElementById('locBtn').onclick=()=>{
-  ss('📡 Getting GPS...');
+// restore saved provider
+const savedP=localStorage.getItem('scout_provider');
+if(savedP){provSel.value=savedP;updateModels();}
+const savedM=localStorage.getItem('scout_model');
+if(savedM)modSel.value=savedM;
+
+// ── Map events ──────────────────────────────────────────────────────────────
+document.getElementById('locBtn').addEventListener('click',()=>{
+  setStatus('📡 Getting GPS...');
   navigator.geolocation.getCurrentPosition(pos=>{
-    curLat=pos.coords.latitude;curLon=pos.coords.longitude;
-    map.setView([curLat,curLon],15);
-    if(uMarker)uMarker.remove();
-    uMarker=L.circleMarker([curLat,curLon],{radius:8,fillColor:'#58a6ff',fillOpacity:1,color:'#fff',weight:2}).addTo(map).bindPopup('📍 You').openPopup();
-    ss('✅ Got location. Tap Search.');
-  },()=>ss('❌ GPS unavailable.'));
-};
-document.getElementById('searchBtn').onclick=async()=>{
-  ss('⏳ Querying...');openPanel('parcels');
-  const p=await qParcels(map.getBounds());showParcels(p);ss(`✅ ${p.length} public parcels`);
-};
-document.getElementById('resBtn').onclick=async()=>{
-  ss('🔍 Loading resources...');openPanel('resources');
-  const r=await qResources(map.getBounds());showResources(r);ss(`✅ ${r.length} resources`);
-};
-document.getElementById('askBtn').onclick=()=>openPanel('ask');
-document.getElementById('sendQ').onclick=()=>{const q=document.getElementById('q').value.trim();if(q)ask(q);};
-document.getElementById('q').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();document.getElementById('sendQ').click();}};
-document.getElementById('handle').onclick=()=>document.getElementById('panel').classList.toggle('open');
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>openPanel(t.dataset.tab));
+    currentLat=pos.coords.latitude;currentLon=pos.coords.longitude;
+    map.setView([currentLat,currentLon],15);
+    if(userMarker)userMarker.remove();
+    userMarker=L.circleMarker([currentLat,currentLon],{radius:8,fillColor:'#58a6ff',fillOpacity:1,color:'#fff',weight:2}).addTo(map).bindPopup('📍 You').openPopup();
+    setStatus('✅ Found. Tap Search to load parcels.');
+  },()=>setStatus('❌ GPS unavailable.'));
+});
+
+document.getElementById('searchBtn').addEventListener('click',async()=>{
+  setStatus('⏳ Searching...');openPanel('parcels');
+  const p=await queryParcels(map.getBounds());
+  renderParcels(p);
+  setStatus(`✅ ${p.length} public parcels in view`);
+});
+
+document.getElementById('resBtn').addEventListener('click',async()=>{
+  setStatus('🔍 Loading resources...');openPanel('resources');
+  const r=await queryResources(map.getBounds(),Object.keys(RESOURCES));
+  renderResources(r);
+  setStatus(`✅ ${r.length} resources found`);
+});
+
+document.getElementById('askBtn').addEventListener('click',()=>openPanel('ask'));
+document.getElementById('sendQ').addEventListener('click',()=>{const q=document.getElementById('q').value.trim();if(q)askLLM(q);});
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();document.getElementById('sendQ').click();}});
+document.getElementById('handle').addEventListener('click',()=>document.getElementById('panel').classList.toggle('open'));
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>openPanel(t.dataset.tab)));
 
 function openPanel(tab){
   document.getElementById('panel').classList.add('open');

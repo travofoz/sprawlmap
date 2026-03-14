@@ -1,22 +1,17 @@
 {
-  "description": "Sprawlmap — Franklin County public land and resource finder. Tool schema for LLM agents.",
+  "description": "Sprawlmap — Franklin County public land and resource finder. Point any LLM at these tools to answer natural language questions about safe public land and nearby resources for people experiencing homelessness in Columbus, OH.",
   "tools": [
-    {"type":"function","function":{"name":"findPublicParcels","description":"Find public/city-owned parcels near a location. Returns parcels owned by City of Columbus, Franklin County Land Bank, Metro Parks, Board of Education, or other public entities with risk assessment.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"radiusMiles":{"type":"number","default":0.5}},"required":["lat","lon"]}}},
-    {"type":"function","function":{"name":"findNearbyResources","description":"Find nearby amenities via OpenStreetMap: bus stops, laundromats, drinking water, charging, food banks, mental health, restrooms, shelters, dog parks, wifi, hospitals, pharmacies.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"radiusMeters":{"type":"number","default":800},"types":{"type":"array","items":{"type":"string","enum":["bus","laundry","water","power","mental_health","toilet","food_bank","shelter","dog_park","wifi","hospital","pharmacy"]}}},"required":["lat","lon"]}}},
-    {"type":"function","function":{"name":"scoreLocation","description":"Score a location 0-100 for suitability against user needs. 40pts for public land availability + 60pts for needs met.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"needs":{"type":"array","items":{"type":"string"},"example":["bus","laundry","power","dog"]}},"required":["lat","lon","needs"]}}},
-    {"type":"function","function":{"name":"getParcelDetail","description":"Get full parcel detail by PIN from Franklin County Auditor.","parameters":{"type":"object","properties":{"pin":{"type":"string"}},"required":["pin"]}}},
-    {"type":"function","function":{"name":"geocode","description":"Convert address or place name to lat/lon. Biases to Columbus OH automatically.","parameters":{"type":"object","properties":{"query":{"type":"string"}},"required":["query"]}}}
+    {"type":"function","function":{"name":"findPublicParcels","description":"Find public/city-owned parcels near a location. Returns parcels owned by City of Columbus, Franklin County Land Bank, Metro Parks, Board of Education, or other public entities with risk assessment.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"radius_miles":{"type":"number","default":0.5}},"required":["lat","lon"]}}},
+    {"type":"function","function":{"name":"findNearbyResources","description":"Find nearby amenities via OpenStreetMap: bus stops, laundromats, drinking water, power/charging, food banks, mental health, restrooms, shelters, dog parks, wifi.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"radius_meters":{"type":"number","default":800},"resource_types":{"type":"array","items":{"type":"string","enum":["bus","laundry","water","power","mental_health","toilet","food_bank","shelter","dog_park","wifi","hospital","pharmacy"]}}},"required":["lat","lon"]}}},
+    {"type":"function","function":{"name":"scoreLocation","description":"Score a location 0-100 for suitability based on user needs. Cross-references public land availability with proximity to required resources.","parameters":{"type":"object","properties":{"lat":{"type":"number"},"lon":{"type":"number"},"needs":{"type":"array","items":{"type":"string"},"example":["bus","laundry","power","dog"]}},"required":["lat","lon","needs"]}}},
+    {"type":"function","function":{"name":"getParcelDetail","description":"Get full detail on a specific parcel by PIN from Franklin County Auditor.","parameters":{"type":"object","properties":{"pin":{"type":"string"}},"required":["pin"]}}},
+    {"type":"function","function":{"name":"geocode","description":"Convert address or place name to lat/lon coordinates.","parameters":{"type":"object","properties":{"query":{"type":"string"}},"required":["query"]}}}
   ],
-  "endpoints": {
-    "parcels":   "https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query",
-    "auditor":   "https://audr-api.franklincountyohio.gov/v1/parcel/{pin}",
-    "overpass":  "https://overpass-api.de/api/interpreter",
-    "nominatim": "https://nominatim.openstreetmap.org/search",
-    "prop_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin={pin}"
-  },
-  "risk_levels": {
-    "low":  "LUC 640 or 605 — city-owned or land bank. CPD trespass auth required, rarely filed proactively.",
-    "med":  "LUC 600-699 other — other exempt public entities.",
-    "high": "All others — private property, avoid."
+  "implementation": {
+    "findPublicParcels":  "see api.js — FC ArcGIS FeatureServer, USECD 600-699 = exempt/public",
+    "findNearbyResources":"see api.js — Overpass API (OSM)",
+    "scoreLocation":      "see api.js — composite score, 40pts public land + 60pts needs met",
+    "getParcelDetail":    "https://audr-api.franklincountyohio.gov/v1/parcel/{pin}",
+    "geocode":            "https://nominatim.openstreetmap.org — free, no key"
   }
 }
