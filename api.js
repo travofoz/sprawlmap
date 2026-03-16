@@ -140,8 +140,8 @@ export async function findPublicParcels({lat, lon, radiusMiles=0.5, bounds, limi
   const cached = cacheGet(ck);
   if (cached) return cached;
 
-  // Filter by USECD for public parcels (6xx codes)
-  const where = `USECD >= 600 AND USECD < 700`;
+  // Filter by owner keywords (USECD is often null, use owner name instead)
+  const where = PUBLIC_KEYWORDS.map(k => `OWNERNME1 LIKE '%${k}%'`).join(' OR ');
   const geo = JSON.stringify({xmin: b.w, ymin: b.s, xmax: b.e, ymax: b.n, spatialReference: {wkid: 4326}});
   const p = new URLSearchParams({
     where,
@@ -149,7 +149,7 @@ export async function findPublicParcels({lat, lon, radiusMiles=0.5, bounds, limi
     geometryType: 'esriGeometryEnvelope',
     spatialRel: 'esriSpatialRelIntersects',
     inSR: 4326,
-    outFields: 'PARCELID,OWNERNAME1,USECD,SITEADDRESS,ACRES,APPRVALUE,SALEYEAR,ZIPCD',
+    outFields: 'PARCELID,OWNERNME1,USECD,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
     returnGeometry: includeGeometry ? 'true' : 'false',
     outSR: '4326',
     resultRecordCount: limit,
@@ -162,19 +162,20 @@ export async function findPublicParcels({lat, lon, radiusMiles=0.5, bounds, limi
 
   const out = (d.features || []).map(f => {
     const a = f.properties;
-    const risk = riskLevel(a.USECD, a.OWNERNAME1);
+    const risk = riskLevel(a.USECD, a.OWNERNME1);
+    const saleYear = a.SALEDATE ? new Date(a.SALEDATE).getFullYear() : null;
     return {
       parcel_id: a.PARCELID,
       address: a.SITEADDRESS,
-      owner: a.OWNERNAME1,
+      owner: a.OWNERNME1,
       usecd: a.USECD,
       luc_label: lucLabel(a.USECD),
       risk,
       risk_text: riskText(risk),
       risk_desc: riskDescription(risk),
       acres: a.ACRES,
-      appraised: a.APPRVALUE,
-      last_sale_year: a.SALEYEAR,
+      appraised: a.TOTVALUEBASE,
+      last_sale_year: saleYear,
       zip: a.ZIPCD,
       property_card: CARD + (a.PARCELID || ''),
       geometry: f.geometry || null

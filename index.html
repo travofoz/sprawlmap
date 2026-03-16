@@ -39,6 +39,15 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
 #settings-panel{display:none;position:fixed;inset:0;background:#0d1117f0;z-index:3000;overflow-y:auto;padding:20px}
 #settings-panel.open{display:block}
 #settings-panel h2{color:#58a6ff;margin-bottom:16px}
+#debug-panel{display:none;position:fixed;inset:0;background:#0d1117;z-index:3500;overflow-y:auto;padding:20px}
+#debug-panel.open{display:block}
+#debug-panel h2{color:#58a6ff;margin-bottom:8px}
+#debug-log{background:#161b22;border-radius:8px;padding:12px;min-height:200px;max-height:50vh;overflow-y:auto;margin-bottom:12px;font-size:12px;line-height:1.6}
+#debug-log .user{color:#58a6ff}
+#debug-log .assistant{color:#3fb950}
+#debug-log .error{color:#f85149}
+#debug-input-area{display:flex;gap:8px}
+#debug-input-area textarea{flex:1;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:10px;font-size:13px;resize:none;height:80px;font-family:inherit}
 .sg{margin-bottom:16px}
 .sg label{display:block;font-size:12px;color:#8b949e;margin-bottom:4px}
 .sg select,.sg input{width:100%;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px;font-size:13px}
@@ -52,6 +61,7 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
   <button class="btn" id="searchBtn">🔍 Search</button>
   <button class="btn" id="resBtn">💡 Resources</button>
   <button class="btn green" id="askBtn">🤖 Ask</button>
+  <button class="btn" id="debugBtn">🔧</button>
   <button class="btn" id="settingsBtn">⚙️</button>
 </div>
 <div id="status">Move map then tap Search, or tap Me for GPS</div>
@@ -93,6 +103,17 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
   </div>
   <button class="btn green" id="saveSettings" style="width:100%;padding:10px;margin-top:8px">Save</button>
   <button class="btn" id="closeSettings" style="width:100%;padding:10px;margin-top:8px">Cancel</button>
+</div>
+
+<div id="debug-panel">
+  <h2>🔧 Debug Assistant</h2>
+  <p style="color:#8b949e;font-size:11px;margin-bottom:12px">Chat with GLM for debugging. Context includes current map state and recent errors.</p>
+  <div id="debug-log"></div>
+  <div id="debug-input-area">
+    <textarea id="debug-q" placeholder="Describe the bug or ask for help..."></textarea>
+    <button class="btn green" id="debug-send">Ask</button>
+  </div>
+  <button class="btn" id="closeDebug" style="width:100%;padding:8px;margin-top:12px">Close</button>
 </div>
 
 <script type="module">
@@ -373,6 +394,81 @@ function openPanel(tab) {
     document.getElementById(`tab-${id}`).style.display = id === tab ? 'block' : 'none'
   );
 }
+
+// ── Debug Assistant ───────────────────────────────────────────────────────────
+const debugLog = document.getElementById('debug-log');
+const debugQ = document.getElementById('debug-q');
+let debugHistory = [];
+
+document.getElementById('debugBtn').onclick = () => {
+  document.getElementById('debug-panel').classList.add('open');
+  // Populate context
+  debugLog.innerHTML = `<div style="color:#8b949e;margin-bottom:12px">
+    <b>Debug Context:</b><br>
+    • Map center: ${curLat.toFixed(4)}, ${curLon.toFixed(4)}<br>
+    • Zoom: ${map.getZoom()}<br>
+    • Provider: ${localStorage.getItem('scout_provider') || 'none'}<br>
+    • Model: ${localStorage.getItem('scout_model') || 'default'}<br>
+    • Has API key: ${!!localStorage.getItem('key_' + (localStorage.getItem('scout_provider') || 'openrouter'))}
+  </div>`;
+};
+
+document.getElementById('closeDebug').onclick = () => document.getElementById('debug-panel').classList.remove('open');
+
+document.getElementById('debug-send').onclick = async () => {
+  const q = debugQ.value.trim();
+  if (!q) return;
+
+  debugLog.innerHTML += `<div class="user" style="margin-bottom:8px"><b>You:</b> ${q}</div>`;
+  debugQ.value = '';
+  debugLog.innerHTML += '<div class="thinking">⏳ Thinking...</div>';
+  debugLog.scrollTop = debugLog.scrollHeight;
+
+  try {
+    const llm = bestAvailable();
+    if (!llm) throw new Error('No AI configured. Check Settings.');
+
+    // Build context with current state
+    const ctx = {
+      map: { center: [curLat, curLon], zoom: map.getZoom(), bounds: map.getBounds() },
+      url: window.location.href,
+      lastStatus: document.getElementById('status').innerHTML,
+      timestamp: new Date().toISOString()
+    };
+
+    const sys = `You are a debugging assistant for Sprawlmap, a humanitarian field tool for Columbus OH.
+Help debug JavaScript errors, API issues, and ArcGIS queries.
+
+Known issues:
+- ArcGIS FeatureServer requires inSR=4326 and outSR=4326 parameters
+- Field name is OWNERNME1 not OWNERNAME1
+- USECD field is often null, filter by owner name instead
+- Geometry is in Ohio State Plane (102723), needs reprojection
+
+Be concise and practical. Provide code fixes when relevant.`;
+
+    debugHistory.push({role: 'user', content: `Context: ${JSON.stringify(ctx, null, 2)}\n\nQuestion: ${q}`});
+
+    const reply = await llm.chat(debugHistory, sys);
+    debugHistory.push({role: 'assistant', content: reply});
+
+    // Remove thinking indicator and add response
+    debugLog.querySelector('.thinking')?.remove();
+    debugLog.innerHTML += `<div class="assistant" style="margin-bottom:12px;white-space:pre-wrap">${reply}</div>`;
+    debugLog.scrollTop = debugLog.scrollHeight;
+  } catch (e) {
+    debugLog.querySelector('.thinking')?.remove();
+    debugLog.innerHTML += `<div class="error">Error: ${e.message}</div>`;
+    debugLog.scrollTop = debugLog.scrollHeight;
+  }
+};
+
+debugQ.onkeydown = e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    document.getElementById('debug-send').click();
+  }
+};
 </script>
 </body>
 </html>

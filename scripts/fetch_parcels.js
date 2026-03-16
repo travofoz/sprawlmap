@@ -5,8 +5,9 @@
 
 const URL = 'https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query';
 
-// Filter by USECD 6xx codes (public/exempt parcels)
-const WHERE = 'USECD >= 600 AND USECD < 700';
+// Keywords for public ownership (USECD is often null)
+const KEYWORDS = ['CITY','COLUMBUS','FRANKLIN CO','LAND BANK','METRO PARKS','BOARD OF EDUCATION','LAND REUTILIZATION','CLRC'];
+const WHERE = KEYWORDS.map(k => `OWNERNME1 LIKE '%${k}%'`).join(' OR ');
 
 const LUC = {
   605: 'Land Bank/CLRC',
@@ -34,8 +35,9 @@ const risk = u => {
 async function page(offset) {
   const p = new URLSearchParams({
     where: WHERE,
-    outFields: 'PARCELID,OWNERNAME1,USECD,SITEADDRESS,ACRES,APPRVALUE,SALEYEAR,ZIPCD',
+    outFields: 'PARCELID,OWNERNME1,USECD,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
     returnGeometry: 'true',
+    inSR: 4326,
     outSR: '4326',
     resultOffset: offset,
     resultRecordCount: 1000,
