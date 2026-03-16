@@ -1,41 +1,34 @@
 #!/usr/bin/env node
 // Fetches all public parcels from Franklin County, writes GeoJSON to stdout.
-// Run by GH Action nightly. Also: node scripts/fetch_parcels.js > data/public_parcels.geojson
+// Run: node scripts/fetch_parcels.js > data/public_parcels.geojson
 // Requires Node 18+
 
 const URL = 'https://gis.franklincountyohio.gov/hosting/rest/services/ParcelFeatures/Parcel_Features/FeatureServer/0/query';
 
-// Keywords for public ownership (USECD is often null)
-const KEYWORDS = ['CITY','COLUMBUS','FRANKLIN CO','LAND BANK','METRO PARKS','BOARD OF EDUCATION','LAND REUTILIZATION','CLRC'];
-const WHERE = KEYWORDS.map(k => `OWNERNME1 LIKE '%${k}%'`).join(' OR ');
-
-const LUC = {
-  605: 'Land Bank/CLRC',
-  610: 'State of Ohio',
-  620: 'Franklin County',
-  630: 'Township',
-  640: 'City of Columbus',
-  650: 'School District',
-  660: 'Metro Parks/COTA',
-  670: 'Religious/Charitable',
-  680: 'Other Exempt'
+// CLASSCD codes for public/exempt parcels
+const CLASS_CODES = {
+  640: {label:'Municipal',        color:'#3fb950', risk:'low'},
+  605: {label:'Land Bank/CLRC',   color:'#2dd4bf', risk:'low'},
+  610: {label:'State of Ohio',    color:'#58a6ff', risk:'med'},
+  620: {label:'Franklin County',  color:'#8b5cf6', risk:'med'},
+  630: {label:'Township',         color:'#a78bfa', risk:'med'},
+  650: {label:'School District',  color:'#f85149', risk:'avoid'},
+  660: {label:'Metro Parks/COTA', color:'#eab308', risk:'med'},
+  670: {label:'Religious/Charity',color:'#6b7280', risk:'med'},
+  680: {label:'Other Exempt',     color:'#9ca3af', risk:'med'}
 };
 
-const label = c => LUC[parseInt(c)] || (parseInt(c) >= 600 && parseInt(c) < 700 ? 'Exempt Public' : `Code ${c}`);
+// Filter by CLASSCD (6xx codes)
+const WHERE = `CLASSCD IN ('640','605','610','620','630','650','660','670','680')`;
 
-// Risk classification: 640/605 = low, 650 = avoid, other 6xx = med
-const risk = u => {
-  const c = parseInt(u || 0);
-  if (c === 640 || c === 605) return 'low';
-  if (c === 650) return 'avoid';
-  if (c >= 600 && c < 700) return 'med';
-  return 'high';
-};
+function getClassInfo(code) {
+  return CLASS_CODES[code] || {label:`Code ${code}`, color:'#6b7280', risk:'med'};
+}
 
 async function page(offset) {
   const p = new URLSearchParams({
     where: WHERE,
-    outFields: 'PARCELID,OWNERNME1,USECD,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
+    outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
     returnGeometry: 'true',
     inSR: 4326,
     outSR: '4326',
@@ -63,8 +56,10 @@ async function main() {
 
     for (const f of batch) {
       const p = f.properties;
-      p.luc_label = label(p.USECD);
-      p.risk = risk(p.USECD);
+      const info = getClassInfo(p.CLASSCD);
+      p.class_label = info.label;
+      p.class_color = info.color;
+      p.risk = info.risk;
       p.property_card = `https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=${p.PARCELID || ''}`;
     }
     features.push(...batch);

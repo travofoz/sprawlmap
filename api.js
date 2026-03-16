@@ -5,24 +5,38 @@ const NOMINATIM='https://nominatim.openstreetmap.org/search';
 const CARD    = 'https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=';
 const TTL     = 86_400_000;
 
-// Keywords to identify public ownership
-export const PUBLIC_KEYWORDS = ['CITY','COLUMBUS','FRANKLIN CO','LAND BANK','METRO PARKS','BOARD OF EDUCATION','LAND REUTILIZATION','CLRC'];
-
-// LUC (Land Use Code) labels - single source of truth
-export const LUC_LABELS = {
-  605:'Land Bank/CLRC',
-  610:'State of Ohio',
-  620:'Franklin County',
-  630:'Township',
-  640:'City of Columbus',
-  650:'School District',  // AVOID - active enforcement
-  660:'Metro Parks/COTA',
-  670:'Religious/Charitable',
-  680:'Other Exempt',
-  400:'Vacant Commercial',
-  300:'Vacant Industrial',
-  500:'Vacant Residential'
+// CLASSCD codes and their properties
+export const CLASS_CODES = {
+  640: {label:'Municipal',        color:'#3fb950', risk:'low',   desc:'City-owned. CPD trespass auth rarely filed.'},
+  605: {label:'Land Bank/CLRC',   color:'#2dd4bf', risk:'low',   desc:'County land bank. Held for development.'},
+  610: {label:'State of Ohio',    color:'#58a6ff', risk:'med',   desc:'State-owned property.'},
+  620: {label:'Franklin County',  color:'#8b5cf6', risk:'med',   desc:'County-owned property.'},
+  630: {label:'Township',         color:'#a78bfa', risk:'med',   desc:'Township-owned property.'},
+  650: {label:'School District',  color:'#f85149', risk:'avoid', desc:'AVOID. Active enforcement.'},
+  660: {label:'Metro Parks/COTA', color:'#eab308', risk:'med',   desc:'Parks and transit.'},
+  670: {label:'Religious/Charity',color:'#6b7280', risk:'med',   desc:'Religious or charitable org.'},
+  680: {label:'Other Exempt',     color:'#9ca3af', risk:'med',   desc:'Other tax-exempt property.'}
 };
+
+// Get class info
+export const getClassInfo = code => CLASS_CODES[code] || {label:`Code ${code}`, color:'#6b7280', risk:'med', desc:'Unknown'};
+
+// Risk classification based on CLASSCD
+export const riskLevel = classcd => getClassInfo(classcd).risk;
+
+export const riskText = r => ({
+  low:'🟢 LOW',
+  med:'🟡 MED',
+  avoid:'🔴 AVOID',
+  high:'🔴 HIGH'
+}[r] || '❓');
+
+export const riskDescription = r => ({
+  low:'City-owned or land bank. CPD trespass auth required, rarely filed.',
+  med:'Other public entity. Verify before use.',
+  avoid:'School district. Active enforcement - AVOID.',
+  high:'Private property. Avoid.'
+}[r] || '');
 
 // Resource types for Overpass queries
 export const RESOURCE_TYPES = {
@@ -41,68 +55,42 @@ export const RESOURCE_TYPES = {
   library:      {label:'Library',         icon:'📚', overpass:'node["amenity"="library"]'},
 };
 
-// Hardcoded Columbus-specific resources (not reliably in OSM)
+// Hardcoded Columbus-specific resources
 export const HARDCODED_RESOURCES = [
-  // Shelters
   {type:'shelter',name:'Faith Mission Men\'s Shelter',address:'315 N 6th St',lat:39.9689,lon:-82.9955},
   {type:'shelter',name:'Faith Mission Women\'s Shelter',address:'620 N 4th St',lat:39.9712,lon:-82.9988},
   {type:'shelter',name:'Open Shelter',address:'24 W Starre St',lat:39.9587,lon:-83.0021,notes:'Year-round low-barrier'},
   {type:'shelter',name:'Community Shelter Board',address:'195 N Grant Ave',lat:39.9638,lon:-82.9927,notes:'Coordinated entry'},
-  // Food
   {type:'food_bank',name:'Mid-Ohio Foodbank',address:'3960 Brookham Dr',lat:40.0142,lon:-82.9294},
   {type:'food_bank',name:'Faith Mission Food Pantry',address:'315 N 6th St',lat:39.9689,lon:-82.9955},
-  // Water/Libraries (year-round access)
   {type:'water',name:'Columbus Metropolitan Library - Main',address:'96 S Grant Ave',lat:39.9621,lon:-82.9898,notes:'Restrooms + water'},
   {type:'water',name:'Columbus Metropolitan Library - Franklinton',address:'1061 W Town St',lat:39.9592,lon:-83.0254},
   {type:'water',name:'Columbus Metropolitan Library - Martin Luther King',address:'1600 E Long St',lat:39.9634,lon:-82.9746},
-  // Mental Health
   {type:'mental_health',name:'ADAMH Board',address:'447 E Broad St',lat:39.9631,lon:-82.9865,notes:'Crisis services'},
   {type:'mental_health',name:'Netcare Access',address:'199 S Central Ave',lat:39.9602,lon:-83.0007,notes:'24/7 crisis'},
 ];
 
-// LUC label helper
-export const lucLabel = c => LUC_LABELS[parseInt(c)] || (parseInt(c)>=600&&parseInt(c)<700 ? 'Exempt Public' : `Code ${c}`);
-
-// Risk classification - 650 (school district) is AVOID
-export const riskLevel = (usecd, owner) => {
-  const c = parseInt(usecd || 0);
-  const isPublic = PUBLIC_KEYWORDS.some(k => (owner || '').toUpperCase().includes(k));
-
-  // 640 (municipal) and 605 (land bank) = LOWEST risk
-  if (c === 640 || c === 605) return 'low';
-
-  // 650 (school district) = AVOID - active enforcement
-  if (c === 650) return 'avoid';
-
-  // Other 6xx public = medium
-  if (c >= 600 && c < 700 && isPublic) return 'med';
-  if (isPublic) return 'med';
-
-  // Private = high
-  return 'high';
-};
-
-export const riskText = r => ({
-  low:'🟢 LOW',
-  med:'🟡 MED',
-  avoid:'🔴 AVOID',
-  high:'🔴 HIGH'
-}[r] || '❓');
-
-export const riskDescription = r => ({
-  low:'City-owned or land bank. CPD trespass auth required, rarely filed.',
-  med:'Other public entity. Verify before use.',
-  avoid:'School district. Active enforcement - AVOID.',
-  high:'Private property. Avoid.'
-}[r] || '');
-
 // Haversine distance in miles
 export const distMiles = (lat1, lon1, lat2, lon2) => {
+  if (!lat1 || !lon1 || !lat2 || !lon2) return null;
   const R = 3958.8;
   const dLat = (lat2 - lat1) * Math.PI / 180;
   const dLon = (lon2 - lon1) * Math.PI / 180;
   const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+};
+
+// Get centroid of a GeoJSON polygon
+export const getCentroid = (geometry) => {
+  if (!geometry || !geometry.coordinates || !geometry.coordinates[0]) return null;
+  const coords = geometry.coordinates[0];
+  const n = coords.length;
+  let sumLat = 0, sumLon = 0;
+  for (const c of coords) {
+    sumLon += c[0];
+    sumLat += c[1];
+  }
+  return { lat: sumLat / n, lon: sumLon / n };
 };
 
 // LocalStorage cache helpers
@@ -130,26 +118,45 @@ const bboxFromCenter = (lat, lon, mi) => {
   };
 };
 
-// Find public parcels within bounds
-export async function findPublicParcels({lat, lon, radiusMiles=0.5, bounds, limit=80, includeGeometry=false}={}) {
+// Find public parcels within bounds, with optional CLASSCD filter
+export async function findPublicParcels({
+  lat, lon,
+  radiusMiles = 0.5,
+  bounds,
+  limit = 200,
+  includeGeometry = true,
+  classFilter = ['640','605','610','620','630','650','660','670','680'], // all public classes
+  gpsLat = null, // for distance calculation
+  gpsLon = null
+} = {}) {
   const b = bounds
     ? {w: bounds._southWest?.lng ?? bounds.w, s: bounds._southWest?.lat ?? bounds.s, e: bounds._northEast?.lng ?? bounds.e, n: bounds._northEast?.lat ?? bounds.n}
     : bboxFromCenter(lat, lon, radiusMiles);
 
-  const ck = `p_${JSON.stringify(b)}_${includeGeometry}`;
+  const ck = `p_${JSON.stringify(b)}_${includeGeometry}_${classFilter.join(',')}`;
   const cached = cacheGet(ck);
-  if (cached) return cached;
+  if (cached) {
+    // Recalculate distances with current GPS
+    return cached.map(p => ({
+      ...p,
+      dist_miles: gpsLat && gpsLon && p.centroid ? distMiles(gpsLat, gpsLon, p.centroid.lat, p.centroid.lon) : null,
+      dist_label: gpsLat && gpsLon && p.centroid ? distMiles(gpsLat, gpsLon, p.centroid.lat, p.centroid.lon)?.toFixed(2) + ' mi' : null
+    }));
+  }
 
-  // Filter by owner keywords (USECD is often null, use owner name instead)
-  const where = PUBLIC_KEYWORDS.map(k => `OWNERNME1 LIKE '%${k}%'`).join(' OR ');
+  // Build WHERE clause for CLASSCD filter
+  const classWhere = classFilter.length > 0
+    ? `CLASSCD IN (${classFilter.map(c => `'${c}'`).join(',')})`
+    : '1=0'; // nothing if no filter
+
   const geo = JSON.stringify({xmin: b.w, ymin: b.s, xmax: b.e, ymax: b.n, spatialReference: {wkid: 4326}});
   const p = new URLSearchParams({
-    where,
+    where: classWhere,
     geometry: geo,
     geometryType: 'esriGeometryEnvelope',
     spatialRel: 'esriSpatialRelIntersects',
     inSR: 4326,
-    outFields: 'PARCELID,OWNERNME1,USECD,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
+    outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
     returnGeometry: includeGeometry ? 'true' : 'false',
     outSR: '4326',
     resultRecordCount: limit,
@@ -162,33 +169,66 @@ export async function findPublicParcels({lat, lon, radiusMiles=0.5, bounds, limi
 
   const out = (d.features || []).map(f => {
     const a = f.properties;
-    const risk = riskLevel(a.USECD, a.OWNERNME1);
+    const classInfo = getClassInfo(a.CLASSCD);
+    const centroid = f.geometry ? getCentroid(f.geometry) : null;
     const saleYear = a.SALEDATE ? new Date(a.SALEDATE).getFullYear() : null;
+
     return {
       parcel_id: a.PARCELID,
       address: a.SITEADDRESS,
       owner: a.OWNERNME1,
-      usecd: a.USECD,
-      luc_label: lucLabel(a.USECD),
-      risk,
-      risk_text: riskText(risk),
-      risk_desc: riskDescription(risk),
+      classcd: a.CLASSCD,
+      class_label: classInfo.label,
+      class_color: classInfo.color,
+      class_desc: a.CLASSDSCRP,
+      risk: classInfo.risk,
+      risk_text: riskText(classInfo.risk),
+      risk_desc: classInfo.desc,
       acres: a.ACRES,
       appraised: a.TOTVALUEBASE,
       last_sale_year: saleYear,
       zip: a.ZIPCD,
       property_card: CARD + (a.PARCELID || ''),
-      geometry: f.geometry || null
+      geometry: f.geometry || null,
+      centroid,
+      dist_miles: gpsLat && gpsLon && centroid ? distMiles(gpsLat, gpsLon, centroid.lat, centroid.lon) : null
     };
   });
 
-  // Sort: low first, then med, then avoid/high
-  const riskOrder = {low: 0, med: 1, avoid: 2, high: 3};
-  out.sort((a, b) => riskOrder[a.risk] - riskOrder[b.risk]);
+  // Add distance label
+  out.forEach(p => {
+    p.dist_label = p.dist_miles !== null ? p.dist_miles.toFixed(2) + ' mi' : null;
+  });
 
   cacheSet(ck, out);
+
   return out;
 }
+
+// Sort parcels by different criteria
+export const sortParcels = (parcels, sortBy = 'risk', gpsLat = null, gpsLon = null) => {
+  const sorted = [...parcels];
+
+  switch (sortBy) {
+    case 'distance':
+      if (gpsLat && gpsLon) {
+        sorted.sort((a, b) => (a.dist_miles || 999) - (b.dist_miles || 999));
+      }
+      break;
+    case 'risk':
+      const riskOrder = {low: 0, med: 1, avoid: 2, high: 3};
+      sorted.sort((a, b) => riskOrder[a.risk] - riskOrder[b.risk]);
+      break;
+    case 'acres':
+      sorted.sort((a, b) => (b.acres || 0) - (a.acres || 0));
+      break;
+    case 'class':
+      sorted.sort((a, b) => (a.classcd || '').localeCompare(b.classcd || ''));
+      break;
+  }
+
+  return sorted;
+};
 
 // Find nearby resources via Overpass + hardcoded
 export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}) {
@@ -197,7 +237,6 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
   const cached = cacheGet(ck);
   if (cached) return cached;
 
-  // Build Overpass query
   const queries = keys.flatMap(k =>
     (RESOURCE_TYPES[k]?.overpass || '').split(',').map(q => `${q}(around:${radiusMeters},${lat},${lon});`)
   );
@@ -206,7 +245,6 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
   const r = await fetch(OVERPASS, {method: 'POST', body: 'data=' + encodeURIComponent(ql)});
   const d = await r.json();
 
-  // Process OSM results
   const osmResults = (d.elements || []).map(e => {
     const rl = e.lat || e.center?.lat, ro = e.lon || e.center?.lon;
     const t = e.tags || {};
@@ -228,6 +266,7 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
 
     return {
       type, icon,
+      type_label: RESOURCE_TYPES[type]?.label || type,
       name: t.name || RESOURCE_TYPES[type]?.label || type,
       lat: rl, lon: ro,
       address: [t['addr:housenumber'], t['addr:street']].filter(Boolean).join(' ') || null,
@@ -237,7 +276,6 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
     };
   });
 
-  // Merge with hardcoded resources within radius
   const radiusMiles = radiusMeters / 1609;
   const hardcodedResults = HARDCODED_RESOURCES.filter(h => {
     const d = distMiles(lat, lon, h.lat, h.lon);
@@ -245,6 +283,7 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
   }).map(h => ({
     ...h,
     icon: RESOURCE_TYPES[h.type]?.icon || '📍',
+    type_label: RESOURCE_TYPES[h.type]?.label || h.type,
     dist_miles: distMiles(lat, lon, h.lat, h.lon),
     source: 'hardcoded'
   }));
@@ -259,7 +298,7 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
 // Score a location against user needs
 export async function scoreLocation({lat, lon, needs=[]}) {
   const [parcels, resources] = await Promise.all([
-    findPublicParcels({lat, lon, radiusMiles: 0.25}),
+    findPublicParcels({lat, lon, radiusMiles: 0.25, gpsLat: lat, gpsLon: lon}),
     findNearbyResources({lat, lon, radiusMeters: 1200})
   ]);
 
