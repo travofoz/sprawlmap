@@ -9,80 +9,159 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
-#bar{display:flex;align-items:center;gap:6px;padding:8px;background:#161b22;border-bottom:1px solid #30363d;z-index:1000;flex-wrap:wrap}
-#bar h1{font-size:15px;font-weight:700;color:#58a6ff;margin-right:4px}
-.btn{background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer;white-space:nowrap}
+#bar{display:flex;align-items:center;gap:4px;padding:6px;background:#161b22;border-bottom:1px solid #30363d;z-index:1000;flex-wrap:wrap}
+#bar h1{font-size:14px;font-weight:700;color:#58a6ff;margin-right:2px}
+.btn{background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;white-space:nowrap}
 .btn:active,.btn.active{background:#388bfd22;border-color:#58a6ff;color:#58a6ff}
 .btn.green{border-color:#3fb950;color:#3fb950}
-#status{font-size:11px;color:#8b949e;padding:3px 8px;background:#0d1117;border-bottom:1px solid #21262d}
+.btn.sm{padding:2px 6px;font-size:10px}
+#status{font-size:10px;color:#8b949e;padding:2px 8px;background:#0d1117;border-bottom:1px solid #21262d}
 #map{flex:1}
-#panel{position:fixed;bottom:0;left:0;right:0;background:#161b22;border-top:2px solid #30363d;max-height:55dvh;display:flex;flex-direction:column;z-index:2000;transform:translateY(100%);transition:transform .25s ease}
+
+/* Filters panel */
+#filters-panel{background:#161b22;border-bottom:1px solid #30363d;padding:8px;display:none}
+#filters-panel.open{display:block}
+#filters-panel h3{font-size:11px;color:#8b949e;margin-bottom:6px}
+.filter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px}
+.filter-row{display:flex;align-items:center;gap:4px;padding:4px;background:#0d1117;border-radius:4px;cursor:pointer;font-size:10px}
+.filter-row input{margin:0}
+.filter-row.avoid{border:1px solid #f85149}
+.color-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.filter-actions{display:flex;gap:4px;margin-top:6px}
+
+/* Search controls */
+#search-controls{display:flex;gap:4px;padding:6px;background:#161b22;border-bottom:1px solid #30363d;align-items:center}
+#search-controls select{background:#0d1117;border:1px solid #30363d;border-radius:4px;color:#e6edf3;padding:4px 6px;font-size:11px}
+#search-controls button{padding:4px 12px}
+
+/* Legend */
+#legend{position:absolute;bottom:60px;left:10px;background:#161b22ee;border:1px solid #30363d;border-radius:6px;padding:8px;z-index:1000;min-width:140px}
+#legend-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:11px;color:#58a6ff}
+#legend-content{margin-top:6px}
+#legend-content.collapsed{display:none}
+.legend-row{display:flex;align-items:center;gap:6px;font-size:10px;margin-bottom:3px}
+.color-box{width:12px;height:12px;border-radius:3px}
+
+/* Panel */
+#panel{position:fixed;bottom:0;left:0;right:0;background:#161b22;border-top:2px solid #30363d;max-height:50dvh;display:flex;flex-direction:column;z-index:2000;transform:translateY(calc(100% - 30px));transition:transform .2s ease}
 #panel.open{transform:translateY(0)}
 #ptab{display:flex;border-bottom:1px solid #30363d}
-.tab{flex:1;padding:8px;font-size:12px;text-align:center;cursor:pointer;color:#8b949e;border-bottom:2px solid transparent}
+.tab{flex:1;padding:6px;font-size:11px;text-align:center;cursor:pointer;color:#8b949e;border-bottom:2px solid transparent}
 .tab.active{color:#58a6ff;border-bottom-color:#58a6ff}
-#pscroll{overflow-y:auto;flex:1;padding:10px}
-.card{background:#0d1117;border-radius:8px;padding:10px;margin-bottom:8px;border-left:4px solid #30363d}
-.card.low{border-color:#3fb950}.card.med{border-color:#d29922}.card.avoid,.card.high{border-color:#f85149}
-.card h3{font-size:12px;color:#58a6ff;margin-bottom:5px;line-height:1.4}
-.card p{font-size:11px;color:#8b949e;line-height:1.7}
+#pscroll{overflow-y:auto;flex:1;padding:8px}
+.card{background:#0d1117;border-radius:6px;padding:8px;margin-bottom:6px;border-left:3px solid #30363d;cursor:pointer}
+.card.low{border-color:#3fb950}.card.med{border-color:#eab308}.card.avoid,.card.high{border-color:#f85149}
+.card.selected{box-shadow:0 0 8px #58a6ff;background:#1a1f29}
+.card h3{font-size:11px;color:#58a6ff;margin-bottom:3px;line-height:1.3}
+.card p{font-size:10px;color:#8b949e;line-height:1.5}
+.card .dist{color:#3fb950;font-weight:600}
 .card a{color:#58a6ff;text-decoration:none}
-.badge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600;margin-bottom:4px}
+.badge{display:inline-block;font-size:9px;padding:1px 5px;border-radius:10px;font-weight:600;margin-right:4px}
 .badge.low{background:#1a4d2e;color:#3fb950}
-.badge.med{background:#3d2b00;color:#d29922}
+.badge.med{background:#3d2b00;color:#eab308}
 .badge.avoid,.badge.high{background:#3d0000;color:#f85149}
-#llm-input{display:flex;gap:6px;padding:8px;border-bottom:1px solid #30363d}
-#llm-input textarea{flex:1;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:6px 8px;font-size:12px;resize:none;height:52px;font-family:inherit}
-#llm-output{overflow-y:auto;padding:10px;font-size:12px;line-height:1.7;color:#c9d1d9;min-height:60px}
+
+/* LLM */
+#llm-input{display:flex;gap:4px;padding:6px;border-bottom:1px solid #30363d}
+#llm-input textarea{flex:1;background:#0d1117;border:1px solid #30363d;border-radius:4px;color:#e6edf3;padding:4px 6px;font-size:11px;resize:none;height:40px;font-family:inherit}
+#llm-output{overflow-y:auto;padding:8px;font-size:11px;line-height:1.5;color:#c9d1d9;min-height:40px}
 #llm-output .thinking{color:#8b949e;font-style:italic}
 #llm-output .answer{white-space:pre-wrap}
-#settings-panel{display:none;position:fixed;inset:0;background:#0d1117f0;z-index:3000;overflow-y:auto;padding:20px}
+
+/* Settings */
+#settings-panel{display:none;position:fixed;inset:0;background:#0d1117f0;z-index:3000;overflow-y:auto;padding:16px}
 #settings-panel.open{display:block}
-#settings-panel h2{color:#58a6ff;margin-bottom:16px}
-#debug-panel{display:none;position:fixed;inset:0;background:#0d1117;z-index:3500;overflow-y:auto;padding:20px}
+#settings-panel h2{color:#58a6ff;margin-bottom:12px;font-size:14px}
+.sg{margin-bottom:12px}
+.sg label{display:block;font-size:11px;color:#8b949e;margin-bottom:3px}
+.sg select,.sg input{width:100%;background:#161b22;border:1px solid #30363d;border-radius:4px;color:#e6edf3;padding:6px;font-size:12px}
+
+/* Debug */
+#debug-panel{display:none;position:fixed;inset:0;background:#0d1117;z-index:3500;overflow-y:auto;padding:16px}
 #debug-panel.open{display:block}
-#debug-panel h2{color:#58a6ff;margin-bottom:8px}
-#debug-log{background:#161b22;border-radius:8px;padding:12px;min-height:200px;max-height:50vh;overflow-y:auto;margin-bottom:12px;font-size:12px;line-height:1.6}
+#debug-panel h2{color:#58a6ff;margin-bottom:8px;font-size:14px}
+#debug-log{background:#161b22;border-radius:6px;padding:10px;min-height:150px;max-height:45vh;overflow-y:auto;margin-bottom:10px;font-size:11px;line-height:1.5}
 #debug-log .user{color:#58a6ff}
 #debug-log .assistant{color:#3fb950}
 #debug-log .error{color:#f85149}
-#debug-input-area{display:flex;gap:8px}
-#debug-input-area textarea{flex:1;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:10px;font-size:13px;resize:none;height:80px;font-family:inherit}
-.sg{margin-bottom:16px}
-.sg label{display:block;font-size:12px;color:#8b949e;margin-bottom:4px}
-.sg select,.sg input{width:100%;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;padding:8px;font-size:13px}
-#handle{text-align:center;padding:6px;cursor:pointer;color:#8b949e;font-size:18px}
+#debug-input-area{display:flex;gap:6px}
+#debug-input-area textarea{flex:1;background:#161b22;border:1px solid #30363d;border-radius:4px;color:#e6edf3;padding:8px;font-size:12px;resize:none;height:60px;font-family:inherit}
+
+#handle{text-align:center;padding:4px;cursor:pointer;color:#8b949e;font-size:16px}
 </style>
 </head>
 <body>
 <div id="bar">
-  <h1>🗺 Sprawlmap</h1>
-  <button class="btn" id="locBtn">📍 Me</button>
-  <button class="btn" id="searchBtn">🔍 Search</button>
-  <button class="btn" id="resBtn">💡 Resources</button>
-  <button class="btn green" id="askBtn">🤖 Ask</button>
+  <h1>Sprawlmap</h1>
+  <button class="btn" id="locBtn">📍</button>
+  <button class="btn" id="filterBtn">🎛️</button>
+  <button class="btn green" id="searchBtn">🔍 Search</button>
+  <button class="btn" id="resBtn">💡</button>
+  <button class="btn" id="askBtn">🤖</button>
   <button class="btn" id="debugBtn">🔧</button>
   <button class="btn" id="settingsBtn">⚙️</button>
 </div>
-<div id="status">Move map then tap Search, or tap Me for GPS</div>
+
+<div id="filters-panel">
+  <h3>Filter by Property Class</h3>
+  <div class="filter-grid" id="filterGrid"></div>
+  <div class="filter-actions">
+    <button class="btn sm" onclick="selectAllFilters()">All</button>
+    <button class="btn sm" onclick="selectNoFilters()">None</button>
+    <button class="btn sm" onclick="selectRecommended()">Recommended</button>
+  </div>
+</div>
+
+<div id="search-controls" style="display:none">
+  <span style="font-size:10px;color:#8b949e">Radius:</span>
+  <select id="radiusSel">
+    <option value="0.25">0.25 mi</option>
+    <option value="0.5" selected>0.5 mi</option>
+    <option value="1">1 mi</option>
+    <option value="2">2 mi</option>
+    <option value="5">5 mi</option>
+  </select>
+  <span style="font-size:10px;color:#8b949e">Sort:</span>
+  <select id="sortSel">
+    <option value="distance">Distance</option>
+    <option value="risk">Risk</option>
+    <option value="acres">Acres</option>
+    <option value="class">Class</option>
+  </select>
+  <button class="btn green" id="applySearch">Apply</button>
+</div>
+
+<div id="status">Tap 📍 for GPS, then 🔍 Search</div>
 <div id="map"></div>
 
+<div id="legend">
+  <div id="legend-header" onclick="toggleLegend()">
+    <span>🗺️ Legend</span>
+    <span id="legend-toggle">▼</span>
+  </div>
+  <div id="legend-content">
+    <div class="legend-row"><span class="color-box" style="background:#3fb950"></span> LOW - City/Land Bank</div>
+    <div class="legend-row"><span class="color-box" style="background:#eab308"></span> MED - Other Public</div>
+    <div class="legend-row"><span class="color-box" style="background:#f85149"></span> AVOID - School District</div>
+  </div>
+</div>
+
 <div id="panel">
-  <div id="handle">⌄</div>
+  <div id="handle">⌃</div>
   <div id="ptab">
     <div class="tab active" data-tab="parcels">🏛 Parcels</div>
     <div class="tab" data-tab="resources">💡 Resources</div>
     <div class="tab" data-tab="ask">🤖 Ask</div>
   </div>
   <div id="pscroll">
-    <div id="tab-parcels"><p style="color:#8b949e;font-size:12px">Search an area to see public parcels.</p></div>
-    <div id="tab-resources" style="display:none"><p style="color:#8b949e;font-size:12px">Tap Resources to load.</p></div>
+    <div id="tab-parcels"><p style="color:#8b949e;font-size:11px">Tap 📍 then 🔍 Search</p></div>
+    <div id="tab-resources" style="display:none"><p style="color:#8b949e;font-size:11px">Tap 💡 to load resources</p></div>
     <div id="tab-ask" style="display:none">
       <div id="llm-input">
-        <textarea id="q" placeholder="e.g. 'Public land near a laundromat and bus stop?' or 'Where can I charge a battery near Franklinton?'"></textarea>
-        <button class="btn" id="sendQ" style="align-self:flex-end">→</button>
+        <textarea id="q" placeholder="Public land near laundromat and bus?"></textarea>
+        <button class="btn" id="sendQ">→</button>
       </div>
-      <div id="llm-output"><span class="thinking">Ask anything about this area.</span></div>
+      <div id="llm-output"><span class="thinking">Ask about this area.</span></div>
     </div>
   </div>
 </div>
@@ -98,22 +177,22 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
     <select id="modelSel"></select>
   </div>
   <div class="sg">
-    <label>API Key <span style="color:#3fb950;font-size:10px">(stored locally only)</span></label>
-    <input type="password" id="apiKeyInp" placeholder="Leave blank for free OpenRouter models"/>
+    <label>API Key <span style="color:#3fb950;font-size:9px">(local storage)</span></label>
+    <input type="password" id="apiKeyInp" placeholder="Get key from provider"/>
   </div>
-  <button class="btn green" id="saveSettings" style="width:100%;padding:10px;margin-top:8px">Save</button>
-  <button class="btn" id="closeSettings" style="width:100%;padding:10px;margin-top:8px">Cancel</button>
+  <button class="btn green" id="saveSettings" style="width:100%;padding:8px;margin-top:8px">Save</button>
+  <button class="btn" id="closeSettings" style="width:100%;padding:8px;margin-top:6px">Cancel</button>
 </div>
 
 <div id="debug-panel">
   <h2>🔧 Debug Assistant</h2>
-  <p style="color:#8b949e;font-size:11px;margin-bottom:12px">Chat with GLM for debugging. Context includes current map state and recent errors.</p>
+  <p style="color:#8b949e;font-size:10px;margin-bottom:8px">GLM coding assistant for debugging</p>
   <div id="debug-log"></div>
   <div id="debug-input-area">
-    <textarea id="debug-q" placeholder="Describe the bug or ask for help..."></textarea>
+    <textarea id="debug-q" placeholder="Describe bug or paste error..."></textarea>
     <button class="btn green" id="debug-send">Ask</button>
   </div>
-  <button class="btn" id="closeDebug" style="width:100%;padding:8px;margin-top:12px">Close</button>
+  <button class="btn" id="closeDebug" style="width:100%;padding:6px;margin-top:10px">Close</button>
 </div>
 
 <script type="module">
@@ -121,124 +200,250 @@ import { LLM, PROVIDERS, saveKey, loadKey, bestAvailable } from './providers.js'
 import {
   findPublicParcels,
   findNearbyResources,
+  sortParcels,
+  CLASS_CODES,
   RESOURCE_TYPES,
-  riskText,
-  riskDescription
+  riskText
 } from './api.js';
 
-// Leaflet loaded as global from CDN
+// Map setup
 const map = L.map('map', {zoomControl: false}).setView([39.9612, -82.9988], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OSM', maxZoom: 19}).addTo(map);
 L.control.zoom({position: 'topright'}).addTo(map);
 
-let parcelLayer = L.layerGroup().addTo(map);
+let parcelLayerGroup = L.layerGroup().addTo(map);
+let parcelPolygons = {}; // parcel_id -> polygon
 let resourceLayer = L.layerGroup().addTo(map);
 let userMarker = null;
 let curLat = 39.9612, curLon = -82.9988;
+let gpsLat = null, gpsLon = null;
+let currentParcels = [];
 
+// Filter state
+let enabledClasses = ['640','605']; // default: Municipal + Land Bank
+
+// Status helper
 function setStatus(s) { document.getElementById('status').innerHTML = s; }
 
-// Display parcels in panel and on map
+// Build filter grid
+function buildFilterGrid() {
+  const grid = document.getElementById('filterGrid');
+  grid.innerHTML = '';
+  for (const [code, info] of Object.entries(CLASS_CODES)) {
+    const checked = enabledClasses.includes(code) ? 'checked' : '';
+    const row = document.createElement('label');
+    row.className = `filter-row ${info.risk === 'avoid' ? 'avoid' : ''}`;
+    row.innerHTML = `
+      <input type="checkbox" data-class="${code}" ${checked}>
+      <span class="color-dot" style="background:${info.color}"></span>
+      <span>${info.label} (${code})</span>
+    `;
+    row.querySelector('input').onchange = e => {
+      if (e.target.checked) {
+        if (!enabledClasses.includes(code)) enabledClasses.push(code);
+      } else {
+        enabledClasses = enabledClasses.filter(c => c !== code);
+      }
+      updateMapVisibility();
+    };
+    grid.appendChild(row);
+  }
+}
+window.selectAllFilters = () => {
+  enabledClasses = Object.keys(CLASS_CODES);
+  document.querySelectorAll('[data-class]').forEach(cb => cb.checked = true);
+  updateMapVisibility();
+};
+window.selectNoFilters = () => {
+  enabledClasses = [];
+  document.querySelectorAll('[data-class]').forEach(cb => cb.checked = false);
+  updateMapVisibility();
+};
+window.selectRecommended = () => {
+  enabledClasses = ['640','605'];
+  document.querySelectorAll('[data-class]').forEach(cb => {
+    cb.checked = enabledClasses.includes(cb.dataset.class);
+  });
+  updateMapVisibility();
+};
+
+// Update map polygon visibility
+function updateMapVisibility() {
+  for (const [pid, polygon] of Object.entries(parcelPolygons)) {
+    const parcel = currentParcels.find(p => p.parcel_id === pid);
+    if (parcel && enabledClasses.includes(parcel.classcd)) {
+      if (!parcelLayerGroup.hasLayer(polygon)) {
+        polygon.addTo(parcelLayerGroup);
+      }
+    } else {
+      parcelLayerGroup.removeLayer(polygon);
+    }
+  }
+}
+
+// Legend toggle
+window.toggleLegend = () => {
+  const content = document.getElementById('legend-content');
+  const toggle = document.getElementById('legend-toggle');
+  content.classList.toggle('collapsed');
+  toggle.textContent = content.classList.contains('collapsed') ? '▶' : '▼';
+};
+
+// Display parcels
+let selectedParcelId = null;
+
 function displayParcels(parcels) {
-  parcelLayer.clearLayers();
+  currentParcels = parcels;
+  parcelLayerGroup.clearLayers();
+  parcelPolygons = {};
   const el = document.getElementById('tab-parcels');
 
   if (!parcels.length) {
-    el.innerHTML = '<p style="color:#8b949e;font-size:12px">No public parcels found.</p>';
+    el.innerHTML = '<p style="color:#8b949e;font-size:11px">No parcels found. Try expanding radius or filters.</p>';
     return;
   }
 
   // Count by risk
   const counts = {low: 0, med: 0, avoid: 0, high: 0};
   parcels.forEach(p => counts[p.risk] = (counts[p.risk] || 0) + 1);
-
-  el.innerHTML = `<p style="color:#8b949e;font-size:11px;margin-bottom:8px">${parcels.length} public parcels — 🟢${counts.low} 🟡${counts.med} 🔴${counts.avoid + counts.high}</p>`;
+  el.innerHTML = `<p style="color:#8b949e;font-size:10px;margin-bottom:6px">${parcels.length} parcels — 🟢${counts.low} 🟡${counts.med} 🔴${counts.avoid+counts.high}</p>`;
 
   for (const p of parcels) {
-    // Add polygon to map if geometry exists
+    // Add polygon
     if (p.geometry && p.geometry.coordinates) {
       try {
-        const coords = p.geometry.coordinates[0].map(c => [c[1], c[0]]); // GeoJSON is [lon,lat], Leaflet wants [lat,lon]
-        const color = {low: '#3fb950', med: '#d29922', avoid: '#f85149', high: '#f85149'}[p.risk];
-        L.polygon(coords, {
-          color: color,
-          fillColor: color,
+        const coords = p.geometry.coordinates[0].map(c => [c[1], c[0]]);
+        const polygon = L.polygon(coords, {
+          color: p.class_color,
+          fillColor: p.class_color,
           fillOpacity: 0.2,
           weight: 2
-        })
-        .bindPopup(`<b>${p.address || 'No address'}</b><br>${p.luc_label}<br><a href="${p.property_card}" target="_blank">Property Card</a>`)
-        .addTo(parcelLayer);
+        });
+
+        polygon.on('click', () => selectParcel(p.parcel_id));
+        polygon.bindPopup(`<b>${p.address || 'No address'}</b><br>${p.class_label}<br><a href="${p.property_card}" target="_blank">Property Card</a>`);
+
+        if (enabledClasses.includes(p.classcd)) {
+          polygon.addTo(parcelLayerGroup);
+        }
+        parcelPolygons[p.parcel_id] = polygon;
       } catch (e) { /* skip bad geometry */ }
     }
 
-    // Card in panel
-    const d = document.createElement('div');
-    d.className = `card ${p.risk}`;
-    d.innerHTML = `
+    // Card
+    const card = document.createElement('div');
+    card.className = `card ${p.risk}`;
+    card.dataset.parcelId = p.parcel_id;
+    card.onclick = () => selectParcel(p.parcel_id);
+
+    const distHtml = p.dist_label ? `<span class="dist">${p.dist_label}</span> · ` : '';
+    card.innerHTML = `
       <span class="badge ${p.risk}">${riskText(p.risk)}</span>
+      <span style="font-size:9px;color:${p.class_color}">${p.class_label}</span>
       <h3>${p.address || '(no address)'}</h3>
-      <p>
-        <b>Owner:</b> ${p.owner || ''}<br>
-        <b>LUC:</b> ${p.usecd} — ${p.luc_label}<br>
-        <b>Risk:</b> ${p.risk_desc}<br>
-        <b>Acres:</b> ${(p.acres || 0).toFixed(2)} | <b>Appraised:</b> $${(p.appraised || 0).toLocaleString()}<br>
-        <b>Last Sale:</b> ${p.last_sale_year || 'N/A'}<br>
-        <a href="${p.property_card}" target="_blank">📋 Property Card</a>
-      </p>`;
-    el.appendChild(d);
+      <p>${distHtml}${p.acres?.toFixed(2) || '?'} ac · ${p.owner?.slice(0,30) || 'Unknown'}</p>`;
+
+    el.appendChild(card);
   }
 }
 
-// Display resources in panel and on map
+// Select parcel (from card or polygon click)
+function selectParcel(pid) {
+  // Clear previous selection
+  document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
+  if (selectedParcelId && parcelPolygons[selectedParcelId]) {
+    parcelPolygons[selectedParcelId].setStyle({weight: 2, fillOpacity: 0.2});
+  }
+
+  selectedParcelId = pid;
+
+  // Highlight card
+  const card = document.querySelector(`[data-parcel-id="${pid}"]`);
+  if (card) {
+    card.classList.add('selected');
+    card.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+  }
+
+  // Highlight polygon
+  const polygon = parcelPolygons[pid];
+  if (polygon) {
+    polygon.setStyle({weight: 4, fillOpacity: 0.4});
+    map.fitBounds(polygon.getBounds(), {maxZoom: 16});
+  }
+
+  // Open panel if closed
+  document.getElementById('panel').classList.add('open');
+}
+
+// Display resources
 function displayResources(resources) {
   resourceLayer.clearLayers();
   const el = document.getElementById('tab-resources');
-  el.innerHTML = `<p style="color:#8b949e;font-size:11px;margin-bottom:8px">${resources.length} resources found</p>`;
+  el.innerHTML = `<p style="color:#8b949e;font-size:10px;margin-bottom:6px">${resources.length} resources nearby</p>`;
 
   for (const r of resources) {
     if (!r.lat) continue;
 
-    // Marker on map
+    // Marker
     L.marker([r.lat, r.lon], {
       icon: L.divIcon({
-        html: `<span style="font-size:18px;line-height:1">${r.icon}</span>`,
+        html: `<span style="font-size:16px;line-height:1">${r.icon}</span>`,
         className: '',
-        iconSize: [22, 22]
+        iconSize: [20, 20]
       })
     })
-    .bindPopup(`<b>${r.icon} ${r.name}</b>${r.address ? `<br>${r.address}` : ''}`)
+    .bindPopup(`<b>${r.icon} ${r.type_label || r.type}</b><br>${r.name}${r.address ? `<br>${r.address}` : ''}`)
     .addTo(resourceLayer);
 
-    // Card in panel
+    // Card
     const c = document.createElement('div');
     c.className = 'card med';
-    c.innerHTML = `<h3>${r.icon} ${r.name}</h3><p>${r.address || `${r.lat.toFixed(5)}, ${r.lon.toFixed(5)}`}<br><small>${r.dist_miles ? r.dist_miles.toFixed(2) + ' mi' : ''} ${r.source === 'hardcoded' ? '★' : ''}</small></p>`;
+    c.innerHTML = `
+      <h3>${r.icon} ${r.type_label || r.type}</h3>
+      <p><b>${r.name}</b><br>
+      ${r.address || `${r.lat.toFixed(4)}, ${r.lon.toFixed(4)}`}<br>
+      <small>${r.dist_miles?.toFixed(2) || '?'} mi${r.source === 'hardcoded' ? ' ★' : ''}</small></p>`;
     el.appendChild(c);
   }
 }
 
-// Query and display parcels
+// Search
 async function searchParcels() {
-  setStatus('⏳ Querying parcels...');
-  openPanel('parcels');
+  setStatus('⏳ Searching...');
+  document.getElementById('panel').classList.add('open');
+
+  const radius = parseFloat(document.getElementById('radiusSel').value);
+  const sortBy = document.getElementById('sortSel').value;
 
   try {
-    const parcels = await findPublicParcels({bounds: map.getBounds(), includeGeometry: true});
+    let parcels = await findPublicParcels({
+      bounds: map.getBounds(),
+      classFilter: enabledClasses,
+      includeGeometry: true,
+      gpsLat,
+      gpsLon
+    });
+
+    // Sort
+    parcels = sortParcels(parcels, sortBy, gpsLat, gpsLon);
+
     displayParcels(parcels);
     setStatus(`✅ ${parcels.length} parcels`);
   } catch (e) {
     setStatus('❌ ' + e.message);
+    console.error(e);
   }
 }
 
-// Query and display resources
+// Resources
 async function searchResources() {
   setStatus('🔍 Loading resources...');
+  document.getElementById('panel').classList.add('open');
   openPanel('resources');
 
   try {
     const center = map.getCenter();
-    const resources = await findNearbyResources({lat: center.lat, lon: center.lng, radiusMeters: 1200});
+    const resources = await findNearbyResources({lat: center.lat, lon: center.lng, radiusMeters: 1500});
     displayResources(resources);
     setStatus(`✅ ${resources.length} resources`);
   } catch (e) {
@@ -249,64 +454,41 @@ async function searchResources() {
 // Ask AI
 async function ask(question) {
   const out = document.getElementById('llm-output');
-  out.innerHTML = '<span class="thinking">⏳ Gathering data...</span>';
+  out.innerHTML = '<span class="thinking">⏳ Thinking...</span>';
 
-  const bounds = map.getBounds();
   const center = map.getCenter();
 
   try {
     const [parcels, resources] = await Promise.all([
-      findPublicParcels({bounds, includeGeometry: false}),
-      findNearbyResources({lat: center.lat, lon: center.lng, radiusMeters: 1200})
+      findPublicParcels({bounds: map.getBounds(), classFilter: enabledClasses, gpsLat, gpsLon}),
+      findNearbyResources({lat: center.lat, lon: center.lng, radiusMeters: 1500})
     ]);
-
-    out.innerHTML = '<span class="thinking">⏳ Asking AI...</span>';
 
     const llm = bestAvailable();
     if (!llm) {
-      out.innerHTML = '<span style="color:#f85149">No AI configured. Tap ⚙️ to add a key, or use OpenRouter free tier.</span>';
+      out.innerHTML = '<span style="color:#f85149">No AI configured. Tap ⚙️</span>';
       return;
     }
 
     const ctx = {
-      location: {lat: curLat, lon: curLon},
-      public_parcels: parcels.map(p => ({
-        address: p.address,
-        owner: p.owner,
-        luc: p.usecd,
-        luc_label: p.luc_label,
-        risk: p.risk,
-        risk_text: p.risk_text,
-        acres: p.acres,
-        property_card: p.property_card
-      })),
-      resources: resources.map(r => ({
-        type: r.type,
-        name: r.name,
-        lat: r.lat,
-        lon: r.lon,
-        dist_miles: r.dist_miles
-      }))
+      location: {lat: curLat, lon: curLon, gps: gpsLat ? `${gpsLat.toFixed(4)}, ${gpsLon.toFixed(4)}` : 'map center'},
+      parcels: parcels.slice(0, 10).map(p => ({address: p.address, class: p.class_label, risk: p.risk, dist: p.dist_label})),
+      resources: resources.slice(0, 10).map(r => ({type: r.type_label, name: r.name, dist: r.dist_miles?.toFixed(2) + ' mi'}))
     };
 
-    const sys = `You are Sprawlmap, a humanitarian field assistant helping people experiencing homelessness find safe public land and resources in Columbus OH.
+    const sys = `You are Sprawlmap, a humanitarian field assistant for Columbus OH. Help find safe public land and resources.
 
-RISK LEVELS:
-- LOW (640/605): City-owned or land bank. CPD requires trespass authorization to arrest. Rarely filed proactively.
-- MED (6xx other): Other public entities. Verify before use.
-- AVOID (650): School district. Active enforcement - DO NOT RECOMMEND.
-- HIGH: Private property. Do not recommend.
+RISK: LOW(640/605)=City/Land Bank safest. MED=Other public. AVOID(650)=Schools - active enforcement.
+Prioritize LOW risk. Be specific with addresses. Be brief and practical.`;
 
-Be specific — name addresses. Prioritize LOW risk parcels. Be direct and practical.`;
-
-    const reply = await llm.chat([{role: 'user', content: `Data:\n${JSON.stringify(ctx)}\n\nQuestion: ${question}`}], sys);
+    const reply = await llm.chat([{role: 'user', content: `Data:\n${JSON.stringify(ctx)}\n\n${question}`}], sys);
     out.innerHTML = `<div class="answer">${reply}</div>`;
   } catch (e) {
     out.innerHTML = `<span style="color:#f85149">Error: ${e.message}</span>`;
   }
 }
 
-// ── Settings ────────────────────────────────────────────────────────────────
+// Settings
 const provSel = document.getElementById('providerSel');
 const modSel = document.getElementById('modelSel');
 const keyInp = document.getElementById('apiKeyInp');
@@ -330,7 +512,6 @@ function syncModels() {
   keyInp.value = loadKey(provSel.value) || '';
   keyInp.placeholder = p.keyHint || 'optional';
 }
-
 provSel.addEventListener('change', syncModels);
 syncModels();
 
@@ -346,44 +527,49 @@ document.getElementById('saveSettings').onclick = () => {
   localStorage.setItem('scout_provider', provSel.value);
   localStorage.setItem('scout_model', modSel.value);
   document.getElementById('settings-panel').classList.remove('open');
-  setStatus('✅ Settings saved');
+  setStatus('✅ Saved');
 };
 
-// ── Map controls ─────────────────────────────────────────────────────────────
+// Map controls
 document.getElementById('locBtn').onclick = () => {
   setStatus('📡 Getting GPS...');
   navigator.geolocation.getCurrentPosition(
     pos => {
       curLat = pos.coords.latitude;
       curLon = pos.coords.longitude;
+      gpsLat = curLat;
+      gpsLon = curLon;
       map.setView([curLat, curLon], 15);
       if (userMarker) userMarker.remove();
       userMarker = L.circleMarker([curLat, curLon], {
-        radius: 8,
-        fillColor: '#58a6ff',
-        fillOpacity: 1,
-        color: '#fff',
-        weight: 2
+        radius: 8, fillColor: '#58a6ff', fillOpacity: 1, color: '#fff', weight: 2
       }).addTo(map).bindPopup('📍 You').openPopup();
-      setStatus('✅ Got location. Tap Search.');
+      setStatus('✅ GPS locked. Tap Search.');
     },
-    () => setStatus('❌ GPS unavailable.')
+    () => setStatus('❌ GPS unavailable')
   );
 };
 
+document.getElementById('filterBtn').onclick = () => {
+  const panel = document.getElementById('filters-panel');
+  const controls = document.getElementById('search-controls');
+  panel.classList.toggle('open');
+  controls.style.display = panel.classList.contains('open') ? 'flex' : 'none';
+};
+
 document.getElementById('searchBtn').onclick = searchParcels;
+document.getElementById('applySearch').onclick = searchParcels;
 document.getElementById('resBtn').onclick = searchResources;
-document.getElementById('askBtn').onclick = () => openPanel('ask');
+document.getElementById('askBtn').onclick = () => { document.getElementById('panel').classList.add('open'); openPanel('ask'); };
+
 document.getElementById('sendQ').onclick = () => {
   const q = document.getElementById('q').value.trim();
   if (q) ask(q);
 };
 document.getElementById('q').onkeydown = e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    document.getElementById('sendQ').click();
-  }
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('sendQ').click(); }
 };
+
 document.getElementById('handle').onclick = () => document.getElementById('panel').classList.toggle('open');
 document.querySelectorAll('.tab').forEach(t => t.onclick = () => openPanel(t.dataset.tab));
 
@@ -395,80 +581,57 @@ function openPanel(tab) {
   );
 }
 
-// ── Debug Assistant ───────────────────────────────────────────────────────────
+// Debug
 const debugLog = document.getElementById('debug-log');
-const debugQ = document.getElementById('debug-q');
 let debugHistory = [];
 
 document.getElementById('debugBtn').onclick = () => {
   document.getElementById('debug-panel').classList.add('open');
-  // Populate context
-  debugLog.innerHTML = `<div style="color:#8b949e;margin-bottom:12px">
-    <b>Debug Context:</b><br>
-    • Map center: ${curLat.toFixed(4)}, ${curLon.toFixed(4)}<br>
-    • Zoom: ${map.getZoom()}<br>
-    • Provider: ${localStorage.getItem('scout_provider') || 'none'}<br>
-    • Model: ${localStorage.getItem('scout_model') || 'default'}<br>
-    • Has API key: ${!!localStorage.getItem('key_' + (localStorage.getItem('scout_provider') || 'openrouter'))}
+  debugLog.innerHTML = `<div style="color:#8b949e;margin-bottom:8px;font-size:10px">
+    <b>Context:</b> GPS: ${gpsLat?.toFixed(4) || 'none'} · Map: ${curLat.toFixed(4)}, ${curLon.toFixed(4)} ·
+    Provider: ${localStorage.getItem('scout_provider') || 'default'} ·
+    Filters: ${enabledClasses.join(',')}
   </div>`;
 };
-
 document.getElementById('closeDebug').onclick = () => document.getElementById('debug-panel').classList.remove('open');
 
 document.getElementById('debug-send').onclick = async () => {
-  const q = debugQ.value.trim();
+  const q = document.getElementById('debug-q').value.trim();
   if (!q) return;
 
-  debugLog.innerHTML += `<div class="user" style="margin-bottom:8px"><b>You:</b> ${q}</div>`;
-  debugQ.value = '';
-  debugLog.innerHTML += '<div class="thinking">⏳ Thinking...</div>';
+  debugLog.innerHTML += `<div class="user" style="margin-bottom:6px"><b>You:</b> ${q}</div>`;
+  document.getElementById('debug-q').value = '';
+  debugLog.innerHTML += '<div class="thinking">⏳...</div>';
   debugLog.scrollTop = debugLog.scrollHeight;
 
   try {
     const llm = bestAvailable();
-    if (!llm) throw new Error('No AI configured. Check Settings.');
+    if (!llm) throw new Error('No AI. Check Settings.');
 
-    // Build context with current state
-    const ctx = {
-      map: { center: [curLat, curLon], zoom: map.getZoom(), bounds: map.getBounds() },
-      url: window.location.href,
-      lastStatus: document.getElementById('status').innerHTML,
-      timestamp: new Date().toISOString()
-    };
+    const ctx = {map: {center: [curLat, curLon], zoom: map.getZoom()}, gps: gpsLat ? [gpsLat, gpsLon] : null, url: location.href, lastStatus: document.getElementById('status').innerHTML};
 
-    const sys = `You are a debugging assistant for Sprawlmap, a humanitarian field tool for Columbus OH.
-Help debug JavaScript errors, API issues, and ArcGIS queries.
+    const sys = `Sprawlmap debug assistant. Help with JavaScript, ArcGIS queries, Leaflet maps.
+Known: CLASSCD field (not USECD), inSR=4326 required, OWNERNME1 spelling. Be concise.`;
 
-Known issues:
-- ArcGIS FeatureServer requires inSR=4326 and outSR=4326 parameters
-- Field name is OWNERNME1 not OWNERNAME1
-- USECD field is often null, filter by owner name instead
-- Geometry is in Ohio State Plane (102723), needs reprojection
-
-Be concise and practical. Provide code fixes when relevant.`;
-
-    debugHistory.push({role: 'user', content: `Context: ${JSON.stringify(ctx, null, 2)}\n\nQuestion: ${q}`});
-
+    debugHistory.push({role: 'user', content: `Context: ${JSON.stringify(ctx)}\n\n${q}`});
     const reply = await llm.chat(debugHistory, sys);
     debugHistory.push({role: 'assistant', content: reply});
 
-    // Remove thinking indicator and add response
     debugLog.querySelector('.thinking')?.remove();
-    debugLog.innerHTML += `<div class="assistant" style="margin-bottom:12px;white-space:pre-wrap">${reply}</div>`;
+    debugLog.innerHTML += `<div class="assistant" style="margin-bottom:8px;white-space:pre-wrap">${reply}</div>`;
     debugLog.scrollTop = debugLog.scrollHeight;
   } catch (e) {
     debugLog.querySelector('.thinking')?.remove();
     debugLog.innerHTML += `<div class="error">Error: ${e.message}</div>`;
-    debugLog.scrollTop = debugLog.scrollHeight;
   }
 };
 
-debugQ.onkeydown = e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    document.getElementById('debug-send').click();
-  }
+document.getElementById('debug-q').onkeydown = e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('debug-send').click(); }
 };
+
+// Initialize
+buildFilterGrid();
 </script>
 </body>
 </html>
