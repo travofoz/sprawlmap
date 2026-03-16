@@ -5,17 +5,18 @@ const NOMINATIM='https://nominatim.openstreetmap.org/search';
 const CARD    = 'https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=';
 const TTL     = 86_400_000;
 
-// CLASSCD codes and their properties
+// CLASSCD codes and their properties (from Franklin County Auditor)
 export const CLASS_CODES = {
-  640: {label:'Municipal',        color:'#3fb950', risk:'low',   desc:'City-owned. CPD trespass auth rarely filed.'},
-  605: {label:'Land Bank/CLRC',   color:'#2dd4bf', risk:'low',   desc:'County land bank. Held for development.'},
-  610: {label:'State of Ohio',    color:'#58a6ff', risk:'med',   desc:'State-owned property.'},
-  620: {label:'Franklin County',  color:'#8b5cf6', risk:'med',   desc:'County-owned property.'},
-  630: {label:'Township',         color:'#a78bfa', risk:'med',   desc:'Township-owned property.'},
-  650: {label:'School District',  color:'#f85149', risk:'avoid', desc:'AVOID. Active enforcement.'},
-  660: {label:'Metro Parks/COTA', color:'#eab308', risk:'med',   desc:'Parks and transit.'},
-  670: {label:'Religious/Charity',color:'#6b7280', risk:'med',   desc:'Religious or charitable org.'},
-  680: {label:'Other Exempt',     color:'#9ca3af', risk:'med',   desc:'Other tax-exempt property.'}
+  600: {label:'Federal',         color:'#6b7280', risk:'med',   desc:'Federal government property'},
+  605: {label:'Land Bank/CLRC',  color:'#2dd4bf', risk:'low',   desc:'County Land Reutilization Corp'},
+  610: {label:'State of Ohio',   color:'#58a6ff', risk:'med',   desc:'State of Ohio property'},
+  620: {label:'Franklin County', color:'#8b5cf6', risk:'med',   desc:'County-owned property'},
+  630: {label:'Township',        color:'#a78bfa', risk:'med',   desc:'Township property'},
+  640: {label:'Municipal',       color:'#3fb950', risk:'low',   desc:'City-owned. CPD trespass auth rarely filed'},
+  650: {label:'School District', color:'#f85149', risk:'avoid', desc:'Board of Education. AVOID - active enforcement'},
+  660: {label:'Metro Parks',     color:'#22c55e', risk:'med',   desc:'Park District public land'},
+  670: {label:'School/College',  color:'#f97316', risk:'med',   desc:'College/Academy/Private School'},
+  680: {label:'Charity/Hospital',color:'#9ca3af', risk:'med',   desc:'Charitable, Hospital, Homes for Aged'}
 };
 
 // Get class info
@@ -125,7 +126,7 @@ export async function findPublicParcels({
   bounds,
   limit = 200,
   includeGeometry = true,
-  classFilter = ['640','605','610','620','630','650','660','670','680'], // all public classes
+  classFilter = ['600','605','610','620','630','640','650','660','670','680'], // all public classes
   gpsLat = null, // for distance calculation
   gpsLon = null
 } = {}) {

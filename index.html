@@ -415,9 +415,14 @@ async function searchParcels() {
   const radius = parseFloat(document.getElementById('radiusSel').value);
   const sortBy = document.getElementById('sortSel').value;
 
+  // Use GPS location if available, otherwise map center
+  const center = gpsLat ? {lat: gpsLat, lon: gpsLon} : map.getCenter();
+
   try {
     let parcels = await findPublicParcels({
-      bounds: map.getBounds(),
+      lat: center.lat,
+      lon: center.lng || center.lon,
+      radiusMiles: radius,
       classFilter: enabledClasses,
       includeGeometry: true,
       gpsLat,
