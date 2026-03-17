@@ -87,6 +87,15 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
 #debug-input-area{display:flex;gap:6px}
 #debug-input-area textarea{flex:1;background:#161b22;border:1px solid #30363d;border-radius:4px;color:#e6edf3;padding:8px;font-size:12px;resize:none;height:60px;font-family:inherit}
 
+/* Context Menu */
+#ctx-menu{position:absolute;background:#161b22;border:1px solid #30363d;border-radius:6px;padding:4px 0;z-index:3000;min-width:160px;box-shadow:0 4px 12px rgba(0,0,0,0.5);display:none}
+#ctx-menu.show{display:block}
+#ctx-menu button{display:block;width:100%;text-align:left;background:none;border:none;color:#e6edf3;padding:8px 12px;font-size:11px;cursor:pointer;border-radius:4px}
+#ctx-menu button:hover{background:#21262d;color:#58a6ff}
+#ctx-menu button.danger{color:#f85149}
+#ctx-menu button.danger:hover{background:#3d0000}
+#ctx-menu .divider{height:1px;background:#30363d;margin:4px 0}
+
 #handle{text-align:center;padding:4px;cursor:pointer;color:#8b949e;font-size:16px}
 </style>
 </head>
@@ -193,6 +202,15 @@ body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;height:10
     <button class="btn green" id="debug-send">Ask</button>
   </div>
   <button class="btn" id="closeDebug" style="width:100%;padding:6px;margin-top:10px">Close</button>
+</div>
+
+<div id="ctx-menu">
+  <button id="ctx-set-center">📍 Set search center</button>
+  <button id="ctx-property-card">📋 Property Card</button>
+  <div class="divider"></div>
+  <button id="ctx-copy-coords">📎 Copy coordinates</button>
+  <button id="ctx-zoom-in">🔍 Zoom in</button>
+  <button id="ctx-zoom-out">🔎 Zoom out</button>
 </div>
 
 <script type="module">
@@ -599,6 +617,77 @@ document.getElementById('debugBtn').onclick = () => {
   </div>`;
 };
 document.getElementById('closeDebug').onclick = () => document.getElementById('debug-panel').classList.remove('open');
+
+// Context Menu
+const ctxMenu = document.getElementById('ctx-menu');
+let ctxLat = =0,let ctxLon = = 0
+let ctxParcel = null;
+let ctxParcelId = null;
+
+// Show context menu on map.on('contextmenu', e => {
+  e.originalEvent.preventDefault();
+
+  // Get clicked coordinates
+  ctxLat = e.latlng;
+  ctxLon = e.latlng;
+
+  // Check if clicked on a parcel
+  const clickedParcel = findParcelAtPoint(e.latlng, e.latlng);
+  if (clickedParcel) {
+    ctxParcel = currentParcels.find(p => p.parcel_id === clickedParcel.feature.properties.PARCELID);
+    ctxParcelId = clickedParcel.feature.properties.PARCELID;
+  }
+
+  // Position menu
+  ctxMenu.style.left = `${e.originalEvent.clientX}px`;
+  ctxMenu.style.top = `${e.originalEvent.clientY}px`;
+
+  // Hide menu when clicking elsewhere
+  document.addEventListener('click', () => {
+    ctxMenu.classList.remove('show');
+  });
+
+  // Menu actions
+  document.getElementById('ctx-set-center').onclick = () => {
+    // Set search center
+    searchCenter = {lat: ctxLat, lon: ctxLon};
+    if (centerMarker) centerMarker.remove();
+    centerMarker = L.marker([ctxLat, ctxLon], {
+      icon: L.divIcon({
+        html: '<span style="font-size:20px;line-height:1">📍</span>',
+        className: '',
+        iconSize: [24, 24]
+    }).addTo(map).bindPopup(`Search center: ${ctxLat.toFixed(4)}, ${ctxLon.toFixed(4)}`);
+
+    setStatus(`✅ Search center set`);
+    ctxMenu.classList.remove('show');
+  };
+
+  document.getElementById('ctx-property-card').onclick = () => {
+    if (ctxParcelId) {
+      const url = `https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=${ctxParcelId}`;
+      window.open(url, '_blank');
+    } else {
+      alert('No parcel selected');
+    }
+    ctxMenu.classList.remove('show');
+  };
+
+  document.getElementById('ctx-copy-coords').onclick = () => {
+    navigator.clipboard.writeText(`${ctxLat.toFixed(6)}, ${ctxLon.toFixed(6)}`);
+    setStatus('📋 Coordinates copied');
+    ctxMenu.classList.remove('show');
+  };
+
+  document.getElementById('ctx-zoom-in').onclick = () => {
+    map.zoomIn();
+    ctxMenu.classList.remove('show');
+  };
+
+  document.getElementById('ctx-zoom-out').onclick = () => {
+    map.zoomOut();
+    ctxMenu.classList.remove('show');
+  };
 
 document.getElementById('debug-send').onclick = async () => {
   const q = document.getElementById('debug-q').value.trim();
