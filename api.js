@@ -41,19 +41,61 @@ export const riskDescription = r => ({
 
 // Resource types for Overpass queries
 export const RESOURCE_TYPES = {
+  // Transit
   bus:          {label:'Bus Stop',        icon:'🚌', overpass:'node["highway"="bus_stop"]'},
-  laundry:      {label:'Laundromat',      icon:'👕', overpass:'node["shop"="laundry"],node["shop"="dry_cleaning"]'},
+
+  // Basic Needs
   water:        {label:'Drinking Water',  icon:'💧', overpass:'node["amenity"="drinking_water"]'},
-  power:        {label:'Charging',        icon:'⚡', overpass:'node["amenity"="charging_station"]'},
-  mental_health:{label:'Mental Health',   icon:'🧠', overpass:'node["amenity"="mental_health"],node["amenity"="social_facility"]'},
   toilet:       {label:'Restroom',        icon:'🚻', overpass:'node["amenity"="toilets"]'},
-  food_bank:    {label:'Food Bank',       icon:'🥫', overpass:'node["amenity"="food_bank"],node["social_facility"="food_bank"]'},
   shelter:      {label:'Shelter',         icon:'🏠', overpass:'node["social_facility"="shelter"]'},
-  dog_park:     {label:'Dog Park',        icon:'🐕', overpass:'node["leisure"="dog_park"]'},
-  wifi:         {label:'Free WiFi',       icon:'📶', overpass:'node["internet_access"="wlan"]'},
+  food_bank:    {label:'Food Bank',       icon:'🥫', overpass:'node["amenity"="food_bank"],node["social_facility"="food_bank"]'},
+
+  // Health
   hospital:     {label:'Hospital/Clinic', icon:'🏥', overpass:'node["amenity"="hospital"],node["amenity"="clinic"]'},
   pharmacy:     {label:'Pharmacy',        icon:'💊', overpass:'node["amenity"="pharmacy"]'},
+  mental_health:{label:'Mental Health',   icon:'🧠', overpass:'node["amenity"="mental_health"],node["amenity"="social_facility"],node["healthcare"="counselling"]'},
   library:      {label:'Library',         icon:'📚', overpass:'node["amenity"="library"]'},
+
+  // Utilities
+  laundry:      {label:'Laundromat',      icon:'👕', overpass:'node["shop"="laundry"],node["shop"="dry_cleaning"]'},
+  power:        {label:'Charging',        icon:'⚡', overpass:'node["amenity"="charging_station"]'},
+  wifi:         {label:'Free WiFi',       icon:'📶', overpass:'node["internet_access"="wlan"]'},
+
+  // Parks/Recreation
+  dog_park:     {label:'Dog Park',        icon:'🐕', overpass:'node["leisure"="dog_park"],way["leisure"="dog_park"]'},
+
+  // Public Safety
+  police:       {label:'Police Station',  icon:'🚔', overpass:'node["amenity"="police"]'},
+
+  // Fast Food (cheap eats with apps)
+  mcdonalds:    {label:'McDonald\'s',     icon:'🍔', overpass:'node["amenity"="fast_food"]["brand"="McDonald\'s"],node["name"~"McDonald"]'},
+  speedway:     {label:'Speedway',        icon:'⛽', overpass:'node["brand"="Speedway"],node["amenity"="fuel"]["name"~"Speedway"]'},
+  sheetz:       {label:'Sheetz',          icon:'🛒', overpass:'node["brand"="Sheetz"],node["amenity"="fuel"]["name"~"Sheetz"]'},
+
+  // Grocery Stores
+  aldi:         {label:'Aldi',            icon:'🛒', overpass:'node["shop"="supermarket"]["brand"~"ALDI"],node["name"~"ALDI"]'},
+  kroger:       {label:'Kroger',          icon:'🛒', overpass:'node["shop"="supermarket"]["brand"~"Kroger"],node["name"~"Kroger"]'},
+  dollar_store: {label:'Dollar Store',    icon:'💵', overpass:'node["shop"="variety_store"],node["name"~"Dollar Tree"],node["name"~"Dollar General"],node["name"~"Family Dollar"]'},
+
+  // Big Box Stores
+  big_lots:     {label:'Big Lots',        icon:'📦', overpass:'node["shop"="variety_store"]["brand"~"Big Lots"],node["name"~"Big Lots"]'},
+  walmart:      {label:'Walmart',         icon:'🏬', overpass:'node["shop"="supermarket"]["brand"~"Walmart"],node["shop"="department_store"]["brand"~"Walmart"],node["name"~"Walmart"]'},
+  target:       {label:'Target',          icon:'🎯', overpass:'node["shop"="department_store"]["brand"~"Target"],node["name"~"Target"]'},
+
+  // Thrift/Second-hand
+  thrift:       {label:'Thrift Store',    icon:'👕', overpass:'node["shop"="charity"],node["shop"="second_hand"],node["name"~"Goodwill"],node["name"~"Salvation Army"]'},
+
+  // Scrap/Recycling (for cash)
+  scrap_yard:   {label:'Scrap Yard',      icon:'♻️', overpass:'node["industrial"="scrapyard"],node["recycling:type"="scrap_metal"],node["name"~"scrap"]i'},
+  recycling:    {label:'Recycling Center',icon:'♻️', overpass:'node["amenity"="recycling"]'},
+  pawn_shop:    {label:'Pawn Shop',       icon:'💰', overpass:'node["shop"="pawnbroker"]'},
+
+  // Buy/Sell
+  used_clothes: {label:'Buy Used Clothes',icon:'👗', overpass:'node["shop"="clothes"]["second_hand"="yes"],node["name"~"Plato"],node["name"~"Clothes Mentor"]'},
+  electronics:  {label:'Electronics Buy', icon:'📱', overpass:'node["shop"="electronics"],node["name"~"GameStop"],node["name"~"Best Buy"]'},
+
+  // Housing (dumpster diving opportunities)
+  apartments:   {label:'Apartment Complex',icon:'🏢', overpass:'way["building"="apartments"],node["building"="apartments"],relation["building"="apartments"]'},
 };
 
 // Hardcoded Columbus-specific resources
@@ -249,21 +291,63 @@ export async function findNearbyResources({lat, lon, radiusMeters=800, types}={}
   const osmResults = (d.elements || []).map(e => {
     const rl = e.lat || e.center?.lat, ro = e.lon || e.center?.lon;
     const t = e.tags || {};
+    const name = (t.name || '').toLowerCase();
+    const brand = (t.brand || '').toLowerCase();
     let type = 'other', icon = '📍';
 
+    // Basic needs
     if (t.highway === 'bus_stop') { type = 'bus'; icon = '🚌'; }
-    else if (t.shop === 'laundry' || t.shop === 'dry_cleaning') { type = 'laundry'; icon = '👕'; }
     else if (t.amenity === 'drinking_water') { type = 'water'; icon = '💧'; }
-    else if (t.amenity === 'charging_station') { type = 'power'; icon = '⚡'; }
     else if (t.amenity === 'toilets') { type = 'toilet'; icon = '🚻'; }
-    else if (t.amenity === 'food_bank' || t.social_facility === 'food_bank') { type = 'food_bank'; icon = '🥫'; }
     else if (t.social_facility === 'shelter') { type = 'shelter'; icon = '🏠'; }
-    else if (t.leisure === 'dog_park') { type = 'dog_park'; icon = '🐕'; }
-    else if (t.internet_access === 'wlan') { type = 'wifi'; icon = '📶'; }
+    else if (t.amenity === 'food_bank' || t.social_facility === 'food_bank') { type = 'food_bank'; icon = '🥫'; }
+
+    // Health
     else if (t.amenity === 'hospital' || t.amenity === 'clinic') { type = 'hospital'; icon = '🏥'; }
     else if (t.amenity === 'pharmacy') { type = 'pharmacy'; icon = '💊'; }
-    else if (t.amenity === 'library') { type = 'library'; icon = '📚'; }
     else if (t.amenity === 'mental_health' || t.healthcare || t.amenity === 'social_facility') { type = 'mental_health'; icon = '🧠'; }
+    else if (t.amenity === 'library') { type = 'library'; icon = '📚'; }
+
+    // Utilities
+    else if (t.shop === 'laundry' || t.shop === 'dry_cleaning') { type = 'laundry'; icon = '👕'; }
+    else if (t.amenity === 'charging_station') { type = 'power'; icon = '⚡'; }
+    else if (t.internet_access === 'wlan') { type = 'wifi'; icon = '📶'; }
+
+    // Parks
+    else if (t.leisure === 'dog_park') { type = 'dog_park'; icon = '🐕'; }
+
+    // Public safety
+    else if (t.amenity === 'police') { type = 'police'; icon = '🚔'; }
+
+    // Fast food / gas stations with food
+    else if (t.amenity === 'fast_food' && (name.includes('mcdonald') || brand.includes('mcdonald'))) { type = 'mcdonalds'; icon = '🍔'; }
+    else if ((t.amenity === 'fuel' || t.shop === 'convenience') && (name.includes('speedway') || brand.includes('speedway'))) { type = 'speedway'; icon = '⛽'; }
+    else if ((t.amenity === 'fuel' || t.shop === 'convenience') && (name.includes('sheetz') || brand.includes('sheetz'))) { type = 'sheetz'; icon = '🛒'; }
+
+    // Grocery
+    else if (t.shop === 'supermarket' && (name.includes('aldi') || brand.includes('aldi'))) { type = 'aldi'; icon = '🛒'; }
+    else if (t.shop === 'supermarket' && (name.includes('kroger') || brand.includes('kroger'))) { type = 'kroger'; icon = '🛒'; }
+    else if (t.shop === 'variety_store' || name.includes('dollar tree') || name.includes('dollar general') || name.includes('family dollar')) { type = 'dollar_store'; icon = '💵'; }
+
+    // Big box
+    else if (name.includes('big lots') || brand.includes('big lots')) { type = 'big_lots'; icon = '📦'; }
+    else if (name.includes('walmart') || brand.includes('walmart')) { type = 'walmart'; icon = '🏬'; }
+    else if (name.includes('target') || brand.includes('target')) { type = 'target'; icon = '🎯'; }
+
+    // Thrift
+    else if (t.shop === 'charity' || t.shop === 'second_hand' || name.includes('goodwill') || name.includes('salvation army')) { type = 'thrift'; icon = '👕'; }
+
+    // Scrap/recycling
+    else if (t.industrial === 'scrapyard' || t['recycling:type'] === 'scrap_metal' || name.includes('scrap')) { type = 'scrap_yard'; icon = '♻️'; }
+    else if (t.amenity === 'recycling') { type = 'recycling'; icon = '♻️'; }
+    else if (t.shop === 'pawnbroker') { type = 'pawn_shop'; icon = '💰'; }
+
+    // Buy/sell
+    else if ((t.shop === 'clothes' && t.second_hand === 'yes') || name.includes('plato') || name.includes('clothes mentor')) { type = 'used_clothes'; icon = '👗'; }
+    else if (t.shop === 'electronics' || name.includes('gamestop') || name.includes('best buy')) { type = 'electronics'; icon = '📱'; }
+
+    // Housing
+    else if (t.building === 'apartments' || t.landuse === 'residential') { type = 'apartments'; icon = '🏢'; }
 
     return {
       type, icon,

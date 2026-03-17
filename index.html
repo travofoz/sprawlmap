@@ -269,6 +269,7 @@ import {
 
 // Map setup
 const map = L.map('map', {zoomControl: false}).setView([39.9612, -82.9988], 13);
+let currentTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OSM', maxZoom: 19}).addTo(map);
 L.control.zoom({position: 'topright'}).addTo(map);
 
 let parcelLayerGroup = L.layerGroup().addTo(map);
@@ -642,7 +643,6 @@ if (sm) modSel.value = sm;
 const fontSizeSel = document.getElementById('fontSizeSel');
 const themeSel = document.getElementById('themeSel');
 const mapStyleSel = document.getElementById('mapStyleSel');
-let currentTileLayer = null;
 
 const MAP_STYLES = {
   osm: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
