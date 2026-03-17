@@ -340,6 +340,7 @@ function displayParcels(parcels) {
 
         polygon.on('click', () => selectParcel(p.parcel_id));
         polygon.bindPopup(`<b>${p.address || 'No address'}</b><br>${p.class_label}<br><a href="${p.property_card}" target="_blank">Property Card</a>`);
+        polygon.feature = { properties: { PARCELID: p.parcel_id } };
 
         if (enabledClasses.includes(p.classcd)) {
           polygon.addTo(parcelLayerGroup);
@@ -433,8 +434,15 @@ async function searchParcels() {
   const radius = parseFloat(document.getElementById('radiusSel').value);
   const sortBy = document.getElementById('sortSel').value;
 
-  // Use GPS location if available, otherwise map center
-  const center = gpsLat ? {lat: gpsLat, lon: gpsLon} : map.getCenter();
+  // Priority: searchCenter > GPS > map center
+  let center;
+  if (searchCenter) {
+    center = searchCenter;
+  } else if (gpsLat) {
+    center = {lat: gpsLat, lon: gpsLon};
+  } else {
+    center = {lat: map.getCenter().lat, lon: map.getCenter().lng};
+  }
 
   try {
     let parcels = await findPublicParcels({
@@ -465,8 +473,9 @@ async function searchResources() {
   openPanel('resources');
 
   try {
-    const center = map.getCenter();
-    const resources = await findNearbyResources({lat: center.lat, lon: center.lng, radiusMeters: 1500});
+    // Use searchCenter if set, otherwise map center
+    const center = searchCenter || {lat: map.getCenter().lat, lon: map.getCenter().lng};
+    const resources = await findNearbyResources({lat: center.lat, lon: center.lon, radiusMeters: 1500});
     displayResources(resources);
     setStatus(`✅ ${resources.length} resources`);
   } catch (e) {
@@ -620,74 +629,90 @@ document.getElementById('closeDebug').onclick = () => document.getElementById('d
 
 // Context Menu
 const ctxMenu = document.getElementById('ctx-menu');
-let ctxLat = =0,let ctxLon = = 0
-let ctxParcel = null;
+let ctxLat = 0, ctxLon = 0;
 let ctxParcelId = null;
+let searchCenter = null;
+let centerMarker = null;
 
-// Show context menu on map.on('contextmenu', e => {
+// Find parcel at click point using Leaflet's layer querying
+function findParcelAtLatLng(latlng) {
+  const layers = Object.values(parcelPolygons);
+  for (const layer of layers) {
+    if (layer.getBounds && layer.getBounds().contains(latlng)) {
+      return layer;
+    }
+  }
+  return null;
+}
+
+// Show context menu on right-click
+map.on('contextmenu', e => {
   e.originalEvent.preventDefault();
 
   // Get clicked coordinates
-  ctxLat = e.latlng;
-  ctxLon = e.latlng;
+  ctxLat = e.latlng.lat;
+  ctxLon = e.latlng.lng;
 
-  // Check if clicked on a parcel
-  const clickedParcel = findParcelAtPoint(e.latlng, e.latlng);
-  if (clickedParcel) {
-    ctxParcel = currentParcels.find(p => p.parcel_id === clickedParcel.feature.properties.PARCELID);
-    ctxParcelId = clickedParcel.feature.properties.PARCELID;
+  // Check if clicked on a parcel polygon
+  const clickedLayer = findParcelAtLatLng(e.latlng);
+  if (clickedLayer && clickedLayer.feature) {
+    ctxParcelId = clickedLayer.feature.properties.PARCELID;
+  } else {
+    ctxParcelId = null;
   }
 
-  // Position menu
+  // Position and show menu
   ctxMenu.style.left = `${e.originalEvent.clientX}px`;
   ctxMenu.style.top = `${e.originalEvent.clientY}px`;
+  ctxMenu.classList.add('show');
+});
 
-  // Hide menu when clicking elsewhere
-  document.addEventListener('click', () => {
-    ctxMenu.classList.remove('show');
-  });
+// Hide menu when clicking elsewhere
+document.addEventListener('click', () => {
+  ctxMenu.classList.remove('show');
+});
 
-  // Menu actions
-  document.getElementById('ctx-set-center').onclick = () => {
-    // Set search center
-    searchCenter = {lat: ctxLat, lon: ctxLon};
-    if (centerMarker) centerMarker.remove();
-    centerMarker = L.marker([ctxLat, ctxLon], {
-      icon: L.divIcon({
-        html: '<span style="font-size:20px;line-height:1">📍</span>',
-        className: '',
-        iconSize: [24, 24]
-    }).addTo(map).bindPopup(`Search center: ${ctxLat.toFixed(4)}, ${ctxLon.toFixed(4)}`);
+// Menu actions
+document.getElementById('ctx-set-center').onclick = () => {
+  // Set search center
+  searchCenter = {lat: ctxLat, lon: ctxLon};
+  if (centerMarker) centerMarker.remove();
+  centerMarker = L.marker([ctxLat, ctxLon], {
+    icon: L.divIcon({
+      html: '<span style="font-size:20px;line-height:1">📍</span>',
+      className: '',
+      iconSize: [24, 24]
+    })
+  }).addTo(map).bindPopup(`Search center: ${ctxLat.toFixed(4)}, ${ctxLon.toFixed(4)}`);
+  setStatus(`✅ Search center set`);
+  ctxMenu.classList.remove('show');
+};
 
-    setStatus(`✅ Search center set`);
-    ctxMenu.classList.remove('show');
-  };
+document.getElementById('ctx-property-card').onclick = () => {
+  if (ctxParcelId) {
+    const url = `https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=${ctxParcelId}`;
+    window.open(url, '_blank');
+  } else {
+    setStatus('⚠️ No parcel at this location');
+  }
+  ctxMenu.classList.remove('show');
+};
 
-  document.getElementById('ctx-property-card').onclick = () => {
-    if (ctxParcelId) {
-      const url = `https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=${ctxParcelId}`;
-      window.open(url, '_blank');
-    } else {
-      alert('No parcel selected');
-    }
-    ctxMenu.classList.remove('show');
-  };
+document.getElementById('ctx-copy-coords').onclick = () => {
+  navigator.clipboard.writeText(`${ctxLat.toFixed(6)}, ${ctxLon.toFixed(6)}`);
+  setStatus('📋 Coordinates copied');
+  ctxMenu.classList.remove('show');
+};
 
-  document.getElementById('ctx-copy-coords').onclick = () => {
-    navigator.clipboard.writeText(`${ctxLat.toFixed(6)}, ${ctxLon.toFixed(6)}`);
-    setStatus('📋 Coordinates copied');
-    ctxMenu.classList.remove('show');
-  };
+document.getElementById('ctx-zoom-in').onclick = () => {
+  map.zoomIn();
+  ctxMenu.classList.remove('show');
+};
 
-  document.getElementById('ctx-zoom-in').onclick = () => {
-    map.zoomIn();
-    ctxMenu.classList.remove('show');
-  };
-
-  document.getElementById('ctx-zoom-out').onclick = () => {
-    map.zoomOut();
-    ctxMenu.classList.remove('show');
-  };
+document.getElementById('ctx-zoom-out').onclick = () => {
+  map.zoomOut();
+  ctxMenu.classList.remove('show');
+};
 
 document.getElementById('debug-send').onclick = async () => {
   const q = document.getElementById('debug-q').value.trim();
