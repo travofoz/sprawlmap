@@ -30,7 +30,7 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
 #map{flex:1}
 
 /* Filters panel */
-#filters-panel{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px;display:none;z-index:2500}
+#filters-panel{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px;display:none;z-index:2500;max-height:50dvh;overflow-y:auto}
 #filters-panel.open{display:block}
 #filters-panel h3{font-size:0.8rem;color:var(--text2);margin-bottom:6px}
 .filter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px}
@@ -115,6 +115,44 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
 <div id="log"></div>
 
 <div id="filters-panel">
+  <!-- Search Radius -->
+  <h3>Search Radius</h3>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+    <select id="radiusSel">
+      <option value="0.25">0.25 mi</option>
+      <option value="0.5" selected>0.5 mi</option>
+      <option value="1">1 mi</option>
+      <option value="2">2 mi</option>
+      <option value="5">5 mi</option>
+    </select>
+    <span style="font-size:0.7rem;color:#8b949e">Distance from search center</span>
+  </div>
+
+  <!-- Sort Results -->
+  <h3>Sort Results By</h3>
+  <div style="margin-bottom:8px">
+    <select id="sortSel">
+      <optgroup label="Distance">
+        <option value="distance">Nearest First</option>
+        <option value="distance-desc">Farthest First</option>
+      </optgroup>
+      <optgroup label="Risk Level">
+        <option value="risk" selected>Safest First (LOW→HIGH)</option>
+        <option value="risk-desc">Riskiest First (HIGH→LOW)</option>
+      </optgroup>
+      <optgroup label="Size">
+        <option value="acres">Largest First</option>
+        <option value="acres-asc">Smallest First</option>
+      </optgroup>
+      <optgroup label="Property Info">
+        <option value="class">Class Code (A→Z)</option>
+        <option value="address">Address (A→Z)</option>
+        <option value="owner">Owner (A→Z)</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <!-- Filter by Property Class -->
   <h3>Filter by Property Class</h3>
   <div class="filter-grid" id="filterGrid"></div>
   <div class="filter-actions">
@@ -122,32 +160,22 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
     <button class="btn sm" onclick="selectNoFilters()">None</button>
     <button class="btn sm" onclick="selectRecommended()">Recommended</button>
   </div>
+
+  <!-- Filter by Resource Type -->
   <h3 style="margin-top:12px">Filter by Resource Type</h3>
   <div class="filter-grid" id="resourceFilterGrid"></div>
   <div class="filter-actions">
     <button class="btn sm" onclick="selectAllResFilters()">All</button>
     <button class="btn sm" onclick="selectNoResFilters()">None</button>
   </div>
+
+  <!-- Apply Button -->
+  <div style="margin-top:12px">
+    <button class="btn green" id="applySearch" style="width:100%">Apply Search</button>
+  </div>
 </div>
 
-<div id="search-controls" style="display:none">
-  <span style="font-size:0.7rem;color:#8b949e">Radius:</span>
-  <select id="radiusSel">
-    <option value="0.25">0.25 mi</option>
-    <option value="0.5" selected>0.5 mi</option>
-    <option value="1">1 mi</option>
-    <option value="2">2 mi</option>
-    <option value="5">5 mi</option>
-  </select>
-  <span style="font-size:0.7rem;color:#8b949e">Sort:</span>
-  <select id="sortSel">
-    <option value="distance">Distance</option>
-    <option value="risk">Risk</option>
-    <option value="acres">Acres</option>
-    <option value="class">Class</option>
-  </select>
-  <button class="btn green" id="applySearch">Apply</button>
-</div>
+<div id="search-controls" style="display:none"></div>
 
 <div id="status">Tap 📍 for GPS, then 🔍 Search</div>
 <div id="map"></div>

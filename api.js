@@ -251,22 +251,39 @@ export async function findPublicParcels({
 // Sort parcels by different criteria
 export const sortParcels = (parcels, sortBy = 'risk', gpsLat = null, gpsLon = null) => {
   const sorted = [...parcels];
+  const riskOrder = {low: 0, med: 1, avoid: 2, high: 3};
 
   switch (sortBy) {
+    // Distance
     case 'distance':
-      if (gpsLat && gpsLon) {
-        sorted.sort((a, b) => (a.dist_miles || 999) - (b.dist_miles || 999));
-      }
+      sorted.sort((a, b) => (a.dist_miles || 999) - (b.dist_miles || 999));
       break;
+    case 'distance-desc':
+      sorted.sort((a, b) => (b.dist_miles || 0) - (a.dist_miles || 0));
+      break;
+    // Risk
     case 'risk':
-      const riskOrder = {low: 0, med: 1, avoid: 2, high: 3};
       sorted.sort((a, b) => riskOrder[a.risk] - riskOrder[b.risk]);
       break;
+    case 'risk-desc':
+      sorted.sort((a, b) => riskOrder[b.risk] - riskOrder[a.risk]);
+      break;
+    // Size
     case 'acres':
       sorted.sort((a, b) => (b.acres || 0) - (a.acres || 0));
       break;
+    case 'acres-asc':
+      sorted.sort((a, b) => (a.acres || 0) - (b.acres || 0));
+      break;
+    // Property Info
     case 'class':
       sorted.sort((a, b) => (a.classcd || '').localeCompare(b.classcd || ''));
+      break;
+    case 'address':
+      sorted.sort((a, b) => (a.address || '').localeCompare(b.address || ''));
+      break;
+    case 'owner':
+      sorted.sort((a, b) => (a.owner || '').localeCompare(b.owner || ''));
       break;
   }
 
