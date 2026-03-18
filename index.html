@@ -881,42 +881,6 @@ document.getElementById('debug-q').onkeydown = e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('debug-send').click(); }
 };
 
-// Debug tab in panel handlers
-document.getElementById('debug-send2').onclick = async () => {
-  const q = document.getElementById('debug-q2').value.trim();
-  if (!q) return;
-
-  debugLog2.innerHTML += `<div class="user" style="margin-bottom:6px"><b>You:</b> ${q}</div>`;
-  document.getElementById('debug-q2').value = '';
-  debugLog2.innerHTML += '<div class="thinking">⏳...</div>';
-  debugLog2.scrollTop = debugLog2.scrollHeight;
-
-  try {
-    const llm = bestAvailable();
-    if (!llm) throw new Error('No AI. Check Settings.');
-
-    const ctx = {map: {center: [curLat, curLon], zoom: map.getZoom()}, gps: gpsLat ? [gpsLat, gpsLon] : null, url: location.href, lastStatus: document.getElementById('status').innerHTML};
-
-    const sys = `Sprawlmap debug assistant. Help with JavaScript, ArcGIS queries, Leaflet maps.
-Known: CLASSCD field (not USECD), inSR=4326 required, OWNERNME1 spelling. Be concise.`;
-
-    debugHistory.push({role: 'user', content: `Context: ${JSON.stringify(ctx)}\n\n${q}`});
-    const reply = await llm.chat(debugHistory, sys);
-    debugHistory.push({role: 'assistant', content: reply});
-
-    debugLog2.querySelector('.thinking')?.remove();
-    debugLog2.innerHTML += `<div class="assistant" style="margin-bottom:8px;white-space:pre-wrap">${reply}</div>`;
-    debugLog2.scrollTop = debugLog2.scrollHeight;
-  } catch (e) {
-    debugLog2.querySelector('.thinking')?.remove();
-    debugLog2.innerHTML += `<div class="error">Error: ${e.message}</div>`;
-  }
-};
-
-document.getElementById('debug-q2').onkeydown = e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('debug-send2').click(); }
-};
-
 // Initialize
 buildFilterGrid();
 buildResourceFilterGrid();
