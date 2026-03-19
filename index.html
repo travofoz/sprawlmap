@@ -796,8 +796,9 @@ document.getElementById('locBtn').onclick = () => {
     },
     err => {
       setStatus('❌ GPS unavailable');
-      log(`GPS: failed - ${err.message}`, 'error');
-    }
+      log(`GPS: failed (code ${err.code}) - ${err.message}`, 'error');
+    },
+    { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
   );
 };
 
