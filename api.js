@@ -497,23 +497,8 @@ export async function findParcelAtPoint(lat, lon) {
     spatialReference: { wkid: 4326 }
   });
 
-  // Expanded fields for detailed parcel info
-  const outFields = [
-    // Basic info
-    'PARCELID,OWNERNME1,OWNERNME2,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,ZIPCD',
-    // Values
-    'TOTVALUEBASE,LNDVALUEBASE,BLDVALUEBASE,CNTTXBLVAL',
-    // Sale info
-    'SALEDATE,SALEPRICE',
-    // Building info (residential)
-    'RESYRBLT,RESFLRAREA,ROOMS,BATHS,BEDRMS,BLDTYP,COND',
-    // Legal/Tax info
-    'PRPRTYDSCRP,CNVYNAME,SCHLDSCRP,OWNEROCCUPIED,RENTAL',
-    // Mailing address
-    'MAILNME1,MAILNME2,MAILADD1,MAILADD2,MAILCITY,MAILSTATE,MAILZIP',
-    // Services
-    'WATERSERV,SEWERSERV'
-  ].join(',');
+  // Use only fields that exist in the Parcel_Features layer
+  const outFields = 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD';
 
   const p = new URLSearchParams({
     where: '1=1',
@@ -539,16 +524,11 @@ export async function findParcelAtPoint(lat, lon) {
   const classInfo = getClassInfo(a.CLASSCD);
   const centroid = f.geometry ? getCentroid(f.geometry) : null;
 
-  // Build mailing address if different from site
-  const mailAddr = [a.MAILADD1, a.MAILADD2, a.MAILCITY, a.MAILSTATE, a.MAILZIP]
-    .filter(Boolean).join(' ');
-
   return {
     // Basic info
     parcel_id: a.PARCELID,
     address: a.SITEADDRESS,
     owner: a.OWNERNME1,
-    owner2: a.OWNERNME2,
     classcd: a.CLASSCD,
     class_label: classInfo.label,
     class_color: classInfo.color,
@@ -559,33 +539,9 @@ export async function findParcelAtPoint(lat, lon) {
     zip: a.ZIPCD,
     // Values
     appraised: a.TOTVALUEBASE,
-    land_value: a.LNDVALUEBASE,
-    building_value: a.BLDVALUEBASE,
-    taxable_value: a.CNTTXBLVAL,
     // Sale info
     last_sale_year: a.SALEDATE ? new Date(a.SALEDATE).getFullYear() : null,
     sale_date: a.SALEDATE,
-    sale_price: a.SALEPRICE,
-    // Building info
-    year_built: a.RESYRBLT,
-    floor_area: a.RESFLRAREA,
-    rooms: a.ROOMS,
-    baths: a.BATHS,
-    bedrooms: a.BEDRMS,
-    building_type: a.BLDTYP,
-    condition: a.COND,
-    // Legal/Tax
-    legal_desc: a.PRPRTYDSCRP,
-    subdivision: a.CNVYNAME,
-    school_district: a.SCHLDSCRP,
-    owner_occupied: a.OWNEROCCUPIED === 'Y',
-    is_rental: a.RENTAL === 'Y',
-    // Mailing
-    mail_name: a.MAILNME1 || a.MAILNME2,
-    mail_address: mailAddr || null,
-    // Services
-    water_service: a.WATERSERV,
-    sewer_service: a.SEWERSERV,
     // Links and geometry
     property_card: CARD + (a.PARCELID || ''),
     geometry: f.geometry,
