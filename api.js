@@ -559,94 +559,50 @@ export async function findAdjacentParcels(geometry, parcelId) {
     return [];
   }
 
-  // Convert GeoJSON polygon rings to Esri rings format
-  const esriRings = geometry.coordinates.map(ring =>
-    ring.map(coord => [coord[0], coord[1]])
-  );
+  // Get centroid of the parcel for distance-based query
+  const centroid = getCentroid(geometry);
+  if (!centroid) return [];
 
-  const geoJson = {
-    rings: esriRings,
-    spatialReference: { wkid: 4326 }
-  };
-
-  // Expanded fields for neighbor parcels
   const outFields = 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE';
 
   const results = [];
   const seenIds = new Set([parcelId]);
 
-  // Query 1: Touching parcels (shares boundary)
+  // Use distance-based query (50m radius for adjacent parcels)
   try {
-    const touchParams = new URLSearchParams({
-      where: `PARCELID <> '${parcelId}'`,
-      geometry: JSON.stringify(geoJson),
-      geometryType: 'esriGeometryPolygon',
-      spatialRel: 'esriSpatialRelTouches',
-      inSR: 4326,
-      outFields,
-      returnGeometry: 'true',
-      outSR: '4326',
-      resultRecordCount: 50,
-      f: 'geojson'
+    const geo = JSON.stringify({
+      x: centroid.lon,
+      y: centroid.lat,
+      spatialReference: { wkid: 4326 }
     });
 
-    const touchResp = await fetch(`${FC}?${touchParams}`);
-    const touchData = await touchResp.json();
-
-    if (touchData.features) {
-      for (const f of touchData.features) {
-        const pid = f.properties.PARCELID;
-        if (!seenIds.has(pid)) {
-          seenIds.add(pid);
-          const classInfo = getClassInfo(f.properties.CLASSCD);
-          results.push({
-            parcel_id: pid,
-            address: f.properties.SITEADDRESS,
-            owner: f.properties.OWNERNME1,
-            classcd: f.properties.CLASSCD,
-            class_label: classInfo.label,
-            class_desc: f.properties.CLASSDSCRP,
-            risk: classInfo.risk,
-            risk_text: riskText(classInfo.risk),
-            acres: f.properties.ACRES,
-            appraised: f.properties.TOTVALUEBASE,
-            last_sale_year: f.properties.SALEDATE ? new Date(f.properties.SALEDATE).getFullYear() : null,
-            isAcrossStreet: false,
-            geometry: f.geometry
-          });
-        }
-      }
-    }
-  } catch (e) {
-    console.warn('Touch query failed:', e);
-  }
-
-  // Query 2: Within 15m buffer (across-street parcels)
-  try {
-    const bufferParams = new URLSearchParams({
+    const params = new URLSearchParams({
       where: `PARCELID <> '${parcelId}'`,
-      geometry: JSON.stringify(geoJson),
-      geometryType: 'esriGeometryPolygon',
+      geometry: geo,
+      geometryType: 'esriGeometryPoint',
       spatialRel: 'esriSpatialRelIntersects',
-      distance: 15,
+      distance: 50,
       units: 'esriSRUnit_Meter',
       inSR: 4326,
       outFields,
       returnGeometry: 'true',
       outSR: '4326',
-      resultRecordCount: 50,
+      resultRecordCount: 30,
       f: 'geojson'
     });
 
-    const bufferResp = await fetch(`${FC}?${bufferParams}`);
-    const bufferData = await bufferResp.json();
+    const resp = await fetch(`${FC}?${params}`);
+    const data = await resp.json();
 
-    if (bufferData.features) {
-      for (const f of bufferData.features) {
+    if (data.features) {
+      for (const f of data.features) {
         const pid = f.properties.PARCELID;
         if (!seenIds.has(pid)) {
           seenIds.add(pid);
           const classInfo = getClassInfo(f.properties.CLASSCD);
+          // Calculate distance from centroid to determine if across street
+          const neighborCentroid = f.geometry ? getCentroid(f.geometry) : null;
+          const dist = neighborCentroid ? distMiles(centroid.lat, centroid.lon, neighborCentroid.lat, neighborCentroid.lon) * 1609.34 : 999;
           results.push({
             parcel_id: pid,
             address: f.properties.SITEADDRESS,
@@ -659,98 +615,30 @@ export async function findAdjacentParcels(geometry, parcelId) {
             acres: f.properties.ACRES,
             appraised: f.properties.TOTVALUEBASE,
             last_sale_year: f.properties.SALEDATE ? new Date(f.properties.SALEDATE).getFullYear() : null,
-            isAcrossStreet: true,
+            isAcrossStreet: dist > 20, // More than 20m = across street
             geometry: f.geometry
           });
         }
       }
     }
   } catch (e) {
-    console.warn('Buffer query failed:', e);
+    console.warn('Adjacent parcels query failed:', e);
   }
 
   return results;
 }
 
 // Fetch 311 data from Columbus CSIR
+// NOTE: The Columbus 311 API endpoint has been discontinued (404)
+// This function returns unavailable until a new data source is found
 export async function fetch311Data(address, lat, lon, radius = 100) {
-  // Normalize address to uppercase for query
-  const normalizedAddress = address?.toUpperCase();
-
-  // Try address-based query first
-  if (normalizedAddress) {
-    try {
-      const params = new URLSearchParams({
-        where: `FULLADDRESS='${normalizedAddress.replace(/'/g, "''")}'`,
-        outFields: 'REQUESTTYPE,STATUS,DATECREATED,FULLADDRESS,CSIR_ID',
-        orderByFields: 'DATECREATED DESC',
-        resultRecordCount: 20,
-        f: 'json'
-      });
-
-      const r = await fetch(`${COLUMBUS_311}?${params}`);
-      const d = await r.json();
-
-      if (!d.error && d.features && d.features.length > 0) {
-        return {
-          available: true,
-          entries: d.features.map(f => ({
-            type: f.attributes.REQUESTTYPE,
-            status: f.attributes.STATUS,
-            date: f.attributes.DATECREATED ? new Date(f.attributes.DATECREATED).toLocaleDateString() : null,
-            address: f.attributes.FULLADDRESS,
-            case_id: f.attributes.CSIR_ID
-          }))
-        };
-      }
-    } catch (e) {
-      console.warn('311 address query failed:', e);
-    }
-  }
-
-  // Fallback: spatial query by location
-  try {
-    const geo = JSON.stringify({
-      x: lon,
-      y: lat,
-      spatialReference: { wkid: 4326 }
-    });
-
-    const params = new URLSearchParams({
-      where: '1=1',
-      geometry: geo,
-      geometryType: 'esriGeometryPoint',
-      spatialRel: 'esriSpatialRelIntersects',
-      distance: radius,
-      units: 'esriSRUnit_Meter',
-      inSR: 4326,
-      outFields: 'REQUESTTYPE,STATUS,DATECREATED,FULLADDRESS,CSIR_ID',
-      orderByFields: 'DATECREATED DESC',
-      resultRecordCount: 20,
-      f: 'json'
-    });
-
-    const r = await fetch(`${COLUMBUS_311}?${params}`);
-    const d = await r.json();
-
-    if (d.error) {
-      return { available: false, entries: [] };
-    }
-
-    return {
-      available: true,
-      entries: (d.features || []).map(f => ({
-        type: f.attributes.REQUESTTYPE,
-        status: f.attributes.STATUS,
-        date: f.attributes.DATECREATED ? new Date(f.attributes.DATECREATED).toLocaleDateString() : null,
-        address: f.attributes.FULLADDRESS,
-        case_id: f.attributes.CSIR_ID
-      }))
-    };
-  } catch (e) {
-    console.warn('311 spatial query failed:', e);
-    return { available: false, entries: [] };
-  }
+  // The original Columbus 311 API at gis.columbus.gov no longer has this layer
+  // Return service unavailable rather than misleading "no reports"
+  return {
+    available: false,
+    serviceDown: true,
+    entries: []
+  };
 }
 
 // Tool dispatcher for LLM agents

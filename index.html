@@ -1299,14 +1299,17 @@ function renderInspectorPanel() {
   // === 311 REPORTS ===
   html += `
     <div class="inspector-section">
-      <h3>📞 311 Service Reports ${current311Reports.available ? `(${current311Reports.entries.length})` : ''}</h3>
+      <h3>📞 311 Service Reports</h3>
   `;
 
-  if (!current311Reports.available) {
+  if (current311Reports.serviceDown) {
+    html += `<p style="color:var(--text2);font-size:0.8rem">⚠️ Columbus 311 API unavailable - service discontinued</p>`;
+  } else if (!current311Reports.available) {
     html += `<p style="color:var(--text2);font-size:0.8rem">No 311 data available for this location</p>`;
   } else if (current311Reports.entries.length === 0) {
     html += `<p style="color:var(--green);font-size:0.8rem">✓ No service requests on file</p>`;
   } else {
+    html += `<p style="color:var(--text2);font-size:0.7rem;margin-bottom:6px">${current311Reports.entries.length} reports</p>`;
     for (const r of current311Reports.entries) {
       const statusClass = r.status?.toLowerCase().includes('closed') ? 'closed' : 'open';
       html += `
