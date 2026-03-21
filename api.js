@@ -513,8 +513,11 @@ export async function findParcelAtPoint(lat, lon) {
     f: 'geojson'
   });
 
-  const r = await fetch(`${FC}?${p}`);
+  const url = `${FC}?${p}`;
+  console.log('Inspector API URL:', url);
+  const r = await fetch(url);
   const d = await r.json();
+  console.log('Inspector API response:', d);
   if (d.error) throw new Error(d.error.message);
 
   if (!d.features || d.features.length === 0) return null;
