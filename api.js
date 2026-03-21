@@ -497,13 +497,31 @@ export async function findParcelAtPoint(lat, lon) {
     spatialReference: { wkid: 4326 }
   });
 
+  // Expanded fields for detailed parcel info
+  const outFields = [
+    // Basic info
+    'PARCELID,OWNERNME1,OWNERNME2,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,ZIPCD',
+    // Values
+    'TOTVALUEBASE,LNDVALUEBASE,BLDVALUEBASE,CNTTXBLVAL',
+    // Sale info
+    'SALEDATE,SALEPRICE',
+    // Building info (residential)
+    'RESYRBLT,RESFLRAREA,ROOMS,BATHS,BEDRMS,BLDTYP,COND',
+    // Legal/Tax info
+    'PRPRTYDSCRP,CNVYNAME,SCHLDSCRP,OWNEROCCUPIED,RENTAL',
+    // Mailing address
+    'MAILNME1,MAILNME2,MAILADD1,MAILADD2,MAILCITY,MAILSTATE,MAILZIP',
+    // Services
+    'WATERSERV,SEWERSERV'
+  ].join(',');
+
   const p = new URLSearchParams({
     where: '1=1',
     geometry: geo,
     geometryType: 'esriGeometryPoint',
     spatialRel: 'esriSpatialRelIntersects',
     inSR: 4326,
-    outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
+    outFields,
     returnGeometry: 'true',
     outSR: '4326',
     resultRecordCount: 1,
@@ -521,19 +539,54 @@ export async function findParcelAtPoint(lat, lon) {
   const classInfo = getClassInfo(a.CLASSCD);
   const centroid = f.geometry ? getCentroid(f.geometry) : null;
 
+  // Build mailing address if different from site
+  const mailAddr = [a.MAILADD1, a.MAILADD2, a.MAILCITY, a.MAILSTATE, a.MAILZIP]
+    .filter(Boolean).join(' ');
+
   return {
+    // Basic info
     parcel_id: a.PARCELID,
     address: a.SITEADDRESS,
     owner: a.OWNERNME1,
+    owner2: a.OWNERNME2,
     classcd: a.CLASSCD,
     class_label: classInfo.label,
     class_color: classInfo.color,
     class_desc: a.CLASSDSCRP,
     risk: classInfo.risk,
+    risk_desc: classInfo.desc,
     acres: a.ACRES,
-    appraised: a.TOTVALUEBASE,
-    last_sale_year: a.SALEDATE ? new Date(a.SALEDATE).getFullYear() : null,
     zip: a.ZIPCD,
+    // Values
+    appraised: a.TOTVALUEBASE,
+    land_value: a.LNDVALUEBASE,
+    building_value: a.BLDVALUEBASE,
+    taxable_value: a.CNTTXBLVAL,
+    // Sale info
+    last_sale_year: a.SALEDATE ? new Date(a.SALEDATE).getFullYear() : null,
+    sale_date: a.SALEDATE,
+    sale_price: a.SALEPRICE,
+    // Building info
+    year_built: a.RESYRBLT,
+    floor_area: a.RESFLRAREA,
+    rooms: a.ROOMS,
+    baths: a.BATHS,
+    bedrooms: a.BEDRMS,
+    building_type: a.BLDTYP,
+    condition: a.COND,
+    // Legal/Tax
+    legal_desc: a.PRPRTYDSCRP,
+    subdivision: a.CNVYNAME,
+    school_district: a.SCHLDSCRP,
+    owner_occupied: a.OWNEROCCUPIED === 'Y',
+    is_rental: a.RENTAL === 'Y',
+    // Mailing
+    mail_name: a.MAILNME1 || a.MAILNME2,
+    mail_address: mailAddr || null,
+    // Services
+    water_service: a.WATERSERV,
+    sewer_service: a.SEWERSERV,
+    // Links and geometry
     property_card: CARD + (a.PARCELID || ''),
     geometry: f.geometry,
     centroid
@@ -556,6 +609,9 @@ export async function findAdjacentParcels(geometry, parcelId) {
     spatialReference: { wkid: 4326 }
   };
 
+  // Expanded fields for neighbor parcels
+  const outFields = 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE';
+
   const results = [];
   const seenIds = new Set([parcelId]);
 
@@ -567,7 +623,7 @@ export async function findAdjacentParcels(geometry, parcelId) {
       geometryType: 'esriGeometryPolygon',
       spatialRel: 'esriSpatialRelTouches',
       inSR: 4326,
-      outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS',
+      outFields,
       returnGeometry: 'true',
       outSR: '4326',
       resultRecordCount: 50,
@@ -589,6 +645,12 @@ export async function findAdjacentParcels(geometry, parcelId) {
             owner: f.properties.OWNERNME1,
             classcd: f.properties.CLASSCD,
             class_label: classInfo.label,
+            class_desc: f.properties.CLASSDSCRP,
+            risk: classInfo.risk,
+            risk_text: riskText(classInfo.risk),
+            acres: f.properties.ACRES,
+            appraised: f.properties.TOTVALUEBASE,
+            last_sale_year: f.properties.SALEDATE ? new Date(f.properties.SALEDATE).getFullYear() : null,
             isAcrossStreet: false,
             geometry: f.geometry
           });
@@ -609,7 +671,7 @@ export async function findAdjacentParcels(geometry, parcelId) {
       distance: 15,
       units: 'esriSRUnit_Meter',
       inSR: 4326,
-      outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS',
+      outFields,
       returnGeometry: 'true',
       outSR: '4326',
       resultRecordCount: 50,
@@ -631,6 +693,12 @@ export async function findAdjacentParcels(geometry, parcelId) {
             owner: f.properties.OWNERNME1,
             classcd: f.properties.CLASSCD,
             class_label: classInfo.label,
+            class_desc: f.properties.CLASSDSCRP,
+            risk: classInfo.risk,
+            risk_text: riskText(classInfo.risk),
+            acres: f.properties.ACRES,
+            appraised: f.properties.TOTVALUEBASE,
+            last_sale_year: f.properties.SALEDATE ? new Date(f.properties.SALEDATE).getFullYear() : null,
             isAcrossStreet: true,
             geometry: f.geometry
           });

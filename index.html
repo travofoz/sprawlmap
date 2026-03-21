@@ -135,45 +135,42 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
 #ctx-menu button.danger:hover{background:#3d0000}
 #ctx-menu .divider{height:1px;background:var(--border);margin:4px 0}
 
-/* Inspector Panel */
-#inspectorBtn.inspector-active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.inspector-mode #map{cursor:crosshair}
-#inspector-panel{position:fixed;top:0;right:0;width:320px;height:100%;background:var(--bg2);border-left:1px solid var(--border);z-index:2500;transform:translateX(100%);transition:transform .2s ease;display:flex;flex-direction:column}
-#inspector-panel.open{transform:translateX(0)}
-#inspector-header{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--border);background:var(--bg3)}
-#inspector-header h2{font-size:0.9rem;color:var(--accent);margin:0}
-#inspector-close{background:none;border:none;color:var(--text2);font-size:1.2rem;cursor:pointer;padding:0 4px}
-#inspector-close:hover{color:var(--text)}
-#inspector-content{flex:1;overflow-y:auto;padding:8px}
-.inspector-section{background:var(--bg);border-radius:6px;padding:8px;margin-bottom:8px;border:1px solid var(--border)}
-.inspector-section h3{font-size:0.75rem;color:var(--text2);margin:0 0 6px 0;text-transform:uppercase;letter-spacing:0.5px}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.detail-item{font-size:0.7rem}
-.detail-item dt{color:var(--text2)}
-.detail-item dd{color:var(--text);margin:0;font-weight:500}
-.detail-item.full{grid-column:1/-1}
-.inspector-loading,.inspector-error{color:var(--text2);font-size:0.8rem;text-align:center;padding:20px}
-.inspector-error{color:var(--red)}
-.neighbor-card{background:var(--bg3);border-radius:4px;padding:6px;margin-bottom:4px;cursor:pointer;border-left:3px solid var(--border);font-size:0.7rem}
-.neighbor-card:hover{background:var(--bg)}
-.neighbor-card.adjacent{border-left-color:#eab308}
-.neighbor-card.across-street{border-left-color:#f97316}
-.neighbor-card .addr{color:var(--text);font-weight:500}
-.neighbor-card .meta{color:var(--text2);font-size:0.65rem}
-.code311-item{font-size:0.7rem;padding:4px 0;border-bottom:1px solid var(--border)}
-.code311-item:last-child{border-bottom:none}
-.code311-item .type{color:var(--text);font-weight:500}
-.code311-item .status{font-size:0.6rem;padding:1px 4px;border-radius:3px;margin-left:4px}
-.code311-item .status.open{background:#3d2b00;color:#eab308}
-.code311-item .status.closed{background:#1a4d2e;color:var(--green)}
-.code311-item .date{color:var(--text2);font-size:0.6rem}
-.inspector-link{color:var(--accent);text-decoration:none;font-size:0.7rem}
-.inspector-link:hover{text-decoration:underline}
-@media(max-width:640px){
-  #inspector-panel{width:100%}
-}
-
 #handle{text-align:center;padding:4px;cursor:pointer;color:var(--text2);font-size:1.1rem}
+
+/* Inspector Panel - Full Page Overlay */
+#inspector-panel{position:fixed;inset:0;background:var(--bg);z-index:4000;display:none;flex-direction:column}
+#inspector-panel.open{display:flex}
+#inspector-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg2);border-bottom:1px solid var(--border)}
+#inspector-header h2{font-size:0.9rem;color:var(--accent);margin:0}
+#inspector-close{background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;padding:4px 8px;line-height:1}
+#inspector-close:hover{color:var(--red)}
+#inspector-content{flex:1;overflow-y:auto;padding:12px}
+.inspector-section{margin-bottom:16px}
+.inspector-section h3{font-size:0.8rem;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.inspector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.inspector-field{background:var(--bg2);border-radius:6px;padding:8px}
+.inspector-field label{display:block;font-size:0.65rem;color:var(--text2);margin-bottom:2px}
+.inspector-field .value{font-size:0.85rem;color:var(--text);word-break:break-word}
+.inspector-field.full{grid-column:1/-1}
+.inspector-link{display:inline-block;color:var(--accent);text-decoration:none;font-size:0.8rem;margin-top:4px}
+.inspector-link:hover{text-decoration:underline}
+/* 311 Reports */
+.report-card{background:var(--bg2);border-radius:6px;padding:8px;margin-bottom:6px;border-left:3px solid var(--border)}
+.report-card.open{border-color:#eab308}
+.report-card.closed{border-color:var(--green)}
+.report-type{font-size:0.8rem;font-weight:600;color:var(--text)}
+.report-meta{font-size:0.7rem;color:var(--text2);margin-top:2px}
+.report-status{display:inline-block;font-size:0.65rem;padding:1px 6px;border-radius:10px;margin-left:4px}
+.report-status.open{background:#3d2b00;color:#eab308}
+.report-status.closed{background:#1a4d2e;color:var(--green)}
+/* Neighbor Cards */
+.neighbor-card{background:var(--bg2);border-radius:6px;padding:8px;margin-bottom:6px;cursor:pointer;border-left:3px solid var(--border);transition:background .15s}
+.neighbor-card:hover{background:var(--bg3)}
+.neighbor-card.low{border-color:var(--green)}
+.neighbor-card.med{border-color:#eab308}
+.neighbor-card.avoid,.neighbor-card.high{border-color:var(--red)}
+.neighbor-card .addr{font-size:0.8rem;font-weight:600;color:var(--text)}
+.neighbor-card .meta{font-size:0.7rem;color:var(--text2);margin-top:2px}
 </style>
 </head>
 <body>
@@ -183,9 +180,9 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
   <button class="btn green" id="searchBtn">🔍</button>
   <button class="btn" id="filterBtn">🎛️</button>
   <button class="btn" id="resBtn">💡</button>
+  <button class="btn" id="inspectorBtn" title="Parcel Inspector">📋</button>
   <button class="btn" id="askBtn">🤖</button>
   <button class="btn" id="settingsBtn">⚙️</button>
-  <button class="btn" id="inspectorBtn" title="Parcel Inspector">📋</button>
 </div>
 
 <div id="log"></div>
@@ -329,6 +326,16 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
   <button class="btn" id="closeSettings" style="width:100%;padding:8px;margin-top:6px">Cancel</button>
 </div>
 
+<div id="inspector-panel">
+  <div id="inspector-header">
+    <h2>📋 Parcel Inspector</h2>
+    <button id="inspector-close">&times;</button>
+  </div>
+  <div id="inspector-content">
+    <p style="color:var(--text2);text-align:center;padding:40px">Click any parcel on the map to inspect</p>
+  </div>
+</div>
+
 <div id="ctx-menu">
   <button id="ctx-set-center">📍 Set search center</button>
   <button id="ctx-property-card">📋 Property Card</button>
@@ -338,29 +345,19 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
   <button id="ctx-zoom-out">🔎 Zoom out</button>
 </div>
 
-<div id="inspector-panel">
-  <div id="inspector-header">
-    <h2>📋 Parcel Inspector</h2>
-    <button id="inspector-close">&times;</button>
-  </div>
-  <div id="inspector-content">
-    <div class="inspector-loading">Click on the map to inspect a parcel</div>
-  </div>
-</div>
-
 <script type="module">
 import { LLM, PROVIDERS, saveKey, loadKey, bestAvailable } from './providers.js';
-import{
+import {
   findPublicParcels,
   findNearbyResources,
   sortParcels,
-  CLASS_CODES,
-  RESOURCE_TYPES,
-  riskText,
   findParcelAtPoint,
   findAdjacentParcels,
   fetch311Data,
-  getParcelDetail
+  CLASS_CODES,
+  RESOURCE_TYPES,
+  riskText,
+  getClassInfo
 } from './api.js';
 
 // Logger
@@ -393,9 +390,10 @@ let centerMarker = null;
 
 // Inspector state
 let inspectorMode = false;
-let inspectorSelectedParcel = null;
-let inspectorNeighborPolygons = {};
 let inspectorLayerGroup = L.layerGroup().addTo(map);
+let currentInspectorParcel = null;
+let currentInspectorNeighbors = [];
+let current311Reports = [];
 
 // Filter state
 let enabledClasses = ['640','605']; // default: Municipal + Land Bank
@@ -991,256 +989,414 @@ document.getElementById('ctx-zoom-out').onclick = () => {
   ctxMenu.classList.remove('show');
 };
 
-// ==========================================
-// PARCEL INSPECTOR
-// ==========================================
+// ============ PARCEL INSPECTOR ============
 
+// Format currency
+const fmtCurrency = n => n ? '$' + n.toLocaleString() : null;
+
+// Format date
+const fmtDate = d => d ? new Date(d).toLocaleDateString() : null;
+
+// Toggle inspector mode
 function toggleInspectorMode() {
   inspectorMode = !inspectorMode;
   const btn = document.getElementById('inspectorBtn');
   const panel = document.getElementById('inspector-panel');
 
   if (inspectorMode) {
-    btn.classList.add('inspector-active');
-    document.body.classList.add('inspector-mode');
+    btn.classList.add('active');
     panel.classList.add('open');
-    document.getElementById('inspector-content').innerHTML = '<div class="inspector-loading">Click on the map to inspect a parcel</div>';
-    log('Inspector: enabled', 'info');
+    clearInspector();
+    setStatus('📋 Inspector: Click a parcel to inspect');
+    log('Inspector: mode enabled', 'info');
   } else {
-    btn.classList.remove('inspector-active');
-    document.body.classList.remove('inspector-mode');
+    btn.classList.remove('active');
     panel.classList.remove('open');
-    clearInspectorSelection();
-    log('Inspector: disabled', 'info');
+    clearInspector();
+    setStatus('Inspector closed');
+    log('Inspector: mode disabled', 'info');
   }
 }
 
-function clearInspectorSelection() {
+// Clear inspector data
+function clearInspector() {
   inspectorLayerGroup.clearLayers();
-  inspectorSelectedParcel = null;
-  inspectorNeighborPolygons = {};
+  currentInspectorParcel = null;
+  currentInspectorNeighbors = [];
+  current311Reports = [];
+  document.getElementById('inspector-content').innerHTML = '<p style="color:var(--text2);text-align:center;padding:40px">Click any parcel on the map to inspect</p>';
 }
 
-async function handleInspectorClick(latlng) {
-  const content = document.getElementById('inspector-content');
-  content.innerHTML = '<div class="inspector-loading">🔍 Finding parcel...</div>';
+// Handle map click in inspector mode
+async function handleInspectorClick(e) {
+  if (!inspectorMode) return;
+
+  const lat = e.latlng.lat;
+  const lon = e.latlng.lng;
+
+  log(`Inspector: fetching parcel at ${lat.toFixed(4)}, ${lon.toFixed(4)}`, 'info');
+  setStatus('📋 Loading parcel...');
 
   try {
-    // Find parcel at click point
-    const parcel = await findParcelAtPoint(latlng.lat, latlng.lng);
+    // Fetch parcel data
+    const parcel = await findParcelAtPoint(lat, lon);
     if (!parcel) {
-      content.innerHTML = '<div class="inspector-error">No parcel found at this location. Try clicking on a property.</div>';
+      setStatus('⚠️ No parcel found at this location');
+      log('Inspector: no parcel found', 'warn');
       return;
     }
 
-    inspectorSelectedParcel = parcel;
-    log(`Inspector: found parcel ${parcel.parcel_id}`, 'info');
+    currentInspectorParcel = parcel;
 
-    // Fetch all data in parallel
-    content.innerHTML = '<div class="inspector-loading">📊 Loading details...</div>';
+    // Highlight selected parcel
+    inspectorLayerGroup.clearLayers();
+    if (parcel.geometry) {
+      const coords = parcel.geometry.coordinates[0].map(c => [c[1], c[0]]);
+      L.polygon(coords, {
+        color: parcel.class_color,
+        fillColor: parcel.class_color,
+        fillOpacity: 0.4,
+        weight: 3
+      }).addTo(inspectorLayerGroup);
+    }
 
-    const [auditorData, neighbors, code311Data] = await Promise.all([
-      getParcelDetail(parcel.parcel_id).catch(e => {
-        log(`Auditor API: ${e.message}`, 'warn');
-        return null;
-      }),
-      findAdjacentParcels(parcel.geometry, parcel.parcel_id).catch(e => {
-        log(`Neighbors: ${e.message}`, 'warn');
-        return [];
-      }),
-      fetch311Data(parcel.address, latlng.lat, latlng.lng).catch(e => {
-        log(`311: ${e.message}`, 'warn');
-        return { available: false };
-      })
+    // Fetch neighbors and 311 data in parallel
+    const [neighbors, reports311] = await Promise.all([
+      findAdjacentParcels(parcel.geometry, parcel.parcel_id),
+      fetch311Data(parcel.address, parcel.centroid?.lat || lat, parcel.centroid?.lon || lon)
     ]);
 
-    // Update highlights
-    updateInspectorHighlights(parcel, neighbors);
+    currentInspectorNeighbors = neighbors;
+    current311Reports = reports311;
 
-    // Render panel
-    renderInspectorPanel(parcel, auditorData, neighbors, code311Data);
-
-    log('Inspector: data loaded', 'success');
-  } catch (e) {
-    content.innerHTML = `<div class="inspector-error">Error: ${e.message}</div>`;
-    log(`Inspector: ${e.message}`, 'error');
-  }
-}
-
-function updateInspectorHighlights(selectedParcel, neighbors) {
-  inspectorLayerGroup.clearLayers();
-  inspectorNeighborPolygons = {};
-
-  // Highlight selected parcel
-  if (selectedParcel.geometry && selectedParcel.geometry.coordinates) {
-    try {
-      const coords = selectedParcel.geometry.coordinates[0].map(c => [c[1], c[0]]);
-      const polygon = L.polygon(coords, {
-        color: '#58a6ff',
-        fillColor: '#58a6ff',
-        fillOpacity: 0.3,
-        weight: 4
-      }).addTo(inspectorLayerGroup);
-      inspectorNeighborPolygons[selectedParcel.parcel_id] = polygon;
-    } catch (e) { /* skip bad geometry */ }
-  }
-
-  // Highlight neighbors
-  const neighborCount = { adjacent: 0, acrossStreet: 0 };
-  for (const n of neighbors) {
-    if (n.geometry && n.geometry.coordinates) {
-      try {
+    // Draw neighbor parcels
+    for (const n of neighbors) {
+      if (n.geometry) {
         const coords = n.geometry.coordinates[0].map(c => [c[1], c[0]]);
-        const isAcross = n.isAcrossStreet;
-        const color = isAcross ? '#f97316' : '#eab308';
-        neighborCount[isAcross ? 'acrossStreet' : 'adjacent']++;
-
-        const polygon = L.polygon(coords, {
-          color: color,
-          fillColor: color,
+        const classInfo = getClassInfo(n.classcd);
+        L.polygon(coords, {
+          color: classInfo.color,
+          fillColor: classInfo.color,
           fillOpacity: 0.2,
-          weight: 2,
-          dashArray: '5, 3'
-        }).addTo(inspectorLayerGroup);
-
-        polygon.bindPopup(`<b>${n.address || 'No address'}</b><br>${n.class_label || ''}<br><small>${isAcross ? 'Across street' : 'Adjacent'}</small>`);
-        inspectorNeighborPolygons[n.parcel_id] = polygon;
-      } catch (e) { /* skip bad geometry */ }
+          weight: 1,
+          dashArray: n.isAcrossStreet ? '5,5' : null
+        })
+        .on('click', () => panToNeighbor(n))
+        .addTo(inspectorLayerGroup);
+      }
     }
-  }
 
-  log(`Inspector: highlighted ${neighborCount.adjacent} adjacent, ${neighborCount.acrossStreet} across-street`, 'info');
+    renderInspectorPanel();
+    setStatus(`📋 ${parcel.address || parcel.parcel_id}`);
+    log(`Inspector: loaded parcel ${parcel.parcel_id}`, 'success');
+
+  } catch (err) {
+    setStatus('❌ Error loading parcel');
+    log(`Inspector: ${err.message}`, 'error');
+    console.error(err);
+  }
 }
 
-function renderInspectorPanel(parcel, auditorData, neighbors, code311Data) {
-  const content = document.getElementById('inspector-content');
-  const classInfo = CLASS_CODES[parcel.classcd] || { label: 'Unknown', color: '#6b7280', risk: 'med' };
+// Pan to neighbor parcel
+window.panToNeighbor = function(neighbor) {
+  if (neighbor && neighbor.geometry) {
+    const coords = neighbor.geometry.coordinates[0].map(c => [c[1], c[0]]);
+    const bounds = L.latLngBounds(coords);
+    map.fitBounds(bounds, { maxZoom: 17 });
+  }
+};
 
+// Render the inspector panel
+function renderInspectorPanel() {
+  const p = currentInspectorParcel;
+  if (!p) return;
+
+  const el = document.getElementById('inspector-content');
+
+  // Build HTML sections
   let html = '';
 
-  // Basic Info Section
+  // === HEADER ===
   html += `
     <div class="inspector-section">
-      <h3>📍 Parcel Info</h3>
-      <div class="detail-grid">
-        <div class="detail-item full"><dt>Address</dt><dd>${parcel.address || 'No address'}</dd></div>
-        <div class="detail-item"><dt>Parcel ID</dt><dd style="font-size:0.6rem">${parcel.parcel_id}</dd></div>
-        <div class="detail-item"><dt>Class</dt><dd style="color:${classInfo.color}">${classInfo.label} (${parcel.classcd})</dd></div>
-        <div class="detail-item"><dt>Owner</dt><dd>${(parcel.owner || 'Unknown').slice(0, 25)}</dd></div>
-        <div class="detail-item"><dt>Acres</dt><dd>${parcel.acres?.toFixed(2) || '?'}</dd></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span class="badge ${p.risk}">${riskText(p.risk)}</span>
+        <span style="font-size:0.8rem;color:${p.class_color}">${p.class_label}</span>
       </div>
-      <a href="${parcel.property_card}" target="_blank" class="inspector-link">📋 Property Card →</a>
+      <h2 style="font-size:1.1rem;color:var(--text);margin-bottom:4px">${p.address || '(No address)'}</h2>
+      <p style="font-size:0.75rem;color:var(--text2)">${p.parcel_id} · ${p.acres?.toFixed(2) || '?'} acres</p>
+      <a href="${p.property_card}" target="_blank" class="inspector-link">📄 Property Card →</a>
     </div>
   `;
 
-  // Auditor Details Section
-  if (auditorData) {
-    html += `
-      <div class="inspector-section">
-        <h3>💰 Auditor Details</h3>
-        <div class="detail-grid">
-          <div class="detail-item"><dt>Appraised</dt><dd>$${(auditorData.appraised || parcel.appraised || 0).toLocaleString()}</dd></div>
-          <div class="detail-item"><dt>Last Sale</dt><dd>${auditorData.last_sale_year || parcel.last_sale_year || 'N/A'}</dd></div>
-          <div class="detail-item full"><dt>Legal Desc</dt><dd style="font-size:0.6rem">${(auditorData.legal_description || '').slice(0, 60)}</dd></div>
-        </div>
-      </div>
-    `;
-  } else {
-    html += `
-      <div class="inspector-section">
-        <h3>💰 Auditor Details</h3>
-        <p style="color:var(--text2);font-size:0.7rem">Details unavailable</p>
-      </div>
-    `;
-  }
-
-  // 311 Section
-  html += `<div class="inspector-section"><h3>📞 311 Reports</h3>`;
-  if (code311Data && code311Data.available && code311Data.entries && code311Data.entries.length > 0) {
-    html += `<div class="code311-list">`;
-    const recent = code311Data.entries.slice(0, 5);
-    for (const entry of recent) {
-      const statusClass = (entry.status || '').toLowerCase().replace(' ', '-');
-      html += `
-        <div class="code311-item">
-          <div class="type">${entry.type || 'Unknown'}</div>
-          <span class="status ${statusClass}">${entry.status || 'Unknown'}</span>
-          <span class="date">${entry.date || ''}</span>
-        </div>
-      `;
-    }
-    if (code311Data.entries.length > 5) {
-      html += `<p style="color:var(--text2);font-size:0.65rem;margin-top:4px">+${code311Data.entries.length - 5} more reports</p>`;
-    }
-    html += `</div>`;
-  } else if (code311Data && code311Data.available === false) {
-    html += `<p style="color:var(--text2);font-size:0.7rem">311 data unavailable. <a href="https://311.columbus.gov/" target="_blank" class="inspector-link">Visit Columbus 311 →</a></p>`;
-  } else {
-    html += `<p style="color:var(--text2);font-size:0.7rem">No 311 reports for this address</p>`;
-  }
-  html += `</div>`;
-
-  // Neighbors Section
+  // === OWNER INFO ===
   html += `
     <div class="inspector-section">
-      <h3>🏘️ Neighboring Parcels</h3>
+      <h3>👤 Ownership</h3>
+      <div class="inspector-grid">
+        <div class="inspector-field full">
+          <label>Owner</label>
+          <div class="value">${p.owner || 'Unknown'}${p.owner2 ? `<br>${p.owner2}` : ''}</div>
+        </div>
+        ${p.mail_address && p.mail_address !== p.address ? `
+          <div class="inspector-field full">
+            <label>Mailing Address</label>
+            <div class="value">${p.mail_name || ''}${p.mail_address ? `<br>${p.mail_address}` : ''}</div>
+          </div>
+        ` : ''}
+        ${p.owner_occupied !== undefined ? `
+          <div class="inspector-field">
+            <label>Occupancy</label>
+            <div class="value">${p.owner_occupied ? 'Owner Occupied' : (p.is_rental ? 'Rental' : 'Non-owner occupied')}</div>
+          </div>
+        ` : ''}
+        ${p.school_district ? `
+          <div class="inspector-field">
+            <label>School District</label>
+            <div class="value">${p.school_district}</div>
+          </div>
+        ` : ''}
+      </div>
+    </div>
   `;
 
-  const adjacent = neighbors.filter(n => !n.isAcrossStreet);
-  const acrossStreet = neighbors.filter(n => n.isAcrossStreet);
+  // === PROPERTY CLASS ===
+  html += `
+    <div class="inspector-section">
+      <h3>🏛️ Classification</h3>
+      <div class="inspector-grid">
+        <div class="inspector-field">
+          <label>Class Code</label>
+          <div class="value">${p.classcd} - ${p.class_label}</div>
+        </div>
+        <div class="inspector-field">
+          <label>Description</label>
+          <div class="value">${p.class_desc || p.risk_desc || 'N/A'}</div>
+        </div>
+        ${p.legal_desc ? `
+          <div class="inspector-field full">
+            <label>Legal Description</label>
+            <div class="value" style="font-size:0.75rem">${p.legal_desc}</div>
+          </div>
+        ` : ''}
+        ${p.subdivision ? `
+          <div class="inspector-field">
+            <label>Subdivision</label>
+            <div class="value">${p.subdivision}</div>
+          </div>
+        ` : ''}
+      </div>
+    </div>
+  `;
 
-  if (neighbors.length === 0) {
-    html += `<p style="color:var(--text2);font-size:0.7rem">No neighboring parcels found</p>`;
+  // === VALUES ===
+  html += `
+    <div class="inspector-section">
+      <h3>💰 Values</h3>
+      <div class="inspector-grid">
+        <div class="inspector-field">
+          <label>Appraised Value</label>
+          <div class="value" style="color:var(--accent);font-weight:600">${fmtCurrency(p.appraised) || 'N/A'}</div>
+        </div>
+        <div class="inspector-field">
+          <label>Taxable Value</label>
+          <div class="value">${fmtCurrency(p.taxable_value) || 'N/A'}</div>
+        </div>
+        ${p.land_value ? `
+          <div class="inspector-field">
+            <label>Land Value</label>
+            <div class="value">${fmtCurrency(p.land_value)}</div>
+          </div>
+        ` : ''}
+        ${p.building_value ? `
+          <div class="inspector-field">
+            <label>Building Value</label>
+            <div class="value">${fmtCurrency(p.building_value)}</div>
+          </div>
+        ` : ''}
+      </div>
+    </div>
+  `;
+
+  // === SALE INFO ===
+  html += `
+    <div class="inspector-section">
+      <h3>📝 Sale History</h3>
+      <div class="inspector-grid">
+        <div class="inspector-field">
+          <label>Last Sale Date</label>
+          <div class="value">${p.last_sale_year ? p.last_sale_year : 'Unknown'}</div>
+        </div>
+        <div class="inspector-field">
+          <label>Sale Price</label>
+          <div class="value">${fmtCurrency(p.sale_price) || 'Unknown'}</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // === BUILDING INFO (if residential) ===
+  if (p.year_built || p.floor_area || p.rooms) {
+    html += `
+      <div class="inspector-section">
+        <h3>🏠 Building</h3>
+        <div class="inspector-grid">
+          ${p.year_built ? `
+            <div class="inspector-field">
+              <label>Year Built</label>
+              <div class="value">${p.year_built}</div>
+            </div>
+          ` : ''}
+          ${p.floor_area ? `
+            <div class="inspector-field">
+              <label>Floor Area</label>
+              <div class="value">${p.floor_area.toLocaleString()} sq ft</div>
+            </div>
+          ` : ''}
+          ${p.rooms ? `
+            <div class="inspector-field">
+              <label>Rooms</label>
+              <div class="value">${p.rooms}</div>
+            </div>
+          ` : ''}
+          ${p.bedrooms ? `
+            <div class="inspector-field">
+              <label>Bedrooms</label>
+              <div class="value">${p.bedrooms}</div>
+            </div>
+          ` : ''}
+          ${p.baths ? `
+            <div class="inspector-field">
+              <label>Bathrooms</label>
+              <div class="value">${p.baths}</div>
+            </div>
+          ` : ''}
+          ${p.condition ? `
+            <div class="inspector-field">
+              <label>Condition</label>
+              <div class="value">${p.condition}</div>
+            </div>
+          ` : ''}
+          ${p.building_type ? `
+            <div class="inspector-field">
+              <label>Building Type</label>
+              <div class="value">${p.building_type}</div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  // === SERVICES ===
+  if (p.water_service || p.sewer_service) {
+    html += `
+      <div class="inspector-section">
+        <h3>🔌 Services</h3>
+        <div class="inspector-grid">
+          ${p.water_service ? `
+            <div class="inspector-field">
+              <label>Water</label>
+              <div class="value">${p.water_service}</div>
+            </div>
+          ` : ''}
+          ${p.sewer_service ? `
+            <div class="inspector-field">
+              <label>Sewer</label>
+              <div class="value">${p.sewer_service}</div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  // === 311 REPORTS ===
+  html += `
+    <div class="inspector-section">
+      <h3>📞 311 Service Reports ${current311Reports.available ? `(${current311Reports.entries.length})` : ''}</h3>
+  `;
+
+  if (!current311Reports.available) {
+    html += `<p style="color:var(--text2);font-size:0.8rem">No 311 data available for this location</p>`;
+  } else if (current311Reports.entries.length === 0) {
+    html += `<p style="color:var(--green);font-size:0.8rem">✓ No service requests on file</p>`;
   } else {
-    html += `<p style="color:var(--text2);font-size:0.65rem;margin-bottom:4px">${adjacent.length} adjacent · ${acrossStreet.length} across street</p>`;
-
-    const displayNeighbors = neighbors.slice(0, 20);
-    for (const n of displayNeighbors) {
-      const borderColor = n.isAcrossStreet ? '#f97316' : '#eab308';
+    for (const r of current311Reports.entries) {
+      const statusClass = r.status?.toLowerCase().includes('closed') ? 'closed' : 'open';
       html += `
-        <div class="neighbor-card" data-neighbor-id="${n.parcel_id}" style="border-left:3px solid ${borderColor}">
-          <div style="font-size:0.7rem;font-weight:600">${n.address || 'No address'}</div>
-          <div style="font-size:0.6rem;color:var(--text2)">${n.class_label || ''} · ${n.isAcrossStreet ? 'Across street' : 'Adjacent'}</div>
+        <div class="report-card ${statusClass}">
+          <div class="report-type">${r.type || 'Unknown Request'}</div>
+          <div class="report-meta">
+            ${r.date || 'Unknown date'}
+            <span class="report-status ${statusClass}">${r.status || 'Unknown'}</span>
+            ${r.case_id ? `<span style="margin-left:4px">#${r.case_id}</span>` : ''}
+          </div>
         </div>
       `;
-    }
-
-    if (neighbors.length > 20) {
-      html += `<p style="color:var(--text2);font-size:0.65rem;margin-top:4px">+${neighbors.length - 20} more neighbors</p>`;
     }
   }
   html += `</div>`;
 
-  content.innerHTML = html;
+  // === NEIGHBOR PARCELS ===
+  html += `
+    <div class="inspector-section">
+      <h3>🗺️ Adjacent Parcels (${currentInspectorNeighbors.length})</h3>
+  `;
 
-  // Bind neighbor card click handlers
-  content.querySelectorAll('.neighbor-card').forEach(card => {
+  if (currentInspectorNeighbors.length === 0) {
+    html += `<p style="color:var(--text2);font-size:0.8rem">No adjacent parcels found</p>`;
+  } else {
+    // Sort neighbors: public entities first, then by risk
+    const sortedNeighbors = [...currentInspectorNeighbors].sort((a, b) => {
+      const aPublic = a.classcd >= 600 && a.classcd <= 680;
+      const bPublic = b.classcd >= 600 && b.classcd <= 680;
+      if (aPublic && !bPublic) return -1;
+      if (!aPublic && bPublic) return 1;
+      const riskOrder = { low: 0, med: 1, avoid: 2, high: 3 };
+      return (riskOrder[a.risk] || 2) - (riskOrder[b.risk] || 2);
+    });
+
+    for (const n of sortedNeighbors) {
+      html += `
+        <div class="neighbor-card ${n.risk || 'med'}" data-neighbor-id="${n.parcel_id}">
+          <div class="addr">${n.address || n.parcel_id}</div>
+          <div class="meta">
+            <span class="badge ${n.risk || 'med'}" style="font-size:0.6rem">${n.risk_text || riskText(n.risk)}</span>
+            ${n.class_label} · ${n.isAcrossStreet ? 'Across street' : 'Adjacent'}
+            ${n.owner ? `<br>${n.owner.slice(0, 30)}${n.owner.length > 30 ? '...' : ''}` : ''}
+          </div>
+        </div>
+      `;
+    }
+  }
+  html += `</div>`;
+
+  el.innerHTML = html;
+
+  // Add click handlers for neighbor cards
+  el.querySelectorAll('.neighbor-card').forEach(card => {
     card.onclick = () => {
       const neighborId = card.dataset.neighborId;
-      const polygon = inspectorNeighborPolygons[neighborId];
-      if (polygon) {
-        map.fitBounds(polygon.getBounds(), { maxZoom: 17 });
-        polygon.openPopup();
+      const neighbor = currentInspectorNeighbors.find(n => n.parcel_id === neighborId);
+      if (neighbor) {
+        window.panToNeighbor(neighbor);
       }
     };
   });
 }
 
-// Inspector button click handler
+// Wire up inspector events
 document.getElementById('inspectorBtn').onclick = toggleInspectorMode;
-
-// Inspector close button
 document.getElementById('inspector-close').onclick = () => {
+  inspectorMode = false;
+  document.getElementById('inspectorBtn').classList.remove('active');
   document.getElementById('inspector-panel').classList.remove('open');
-  clearInspectorSelection();
+  clearInspector();
 };
 
-// Map click handler for inspector mode
-map.on('click', e => {
-  if (inspectorMode) {
-    handleInspectorClick(e.latlng);
-  }
-});
+// Map click handler for inspector
+map.on('click', handleInspectorClick);
 
 // Initialize
 buildFilterGrid();
