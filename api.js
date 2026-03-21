@@ -3,6 +3,7 @@ const AUDITOR = 'https://audr-api.franklincountyohio.gov/v1/parcel';
 const OVERPASS= 'https://overpass-api.de/api/interpreter';
 const NOMINATIM='https://nominatim.openstreetmap.org/search';
 const CARD    = 'https://audr-apps.franklincountyohio.gov/Redir/Link/Parcel/';
+const COLUMBUS_311 = 'https://gis.columbus.gov/arcgis/rest/services/Applications/CSIR_Public/MapServer/0/query';
 const TTL     = 86_400_000;
 
 // CLASSCD codes and their properties (from Franklin County Auditor)
@@ -486,6 +487,242 @@ export async function getParcelDetail(pin) {
   const r = await fetch(`${AUDITOR}/${encodeURIComponent(pin)}`);
   if (!r.ok) throw new Error(`Auditor API ${r.status}`);
   return r.json();
+}
+
+// Find parcel at a specific point (lat, lon)
+export async function findParcelAtPoint(lat, lon) {
+  const geo = JSON.stringify({
+    x: lon,
+    y: lat,
+    spatialReference: { wkid: 4326 }
+  });
+
+  const p = new URLSearchParams({
+    where: '1=1',
+    geometry: geo,
+    geometryType: 'esriGeometryPoint',
+    spatialRel: 'esriSpatialRelIntersects',
+    inSR: 4326,
+    outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS,ACRES,TOTVALUEBASE,SALEDATE,ZIPCD',
+    returnGeometry: 'true',
+    outSR: '4326',
+    resultRecordCount: 1,
+    f: 'geojson'
+  });
+
+  const r = await fetch(`${FC}?${p}`);
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+
+  if (!d.features || d.features.length === 0) return null;
+
+  const f = d.features[0];
+  const a = f.properties;
+  const classInfo = getClassInfo(a.CLASSCD);
+  const centroid = f.geometry ? getCentroid(f.geometry) : null;
+
+  return {
+    parcel_id: a.PARCELID,
+    address: a.SITEADDRESS,
+    owner: a.OWNERNME1,
+    classcd: a.CLASSCD,
+    class_label: classInfo.label,
+    class_color: classInfo.color,
+    class_desc: a.CLASSDSCRP,
+    risk: classInfo.risk,
+    acres: a.ACRES,
+    appraised: a.TOTVALUEBASE,
+    last_sale_year: a.SALEDATE ? new Date(a.SALEDATE).getFullYear() : null,
+    zip: a.ZIPCD,
+    property_card: CARD + (a.PARCELID || ''),
+    geometry: f.geometry,
+    centroid
+  };
+}
+
+// Find adjacent and across-street parcels
+export async function findAdjacentParcels(geometry, parcelId) {
+  if (!geometry || !geometry.coordinates || !geometry.coordinates[0]) {
+    return [];
+  }
+
+  // Convert GeoJSON polygon rings to Esri rings format
+  const esriRings = geometry.coordinates.map(ring =>
+    ring.map(coord => [coord[0], coord[1]])
+  );
+
+  const geoJson = {
+    rings: esriRings,
+    spatialReference: { wkid: 4326 }
+  };
+
+  const results = [];
+  const seenIds = new Set([parcelId]);
+
+  // Query 1: Touching parcels (shares boundary)
+  try {
+    const touchParams = new URLSearchParams({
+      where: `PARCELID <> '${parcelId}'`,
+      geometry: JSON.stringify(geoJson),
+      geometryType: 'esriGeometryPolygon',
+      spatialRel: 'esriSpatialRelTouches',
+      inSR: 4326,
+      outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS',
+      returnGeometry: 'true',
+      outSR: '4326',
+      resultRecordCount: 50,
+      f: 'geojson'
+    });
+
+    const touchResp = await fetch(`${FC}?${touchParams}`);
+    const touchData = await touchResp.json();
+
+    if (touchData.features) {
+      for (const f of touchData.features) {
+        const pid = f.properties.PARCELID;
+        if (!seenIds.has(pid)) {
+          seenIds.add(pid);
+          const classInfo = getClassInfo(f.properties.CLASSCD);
+          results.push({
+            parcel_id: pid,
+            address: f.properties.SITEADDRESS,
+            owner: f.properties.OWNERNME1,
+            classcd: f.properties.CLASSCD,
+            class_label: classInfo.label,
+            isAcrossStreet: false,
+            geometry: f.geometry
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Touch query failed:', e);
+  }
+
+  // Query 2: Within 15m buffer (across-street parcels)
+  try {
+    const bufferParams = new URLSearchParams({
+      where: `PARCELID <> '${parcelId}'`,
+      geometry: JSON.stringify(geoJson),
+      geometryType: 'esriGeometryPolygon',
+      spatialRel: 'esriSpatialRelIntersects',
+      distance: 15,
+      units: 'esriSRUnit_Meter',
+      inSR: 4326,
+      outFields: 'PARCELID,OWNERNME1,CLASSCD,CLASSDSCRP,SITEADDRESS',
+      returnGeometry: 'true',
+      outSR: '4326',
+      resultRecordCount: 50,
+      f: 'geojson'
+    });
+
+    const bufferResp = await fetch(`${FC}?${bufferParams}`);
+    const bufferData = await bufferResp.json();
+
+    if (bufferData.features) {
+      for (const f of bufferData.features) {
+        const pid = f.properties.PARCELID;
+        if (!seenIds.has(pid)) {
+          seenIds.add(pid);
+          const classInfo = getClassInfo(f.properties.CLASSCD);
+          results.push({
+            parcel_id: pid,
+            address: f.properties.SITEADDRESS,
+            owner: f.properties.OWNERNME1,
+            classcd: f.properties.CLASSCD,
+            class_label: classInfo.label,
+            isAcrossStreet: true,
+            geometry: f.geometry
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Buffer query failed:', e);
+  }
+
+  return results;
+}
+
+// Fetch 311 data from Columbus CSIR
+export async function fetch311Data(address, lat, lon, radius = 100) {
+  // Normalize address to uppercase for query
+  const normalizedAddress = address?.toUpperCase();
+
+  // Try address-based query first
+  if (normalizedAddress) {
+    try {
+      const params = new URLSearchParams({
+        where: `FULLADDRESS='${normalizedAddress.replace(/'/g, "''")}'`,
+        outFields: 'REQUESTTYPE,STATUS,DATECREATED,FULLADDRESS,CSIR_ID',
+        orderByFields: 'DATECREATED DESC',
+        resultRecordCount: 20,
+        f: 'json'
+      });
+
+      const r = await fetch(`${COLUMBUS_311}?${params}`);
+      const d = await r.json();
+
+      if (!d.error && d.features && d.features.length > 0) {
+        return {
+          available: true,
+          entries: d.features.map(f => ({
+            type: f.attributes.REQUESTTYPE,
+            status: f.attributes.STATUS,
+            date: f.attributes.DATECREATED ? new Date(f.attributes.DATECREATED).toLocaleDateString() : null,
+            address: f.attributes.FULLADDRESS,
+            case_id: f.attributes.CSIR_ID
+          }))
+        };
+      }
+    } catch (e) {
+      console.warn('311 address query failed:', e);
+    }
+  }
+
+  // Fallback: spatial query by location
+  try {
+    const geo = JSON.stringify({
+      x: lon,
+      y: lat,
+      spatialReference: { wkid: 4326 }
+    });
+
+    const params = new URLSearchParams({
+      where: '1=1',
+      geometry: geo,
+      geometryType: 'esriGeometryPoint',
+      spatialRel: 'esriSpatialRelIntersects',
+      distance: radius,
+      units: 'esriSRUnit_Meter',
+      inSR: 4326,
+      outFields: 'REQUESTTYPE,STATUS,DATECREATED,FULLADDRESS,CSIR_ID',
+      orderByFields: 'DATECREATED DESC',
+      resultRecordCount: 20,
+      f: 'json'
+    });
+
+    const r = await fetch(`${COLUMBUS_311}?${params}`);
+    const d = await r.json();
+
+    if (d.error) {
+      return { available: false, entries: [] };
+    }
+
+    return {
+      available: true,
+      entries: (d.features || []).map(f => ({
+        type: f.attributes.REQUESTTYPE,
+        status: f.attributes.STATUS,
+        date: f.attributes.DATECREATED ? new Date(f.attributes.DATECREATED).toLocaleDateString() : null,
+        address: f.attributes.FULLADDRESS,
+        case_id: f.attributes.CSIR_ID
+      }))
+    };
+  } catch (e) {
+    console.warn('311 spatial query failed:', e);
+    return { available: false, entries: [] };
+  }
 }
 
 // Tool dispatcher for LLM agents
