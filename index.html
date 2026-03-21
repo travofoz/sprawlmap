@@ -165,49 +165,78 @@ body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);hei
 .neighbor-card .addr{font-size:0.8rem;font-weight:600;color:var(--text)}
 .neighbor-card .meta{font-size:0.7rem;color:var(--text2);margin-top:2px}
 
-/* Pulse animation for selected parcel */
-@keyframes parcel-pulse {
-  0%, 100% {
-    opacity: 1;
-    stroke-width: 3;
-    filter: drop-shadow(0 0 4px rgba(88, 166, 255, 0.8));
-  }
-  50% {
-    opacity: 0.7;
-    stroke-width: 5;
-    filter: drop-shadow(0 0 12px rgba(88, 166, 255, 1));
-  }
-}
-
-/* Flash animation for neighbor highlight */
-@keyframes parcel-flash {
-  0%, 100% { fill-opacity: 0.3; }
-  25% { fill-opacity: 0.6; }
-  50% { fill-opacity: 0.2; }
-  75% { fill-opacity: 0.5; }
-}
-
-.parcels-highlight {
-  animation: parcel-pulse 1.5s ease-in-out infinite;
-}
-
-.parcels-flash {
-  animation: parcel-flash 0.5s ease-in-out 3;
-}
-
-/* Enhanced neighbor card hover */
-.neighbor-card:hover {
-  transform: translateX(4px);
-}
-
-.neighbor-card.selected {
-  box-shadow: 0 0 8px var(--accent);
-  border-width: 3px;
-}
-
 /* Canceled status for 311 reports */
 .report-card.canceled { border-color: var(--text2); }
 .report-status.canceled { background: var(--bg3); color: var(--text2); }
+
+/* Expandable neighbor cards */
+.neighbor-card .expand-icon {
+  float: right;
+  font-size: 0.7rem;
+  color: var(--text2);
+  transition: transform 0.2s;
+}
+.neighbor-card.expanded .expand-icon {
+  transform: rotate(90deg);
+}
+.neighbor-card .details {
+  display: none;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+}
+.neighbor-card.expanded .details {
+  display: block;
+}
+.neighbor-card .details-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.neighbor-card .details-label {
+  color: var(--text2);
+}
+.neighbor-card .details-value {
+  color: var(--text);
+  text-align: right;
+}
+
+/* Expandable 311 reports */
+.report-card {
+  cursor: pointer;
+}
+.report-card .expand-icon {
+  float: right;
+  font-size: 0.7rem;
+  color: var(--text2);
+  transition: transform 0.2s;
+}
+.report-card.expanded .expand-icon {
+  transform: rotate(90deg);
+}
+.report-card .details {
+  display: none;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+}
+.report-card.expanded .details {
+  display: block;
+}
+.report-card .details-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.report-card .details-label {
+  color: var(--text2);
+}
+.report-card .details-value {
+  color: var(--text);
+  text-align: right;
+}
 </style>
 </head>
 <body>
@@ -1076,17 +1105,30 @@ async function handleInspectorClick(e) {
 
     currentInspectorParcel = parcel;
 
-    // Highlight selected parcel with pulse animation
+    // Highlight selected parcel with pulse animation (JS-based since Leaflet doesn't support CSS className)
     inspectorLayerGroup.clearLayers();
+    let selectedPolygon = null;
     if (parcel.geometry) {
       const coords = parcel.geometry.coordinates[0].map(c => [c[1], c[0]]);
-      L.polygon(coords, {
+      selectedPolygon = L.polygon(coords, {
         color: '#58a6ff',
         fillColor: parcel.class_color,
         fillOpacity: 0.4,
-        weight: 3,
-        className: 'parcels-highlight'
+        weight: 3
       }).addTo(inspectorLayerGroup);
+
+      // Pulse animation via JS
+      let pulseState = 0;
+      const pulseAnimation = () => {
+        if (!inspectorLayerGroup.hasLayer(selectedPolygon)) return;
+        pulseState = (pulseState + 1) % 2;
+        selectedPolygon.setStyle({
+          weight: pulseState === 0 ? 3 : 5,
+          fillOpacity: pulseState === 0 ? 0.4 : 0.25
+        });
+        setTimeout(pulseAnimation, 750);
+      };
+      pulseAnimation();
     }
 
     // Fetch neighbors and 311 data in parallel
@@ -1126,24 +1168,34 @@ async function handleInspectorClick(e) {
   }
 }
 
-// Pan to neighbor parcel with flash animation
+// Pan to neighbor parcel with flash animation (JS-based)
 window.panToNeighbor = function(neighbor) {
   if (neighbor && neighbor.geometry) {
     const coords = neighbor.geometry.coordinates[0].map(c => [c[1], c[0]]);
     const bounds = L.latLngBounds(coords);
     map.fitBounds(bounds, { maxZoom: 17, padding: [20, 20] });
 
-    // Flash the neighbor polygon
+    // Flash the neighbor polygon via JS animation
     const flashLayer = L.polygon(coords, {
       color: '#58a6ff',
       fillColor: '#58a6ff',
-      fillOpacity: 0.4,
-      weight: 3,
-      className: 'parcels-flash'
+      fillOpacity: 0.5,
+      weight: 3
     }).addTo(inspectorLayerGroup);
 
-    // Remove flash after animation
-    setTimeout(() => inspectorLayerGroup.removeLayer(flashLayer), 1500);
+    // Flash animation
+    let flashCount = 0;
+    const maxFlashes = 3;
+    const doFlash = () => {
+      if (flashCount >= maxFlashes) {
+        inspectorLayerGroup.removeLayer(flashLayer);
+        return;
+      }
+      flashLayer.setStyle({ fillOpacity: flashCount % 2 === 0 ? 0.5 : 0.2 });
+      flashCount++;
+      setTimeout(doFlash, 200);
+    };
+    doFlash();
   }
 };
 
@@ -1165,7 +1217,7 @@ function renderInspectorPanel() {
         <span style="font-size:0.8rem;color:${p.class_color}">${p.class_label}</span>
       </div>
       <h2 style="font-size:1.1rem;color:var(--text);margin-bottom:4px">${p.address || '(No address)'}</h2>
-      <p style="font-size:0.75rem;color:var(--text2)">${p.parcel_id} · ${p.acres?.toFixed(2) || '?'} acres</p>
+      <p style="font-size:0.75rem;color:var(--text2)">${p.parcel_id} · ${p.acres ? p.acres.toFixed(2) + ' acres' : 'Size unknown'}</p>
       <a href="${p.property_card}" target="_blank" class="inspector-link">📄 Property Card →</a>
     </div>
   `;
@@ -1365,21 +1417,33 @@ function renderInspectorPanel() {
   } else if (current311Reports.entries.length === 0) {
     html += `<p style="color:var(--green);font-size:0.8rem">No service requests in 300m radius (30-day window)</p>`;
   } else {
-    html += `<p style="color:var(--text2);font-size:0.7rem;margin-bottom:6px">${current311Reports.entries.length} service requests (30-day window)</p>`;
+    html += `<p style="color:var(--text2);font-size:0.7rem;margin-bottom:6px">${current311Reports.entries.length} service requests (30-day window) — tap to expand</p>`;
 
-    for (const r of current311Reports.entries) {
+    for (let i = 0; i < current311Reports.entries.length; i++) {
+      const r = current311Reports.entries[i];
       const statusClass = r.status?.toLowerCase().includes('closed') ? 'closed' :
                           r.status?.toLowerCase().includes('cancel') ? 'canceled' : 'open';
-      const dateStr = r.reported_date ? new Date(r.reported_date).toLocaleDateString() : 'Unknown';
+      const reportedDate = r.reported_date ? new Date(r.reported_date).toLocaleDateString() : 'Unknown';
+      const statusDate = r.status_date ? new Date(r.status_date).toLocaleDateString() : null;
 
       html += `
-        <div class="report-card ${statusClass}">
+        <div class="report-card ${statusClass}" data-report-index="${i}">
+          <span class="expand-icon">▶</span>
           <div class="report-type">${r.type || 'Unknown Request'}</div>
           <div class="report-meta">
             ${r.category ? `<span style="color:var(--text2)">${r.category}</span> · ` : ''}
-            ${dateStr}
+            ${reportedDate}
             <span class="report-status ${statusClass}">${r.status || 'Unknown'}</span>
-            ${r.case_id ? `<span style="margin-left:4px;color:var(--text2)">#${r.case_id.slice(-8)}</span>` : ''}
+          </div>
+          <div class="details">
+            ${r.case_id ? `<div class="details-row"><span class="details-label">Case ID</span><span class="details-value">${r.case_id}</span></div>` : ''}
+            ${r.subcategory ? `<div class="details-row"><span class="details-label">Subcategory</span><span class="details-value">${r.subcategory}</span></div>` : ''}
+            ${r.department ? `<div class="details-row"><span class="details-label">Department</span><span class="details-value">${r.department}</span></div>` : ''}
+            ${r.division ? `<div class="details-row"><span class="details-label">Division</span><span class="details-value">${r.division}</span></div>` : ''}
+            ${r.team ? `<div class="details-row"><span class="details-label">Team</span><span class="details-value">${r.team}</span></div>` : ''}
+            ${statusDate ? `<div class="details-row"><span class="details-label">Status Date</span><span class="details-value">${statusDate}</span></div>` : ''}
+            ${r.street ? `<div class="details-row"><span class="details-label">Location</span><span class="details-value">${r.street}${r.city ? `, ${r.city}` : ''}${r.zip ? ` ${r.zip}` : ''}</span></div>` : ''}
+            ${r.lat && r.lon ? `<div class="details-row"><span class="details-label">Coordinates</span><span class="details-value">${r.lat.toFixed(5)}, ${r.lon.toFixed(5)}</span></div>` : ''}
           </div>
         </div>
       `;
@@ -1396,6 +1460,8 @@ function renderInspectorPanel() {
   if (currentInspectorNeighbors.length === 0) {
     html += `<p style="color:var(--text2);font-size:0.8rem">No adjacent parcels found</p>`;
   } else {
+    html += `<p style="color:var(--text2);font-size:0.7rem;margin-bottom:6px">Tap to zoom, long-press to expand details</p>`;
+
     // Sort neighbors: public entities first, then by risk
     const sortedNeighbors = [...currentInspectorNeighbors].sort((a, b) => {
       const aPublic = a.classcd >= 600 && a.classcd <= 680;
@@ -1406,14 +1472,29 @@ function renderInspectorPanel() {
       return (riskOrder[a.risk] || 2) - (riskOrder[b.risk] || 2);
     });
 
-    for (const n of sortedNeighbors) {
+    for (let i = 0; i < sortedNeighbors.length; i++) {
+      const n = sortedNeighbors[i];
+      const cardId = `neighbor-${i}`;
       html += `
-        <div class="neighbor-card ${n.risk || 'med'}" data-neighbor-id="${n.parcel_id}">
+        <div class="neighbor-card ${n.risk || 'med'}" id="${cardId}" data-neighbor-id="${n.parcel_id}">
+          <span class="expand-icon">▶</span>
           <div class="addr">${n.address || n.parcel_id}</div>
           <div class="meta">
             <span class="badge ${n.risk || 'med'}" style="font-size:0.6rem">${n.risk_text || riskText(n.risk)}</span>
             ${n.class_label}
             ${n.owner ? `<br>${n.owner.slice(0, 30)}${n.owner.length > 30 ? '...' : ''}` : ''}
+          </div>
+          <div class="details">
+            <div class="details-row"><span class="details-label">Parcel ID</span><span class="details-value">${n.parcel_id}</span></div>
+            <div class="details-row"><span class="details-label">Class Code</span><span class="details-value">${n.classcd} - ${n.class_label}</span></div>
+            <div class="details-row"><span class="details-label">Owner</span><span class="details-value">${n.owner || 'Unknown'}</span></div>
+            <div class="details-row"><span class="details-label">Acres</span><span class="details-value">${n.acres ? n.acres.toFixed(2) : 'N/A'}</span></div>
+            <div class="details-row"><span class="details-label">Appraised</span><span class="details-value">${n.appraised ? '$' + n.appraised.toLocaleString() : 'N/A'}</span></div>
+            <div class="details-row"><span class="details-label">Last Sale</span><span class="details-value">${n.last_sale_year || 'Unknown'}</span></div>
+            <div class="details-row"><span class="details-label">Description</span><span class="details-value">${n.class_desc || 'N/A'}</span></div>
+            <div style="margin-top:6px">
+              <a href="https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=${n.parcel_id}" target="_blank" class="inspector-link">📄 Property Card →</a>
+            </div>
           </div>
         </div>
       `;
@@ -1423,9 +1504,37 @@ function renderInspectorPanel() {
 
   el.innerHTML = html;
 
-  // Add click handlers for neighbor cards
+  // Add click handlers for 311 report cards (expand/collapse)
+  el.querySelectorAll('.report-card').forEach(card => {
+    card.onclick = (e) => {
+      e.stopPropagation();
+      card.classList.toggle('expanded');
+    };
+  });
+
+  // Add click handlers for neighbor cards (expand/collapse + zoom)
   el.querySelectorAll('.neighbor-card').forEach(card => {
-    card.onclick = () => {
+    let pressTimer;
+    let isLongPress = false;
+
+    card.onmousedown = () => {
+      isLongPress = false;
+      pressTimer = setTimeout(() => {
+        isLongPress = true;
+        card.classList.toggle('expanded');
+      }, 500);
+    };
+
+    card.onmouseup = card.onmouseleave = () => {
+      clearTimeout(pressTimer);
+    };
+
+    card.onclick = (e) => {
+      if (isLongPress) {
+        e.preventDefault();
+        return;
+      }
+      // Single click: zoom to neighbor
       const neighborId = card.dataset.neighborId;
       const neighbor = currentInspectorNeighbors.find(n => n.parcel_id === neighborId);
       if (neighbor) {

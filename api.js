@@ -653,7 +653,7 @@ export async function fetch311Data(address, lat, lon, radiusMeters = 300) {
       geometryType: 'esriGeometryEnvelope',
       spatialRel: 'esriSpatialRelIntersects',
       inSR: '4326',
-      outFields: 'CASE_ID,STATUS,REPORTED_DATE,STATUS_DATE,REQUEST_TYPE,REQUEST_CATEGORY,STREET,CITY,ZIP,LATITUDE,LONGITUDE',
+      outFields: 'CASE_ID,STATUS,REPORTED_DATE,STATUS_DATE,REQUEST_TYPE,REQUEST_CATEGORY,REQUEST_SUBCATEGORY,STREET,CITY,ZIP,LATITUDE,LONGITUDE,DEPARTMENT_NAME,DIVISION_NAME,TEAM_NAME',
       orderByFields: 'REPORTED_DATE DESC',
       resultRecordCount: '50',
       returnGeometry: 'false',
@@ -672,6 +672,7 @@ export async function fetch311Data(address, lat, lon, radiusMeters = 300) {
       case_id: f.attributes.CASE_ID,
       type: f.attributes.REQUEST_TYPE,
       category: f.attributes.REQUEST_CATEGORY,
+      subcategory: f.attributes.REQUEST_SUBCATEGORY,
       status: f.attributes.STATUS,
       reported_date: f.attributes.REPORTED_DATE,
       status_date: f.attributes.STATUS_DATE,
@@ -679,7 +680,10 @@ export async function fetch311Data(address, lat, lon, radiusMeters = 300) {
       city: f.attributes.CITY,
       zip: f.attributes.ZIP,
       lat: f.attributes.LATITUDE,
-      lon: f.attributes.LONGITUDE
+      lon: f.attributes.LONGITUDE,
+      department: f.attributes.DEPARTMENT_NAME,
+      division: f.attributes.DIVISION_NAME,
+      team: f.attributes.TEAM_NAME
     }));
 
     return { available: true, entries };
