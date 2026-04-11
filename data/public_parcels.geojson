@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-04-10T07:24:45.179Z",
+  "generated": "2026-04-11T06:58:34.475Z",
   "count": 8683,
   "risk_counts": {
     "low": 3117,
@@ -769530,13 +769530,13 @@
       },
       "properties": {
         "PARCELID": "010-089745",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "OWNERNME1": "CENTRAL OHIO COMMUNITY LAND TRUST CORPORATION",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "E BROAD ST",
         "ACRES": null,
         "TOTVALUEBASE": 126000,
-        "SALEDATE": 1770699600000,
+        "SALEDATE": 1775797200000,
         "ZIPCD": "43209",
         "class_label": "Municipal",
         "class_color": "#3fb950",
