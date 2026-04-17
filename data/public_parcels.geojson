@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-04-16T07:28:35.444Z",
+  "generated": "2026-04-17T07:43:06.560Z",
   "count": 8683,
   "risk_counts": {
     "low": 3117,
@@ -119776,7 +119776,7 @@
         "OWNERNME1": "BIG WALNUT COMMUNITY IMPROVEMENT CORPORATION",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "INDUSTRIAL CTR DR",
+        "SITEADDRESS": "4400 INDUSTRIAL CENTER DR",
         "ACRES": null,
         "TOTVALUEBASE": 603600,
         "SALEDATE": 1771477200000,
@@ -119985,7 +119985,7 @@
         "OWNERNME1": "VILLAGE OF OBETZ (THE)",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "ALUM CREEK DR",
+        "SITEADDRESS": "4200 ALUM CREEK DR",
         "ACRES": null,
         "TOTVALUEBASE": 637600,
         "SALEDATE": 1415336400000,
