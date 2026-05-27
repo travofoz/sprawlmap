@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-05-26T09:51:17.698Z",
+  "generated": "2026-05-27T09:40:30.865Z",
   "count": 8674,
   "risk_counts": {
     "low": 3113,
@@ -193961,51 +193961,6 @@
         "coordinates": [
           [
             [
-              -82.99106392683468,
-              39.96648108168603
-            ],
-            [
-              -82.99063896928735,
-              39.966528980552155
-            ],
-            [
-              -82.99065561413418,
-              39.9666178591405
-            ],
-            [
-              -82.99108024801687,
-              39.96656830887967
-            ],
-            [
-              -82.99106392683468,
-              39.96648108168603
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-007507",
-        "OWNERNME1": "DISTRICT BOARD OF TRUSTEES COLUMBUS STATE COMMUNITY COLLEGE",
-        "CLASSCD": "670",
-        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
-        "SITEADDRESS": "145 CLEVELAND AVE",
-        "ACRES": null,
-        "TOTVALUEBASE": 78300,
-        "SALEDATE": 1304917200000,
-        "ZIPCD": "43215",
-        "class_label": "Religious/Charity",
-        "class_color": "#6b7280",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-007507"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -82.99125959377594,
               39.969797553528714
             ],
@@ -194465,51 +194420,6 @@
         "class_color": "#6b7280",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-012930"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.99059217553037,
-              39.96627909812691
-            ],
-            [
-              -82.99063896928735,
-              39.966528980552155
-            ],
-            [
-              -82.99106392683468,
-              39.96648108168603
-            ],
-            [
-              -82.99101673022304,
-              39.96622873242377
-            ],
-            [
-              -82.99059217553037,
-              39.96627909812691
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-013262",
-        "OWNERNME1": "DISTRICT BOARD OF TRUSTEES COLUMBUS STATE COMMUNITY COLLEGE",
-        "CLASSCD": "670",
-        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
-        "SITEADDRESS": "145 CLEVELAND AVE",
-        "ACRES": null,
-        "TOTVALUEBASE": 617000,
-        "SALEDATE": 1304917200000,
-        "ZIPCD": "43215",
-        "class_label": "Religious/Charity",
-        "class_color": "#6b7280",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-013262"
       }
     },
     {
@@ -196126,67 +196036,6 @@
         "class_color": "#6b7280",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-046900"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.99153068063367,
-              39.96640528871793
-            ],
-            [
-              -82.99128046201513,
-              39.96643308039913
-            ],
-            [
-              -82.99127908541739,
-              39.9664332338687
-            ],
-            [
-              -82.99110874113295,
-              39.96645215351024
-            ],
-            [
-              -82.99110450137698,
-              39.96645262337951
-            ],
-            [
-              -82.99118517748106,
-              39.96689208746732
-            ],
-            [
-              -82.99120977631998,
-              39.96688951492318
-            ],
-            [
-              -82.99161544688606,
-              39.96684691496922
-            ],
-            [
-              -82.99153068063367,
-              39.96640528871793
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-048939",
-        "OWNERNME1": "COLUMBUS STATE COMMUNITY COLLEGE DIST BD OF TRS",
-        "CLASSCD": "670",
-        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
-        "SITEADDRESS": "164 N GRANT AVE",
-        "ACRES": null,
-        "TOTVALUEBASE": 1351400,
-        "SALEDATE": 814165200000,
-        "ZIPCD": "43215",
-        "class_label": "Religious/Charity",
-        "class_color": "#6b7280",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-048939"
       }
     },
     {
@@ -751470,6 +751319,181 @@
         "class_color": "#9ca3af",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=570-181299"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.99106392683468,
+              39.96648108168603
+            ],
+            [
+              -82.99063896928735,
+              39.966528980552155
+            ],
+            [
+              -82.99065561413418,
+              39.9666178591405
+            ],
+            [
+              -82.99108024801687,
+              39.96656830887967
+            ],
+            [
+              -82.99108012151362,
+              39.966567633921635
+            ],
+            [
+              -82.99106392683468,
+              39.96648108168603
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-007507",
+        "OWNERNME1": "DISTRICT BOARD OF TRUSTEES COLUMBUS STATE COMMUNITY COLLEGE",
+        "CLASSCD": "670",
+        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
+        "SITEADDRESS": "145 CLEVELAND AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 78300,
+        "SALEDATE": 1304917200000,
+        "ZIPCD": "43215",
+        "class_label": "Religious/Charity",
+        "class_color": "#6b7280",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-007507"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.99059217553037,
+              39.96627909812691
+            ],
+            [
+              -82.99063896928735,
+              39.966528980552155
+            ],
+            [
+              -82.99106392683468,
+              39.96648108168603
+            ],
+            [
+              -82.99105956336288,
+              39.96645775419863
+            ],
+            [
+              -82.99103920323053,
+              39.96634888777131
+            ],
+            [
+              -82.99101917652278,
+              39.96624181043362
+            ],
+            [
+              -82.99101673143807,
+              39.96622873872322
+            ],
+            [
+              -82.99059217553037,
+              39.96627909812691
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-013262",
+        "OWNERNME1": "DISTRICT BOARD OF TRUSTEES COLUMBUS STATE COMMUNITY COLLEGE",
+        "CLASSCD": "670",
+        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
+        "SITEADDRESS": "145 CLEVELAND AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 617000,
+        "SALEDATE": 1304917200000,
+        "ZIPCD": "43215",
+        "class_label": "Religious/Charity",
+        "class_color": "#6b7280",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-013262"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.99153068063367,
+              39.96640528871793
+            ],
+            [
+              -82.99128046201513,
+              39.96643308039913
+            ],
+            [
+              -82.99110450137698,
+              39.96645262337951
+            ],
+            [
+              -82.9911047996325,
+              39.966454247804464
+            ],
+            [
+              -82.99112446279058,
+              39.966561365369785
+            ],
+            [
+              -82.9911444205388,
+              39.966670076745984
+            ],
+            [
+              -82.99116471919156,
+              39.96678064112611
+            ],
+            [
+              -82.99118517748106,
+              39.96689208746732
+            ],
+            [
+              -82.99120977631998,
+              39.96688951492318
+            ],
+            [
+              -82.99161544688606,
+              39.96684691496922
+            ],
+            [
+              -82.99153068063367,
+              39.96640528871793
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-048939",
+        "OWNERNME1": "COLUMBUS STATE COMMUNITY COLLEGE DIST BD OF TRS",
+        "CLASSCD": "670",
+        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
+        "SITEADDRESS": "164 N GRANT AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 1351400,
+        "SALEDATE": 814165200000,
+        "ZIPCD": "43215",
+        "class_label": "Religious/Charity",
+        "class_color": "#6b7280",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-048939"
       }
     },
     {
