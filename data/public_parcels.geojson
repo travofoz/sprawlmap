@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-05-27T09:40:30.865Z",
-  "count": 8674,
+  "generated": "2026-05-28T09:57:05.355Z",
+  "count": 8673,
   "risk_counts": {
     "low": 3113,
-    "med": 4994,
+    "med": 4993,
     "avoid": 567,
     "high": 0
   },
@@ -168466,63 +168466,6 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-053793"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.99773537223298,
-              39.93977869802429
-            ],
-            [
-              -82.99778847839423,
-              39.93977408016708
-            ],
-            [
-              -82.99811165100905,
-              39.939745811962894
-            ],
-            [
-              -82.9981473491604,
-              39.93948897625236
-            ],
-            [
-              -82.99816029706227,
-              39.939404917727856
-            ],
-            [
-              -82.99772734289813,
-              39.93945397259496
-            ],
-            [
-              -82.9976745228188,
-              39.93945994650493
-            ],
-            [
-              -82.99773537223298,
-              39.93977869802429
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-067069",
-        "OWNERNME1": "FRANKLIN COUNTY COMM",
-        "CLASSCD": "620",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
-        "SITEADDRESS": "FRONT ST",
-        "ACRES": null,
-        "TOTVALUEBASE": 58100,
-        "SALEDATE": 328770000000,
-        "ZIPCD": "43206",
-        "class_label": "Franklin County",
-        "class_color": "#8b5cf6",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-067069"
       }
     },
     {
