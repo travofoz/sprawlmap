@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-07-10T09:30:18.371Z",
-  "count": 8609,
+  "generated": "2026-07-11T07:50:56.589Z",
+  "count": 8618,
   "risk_counts": {
-    "low": 3073,
-    "med": 4968,
+    "low": 3074,
+    "med": 4976,
     "avoid": 568,
     "high": 0
   },
@@ -45749,6 +45749,203 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=040-009916"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.11763699839291,
+              39.898626387421636
+            ],
+            [
+              -83.11925919254458,
+              39.8986776762889
+            ],
+            [
+              -83.11947276155333,
+              39.89324039232188
+            ],
+            [
+              -83.11933985884063,
+              39.89317042900596
+            ],
+            [
+              -83.11479332300591,
+              39.894662058950544
+            ],
+            [
+              -83.11327762397681,
+              39.8951575583755
+            ],
+            [
+              -83.11081935660931,
+              39.895975573821765
+            ],
+            [
+              -83.11076401062012,
+              39.89689443279377
+            ],
+            [
+              -83.11069286412204,
+              39.89807659245678
+            ],
+            [
+              -83.11062851319278,
+              39.8991438527692
+            ],
+            [
+              -83.11292838113047,
+              39.89924654976672
+            ],
+            [
+              -83.11288749190625,
+              39.899864449302626
+            ],
+            [
+              -83.11282653796194,
+              39.90078141456771
+            ],
+            [
+              -83.11322137640849,
+              39.900784660391025
+            ],
+            [
+              -83.11339961410128,
+              39.90078611386289
+            ],
+            [
+              -83.113577848214,
+              39.900787558075805
+            ],
+            [
+              -83.1137560847841,
+              39.90078901461437
+            ],
+            [
+              -83.11393466052223,
+              39.900790474509996
+            ],
+            [
+              -83.11411289710728,
+              39.90079193050609
+            ],
+            [
+              -83.11429113136107,
+              39.90079338624355
+            ],
+            [
+              -83.11446936796106,
+              39.90079484169774
+            ],
+            [
+              -83.11464758586678,
+              39.90079629787971
+            ],
+            [
+              -83.1148261370699,
+              39.900797754744914
+            ],
+            [
+              -83.11484756686446,
+              39.900797929675456
+            ],
+            [
+              -83.11500436434541,
+              39.900799210335464
+            ],
+            [
+              -83.11587738299836,
+              39.90080633171645
+            ],
+            [
+              -83.11588677607189,
+              39.900693207691845
+            ],
+            [
+              -83.11589815329802,
+              39.90055614943618
+            ],
+            [
+              -83.11590953177631,
+              39.90041910557722
+            ],
+            [
+              -83.11592088676534,
+              39.90028231942799
+            ],
+            [
+              -83.11593226398466,
+              39.90014527556058
+            ],
+            [
+              -83.11594364220885,
+              39.90000821817019
+            ],
+            [
+              -83.11598317022784,
+              39.899536356949326
+            ],
+            [
+              -83.11640694542929,
+              39.89954752625295
+            ],
+            [
+              -83.11658490208636,
+              39.89955218365888
+            ],
+            [
+              -83.1167631036372,
+              39.89955689354716
+            ],
+            [
+              -83.11694112682632,
+              39.899561531148315
+            ],
+            [
+              -83.11711926077172,
+              39.899566259765486
+            ],
+            [
+              -83.11729715426846,
+              39.89957090381372
+            ],
+            [
+              -83.1174754036423,
+              39.89957558804964
+            ],
+            [
+              -83.11755241044425,
+              39.89957758904425
+            ],
+            [
+              -83.11759516151389,
+              39.89909687091933
+            ],
+            [
+              -83.11763699839291,
+              39.898626387421636
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "040-011536",
+        "OWNERNME1": "SOUTHWESTERN C S D BD OF ED",
+        "CLASSCD": "650",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
+        "SITEADDRESS": "4500 S BIG RUN S RD",
+        "ACRES": null,
+        "TOTVALUEBASE": 83196900,
+        "SALEDATE": 1017637200000,
+        "ZIPCD": "43123",
+        "class_label": "School District",
+        "class_color": "#f85149",
+        "risk": "avoid",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=040-011536"
       }
     },
     {
@@ -182685,6 +182882,51 @@
         "coordinates": [
           [
             [
+              -82.99639132972328,
+              39.95996955780392
+            ],
+            [
+              -82.99648914649264,
+              39.96047600849359
+            ],
+            [
+              -82.99663528226507,
+              39.96045967910409
+            ],
+            [
+              -82.9965399775345,
+              39.95995277117544
+            ],
+            [
+              -82.99639132972328,
+              39.95996955780392
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-004773",
+        "OWNERNME1": "137 ESS PROPERTIES LLC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "131 E STATE ST",
+        "ACRES": null,
+        "TOTVALUEBASE": 587100,
+        "SALEDATE": 1491282000000,
+        "ZIPCD": "43215",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-004773"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -82.99171850883597,
               39.95988654550086
             ],
@@ -182749,6 +182991,51 @@
         "class_color": "#9ca3af",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-008401"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.99624946801153,
+              39.959985555394006
+            ],
+            [
+              -82.9963426203531,
+              39.960492424013246
+            ],
+            [
+              -82.99648914649264,
+              39.96047600849359
+            ],
+            [
+              -82.99639132972328,
+              39.95996955780392
+            ],
+            [
+              -82.99624946801153,
+              39.959985555394006
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-011695",
+        "OWNERNME1": "137 ESS PROPERTIES LLC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "137 E STATE ST",
+        "ACRES": null,
+        "TOTVALUEBASE": 958900,
+        "SALEDATE": 1491282000000,
+        "ZIPCD": "43215",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-011695"
       }
     },
     {
@@ -261012,51 +261299,6 @@
         "coordinates": [
           [
             [
-              -82.91135666935868,
-              39.96585063169196
-            ],
-            [
-              -82.91196091255155,
-              39.96587679233805
-            ],
-            [
-              -82.91197441930261,
-              39.96574086082988
-            ],
-            [
-              -82.91136903426576,
-              39.96570866362496
-            ],
-            [
-              -82.91135666935868,
-              39.96585063169196
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-070974",
-        "OWNERNME1": "E&A PROPERTIES MAYFAIR LLC",
-        "CLASSCD": "680",
-        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
-        "SITEADDRESS": "299 MAYFAIR BL",
-        "ACRES": null,
-        "TOTVALUEBASE": 108500,
-        "SALEDATE": 1742187600000,
-        "ZIPCD": "43213",
-        "class_label": "Other Exempt",
-        "class_color": "#9ca3af",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-070974"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -82.9114916249481,
               39.96420936002666
             ],
@@ -280226,6 +280468,51 @@
         "coordinates": [
           [
             [
+              -82.83525425989102,
+              39.94473663240282
+            ],
+            [
+              -82.83543715572029,
+              39.94474680930924
+            ],
+            [
+              -82.83546190873544,
+              39.94447045974793
+            ],
+            [
+              -82.83528067644058,
+              39.94446029613988
+            ],
+            [
+              -82.83525425989102,
+              39.94473663240282
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-155902",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "5989 ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 96900,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-155902"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -82.83197776903826,
               39.94393145563706
             ],
@@ -280266,6 +280553,288 @@
         "class_color": "#9ca3af",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-155976"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83564564932635,
+              39.944480760904305
+            ],
+            [
+              -82.83559147601946,
+              39.94507762776834
+            ],
+            [
+              -82.83578233154023,
+              39.94508842443214
+            ],
+            [
+              -82.83581832550898,
+              39.94469187257407
+            ],
+            [
+              -82.83583651331232,
+              39.944491467388325
+            ],
+            [
+              -82.83564564932635,
+              39.944480760904305
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-155996",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 26000,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-155996"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83540845204631,
+              39.94506726953628
+            ],
+            [
+              -82.83559147601946,
+              39.94507762776834
+            ],
+            [
+              -82.83564564932635,
+              39.944480760904305
+            ],
+            [
+              -82.83546190873544,
+              39.94447045974793
+            ],
+            [
+              -82.83543715572029,
+              39.94474680930924
+            ],
+            [
+              -82.83540845204631,
+              39.94506726953628
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-155997",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 25800,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-155997"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83503672645733,
+              39.94504624419687
+            ],
+            [
+              -82.83522365374175,
+              39.94505681521617
+            ],
+            [
+              -82.83525425989102,
+              39.94473663240282
+            ],
+            [
+              -82.83528067644058,
+              39.94446029613988
+            ],
+            [
+              -82.83509374415674,
+              39.94444981349176
+            ],
+            [
+              -82.83503672645733,
+              39.94504624419687
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-155999",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "5993 ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 182200,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-155999"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83485299103118,
+              39.94503584840247
+            ],
+            [
+              -82.83503672645733,
+              39.94504624419687
+            ],
+            [
+              -82.83509374415674,
+              39.94444981349176
+            ],
+            [
+              -82.83491073640799,
+              39.94443954900781
+            ],
+            [
+              -82.83485299103118,
+              39.94503584840247
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-156000",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "5997 ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 207000,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-156000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83466641965775,
+              39.94502529288982
+            ],
+            [
+              -82.83485299103118,
+              39.94503584840247
+            ],
+            [
+              -82.83491073640799,
+              39.94443954900781
+            ],
+            [
+              -82.83472344840152,
+              39.94442904156725
+            ],
+            [
+              -82.83466641965775,
+              39.94502529288982
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-156001",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "6001 ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 218100,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-156001"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83448017369008,
+              39.94501474786127
+            ],
+            [
+              -82.83466641965775,
+              39.94502529288982
+            ],
+            [
+              -82.83472344840152,
+              39.94442904156725
+            ],
+            [
+              -82.83453686862258,
+              39.944418584946504
+            ],
+            [
+              -82.83448017369008,
+              39.94501474786127
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "550-156002",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "6005 ASTOR AVE",
+        "ACRES": null,
+        "TOTVALUEBASE": 51500,
+        "SALEDATE": 1626238800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=550-156002"
       }
     },
     {
@@ -299611,6 +300180,55 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=053-000047"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.18905258785502,
+              40.024543598654915
+            ],
+            [
+              -83.18912895472668,
+              40.02428482967535
+            ],
+            [
+              -83.18909874185096,
+              40.023991678846045
+            ],
+            [
+              -83.18914097176882,
+              40.02368296941399
+            ],
+            [
+              -83.18889098382522,
+              40.02371166514069
+            ],
+            [
+              -83.18905258785502,
+              40.024543598654915
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "053-000553",
+        "OWNERNME1": "CITY OF HILLIARD",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "SWITCHGRASS CT",
+        "ACRES": null,
+        "TOTVALUEBASE": 4400,
+        "SALEDATE": 1705986000000,
+        "ZIPCD": "43026",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=053-000553"
       }
     },
     {
@@ -763112,315 +763730,6 @@
         "class_color": "#f85149",
         "risk": "avoid",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=100-007053"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.02700341629462,
-              40.08938112262907
-            ],
-            [
-              -83.02665707905933,
-              40.089371226965014
-            ],
-            [
-              -83.02666293004324,
-              40.08924767294081
-            ],
-            [
-              -83.02462493934942,
-              40.08918980477659
-            ],
-            [
-              -83.02237936439384,
-              40.08914023677809
-            ],
-            [
-              -83.02234229625127,
-              40.08915385210215
-            ],
-            [
-              -83.02232273033908,
-              40.08949789580808
-            ],
-            [
-              -83.0233119142298,
-              40.08953082987947
-            ],
-            [
-              -83.02330243314896,
-              40.0896953019921
-            ],
-            [
-              -83.02333818273753,
-              40.08969651539025
-            ],
-            [
-              -83.02331835601964,
-              40.09005291314681
-            ],
-            [
-              -83.02222091236942,
-              40.090016578404885
-            ],
-            [
-              -83.022101267636,
-              40.0920779842021
-            ],
-            [
-              -83.02245805784023,
-              40.092090566724835
-            ],
-            [
-              -83.02281735935061,
-              40.09210384757914
-            ],
-            [
-              -83.02608507466059,
-              40.09222453996452
-            ],
-            [
-              -83.02960892182683,
-              40.09234439334894
-            ],
-            [
-              -83.03458592574854,
-              40.09250584064659
-            ],
-            [
-              -83.03526555914117,
-              40.09252788085811
-            ],
-            [
-              -83.035264464253,
-              40.09252655924362
-            ],
-            [
-              -83.03507289978066,
-              40.09229487829331
-            ],
-            [
-              -83.03509829763674,
-              40.092251392001415
-            ],
-            [
-              -83.03521118886108,
-              40.09205899765741
-            ],
-            [
-              -83.0353379482791,
-              40.09181163791327
-            ],
-            [
-              -83.03528942683441,
-              40.09168393969697
-            ],
-            [
-              -83.03529646172029,
-              40.09157657557886
-            ],
-            [
-              -83.03514350723819,
-              40.09148641016854
-            ],
-            [
-              -83.03498868760572,
-              40.09115441201025
-            ],
-            [
-              -83.03463822190254,
-              40.090664913015345
-            ],
-            [
-              -83.03432808211306,
-              40.09016644687378
-            ],
-            [
-              -83.0338637994518,
-              40.08974746177936
-            ],
-            [
-              -83.03385261769263,
-              40.08973406192487
-            ],
-            [
-              -83.03272897887335,
-              40.08964665079629
-            ],
-            [
-              -83.03148083533105,
-              40.089542222732945
-            ],
-            [
-              -83.03100263525603,
-              40.089403286612686
-            ],
-            [
-              -83.02969734139671,
-              40.089349059160924
-            ],
-            [
-              -83.02969396845171,
-              40.08942236609843
-            ],
-            [
-              -83.02955097442721,
-              40.08941807042523
-            ],
-            [
-              -83.02954853495692,
-              40.089472982671104
-            ],
-            [
-              -83.02944128923609,
-              40.08946989746826
-            ],
-            [
-              -83.02944408757526,
-              40.08941498180756
-            ],
-            [
-              -83.02835293691727,
-              40.08938376984401
-            ],
-            [
-              -83.02832977716635,
-              40.089877234960845
-            ],
-            [
-              -83.02830247358975,
-              40.089876488567946
-            ],
-            [
-              -83.02819040753467,
-              40.08995648722983
-            ],
-            [
-              -83.02816282944846,
-              40.090510796595666
-            ],
-            [
-              -83.02725669997139,
-              40.09048224822881
-            ],
-            [
-              -83.02724012513755,
-              40.090481114077775
-            ],
-            [
-              -83.02722393737686,
-              40.09047737672321
-            ],
-            [
-              -83.02720854292046,
-              40.09047112995384
-            ],
-            [
-              -83.02719432809155,
-              40.090462530532086
-            ],
-            [
-              -83.02718164961065,
-              40.09045179426005
-            ],
-            [
-              -83.02717082564367,
-              40.090439190564005
-            ],
-            [
-              -83.02719637528142,
-              40.08990267851272
-            ],
-            [
-              -83.02715527159273,
-              40.089643395015706
-            ],
-            [
-              -83.0271480144911,
-              40.0896217622515
-            ],
-            [
-              -83.02713729636439,
-              40.08960161867259
-            ],
-            [
-              -83.02712340946421,
-              40.089583513534784
-            ],
-            [
-              -83.02710673244525,
-              40.08956794051163
-            ],
-            [
-              -83.02708772004047,
-              40.0895553242334
-            ],
-            [
-              -83.02706689066193,
-              40.08954600870868
-            ],
-            [
-              -83.02704481226513,
-              40.089540247944264
-            ],
-            [
-              -83.02703570173472,
-              40.08953808922101
-            ],
-            [
-              -83.02702709349944,
-              40.089534406812035
-            ],
-            [
-              -83.02701924031345,
-              40.08952930883987
-            ],
-            [
-              -83.02701237276119,
-              40.089522944990684
-            ],
-            [
-              -83.02700669248708,
-              40.08951550211916
-            ],
-            [
-              -83.02700236627474,
-              40.08950719876218
-            ],
-            [
-              -83.02699952115,
-              40.08949827872206
-            ],
-            [
-              -83.02699824065112,
-              40.08948900390815
-            ],
-            [
-              -83.02700341629462,
-              40.08938112262907
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "100-007052",
-        "OWNERNME1": "BOARD OF EDUCATION OF WORTHINGTON CITY SCHOOL DISTRICT",
-        "CLASSCD": "650",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
-        "SITEADDRESS": "300 W DUBLIN GRANVILLE RD",
-        "ACRES": null,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": "43085",
-        "class_label": "School District",
-        "class_color": "#f85149",
-        "risk": "avoid",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=100-007052"
       }
     },
     {
