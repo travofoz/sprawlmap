@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-07-20T08:52:59.089Z",
-  "count": 8626,
+  "generated": "2026-07-21T08:23:40.393Z",
+  "count": 8638,
   "risk_counts": {
-    "low": 3076,
-    "med": 4982,
+    "low": 3081,
+    "med": 4989,
     "avoid": 568,
     "high": 0
   },
@@ -32563,6 +32563,83 @@
         "coordinates": [
           [
             [
+              -83.21546330036762,
+              39.942143567498675
+            ],
+            [
+              -83.21654226831333,
+              39.94213674143742
+            ],
+            [
+              -83.21661259436502,
+              39.942128896614065
+            ],
+            [
+              -83.21709403925502,
+              39.942082088220175
+            ],
+            [
+              -83.2212750823789,
+              39.94190107940208
+            ],
+            [
+              -83.22109286178815,
+              39.940918020606354
+            ],
+            [
+              -83.21643362555868,
+              39.94116242950814
+            ],
+            [
+              -83.21643299989289,
+              39.94116246215082
+            ],
+            [
+              -83.21636185311434,
+              39.941166193110064
+            ],
+            [
+              -83.21637246078377,
+              39.94122325440622
+            ],
+            [
+              -83.21529868445721,
+              39.941263369526524
+            ],
+            [
+              -83.2154104671703,
+              39.94185912318955
+            ],
+            [
+              -83.21546330036762,
+              39.942143567498675
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-002103",
+        "OWNERNME1": "BOARD OF PARK COMMISSIONERS OF THE COLUMBUS AND FRANKLIN COUNTY METROPOLITAN PARK DISTRICT",
+        "CLASSCD": "660",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED PARK DIST.PUB",
+        "SITEADDRESS": "341 DARBY CREEK DR",
+        "ACRES": 13.06214483,
+        "TOTVALUEBASE": 233400,
+        "SALEDATE": 1703048400000,
+        "ZIPCD": "43119",
+        "class_label": "Metro Parks/COTA",
+        "class_color": "#eab308",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-002103"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -83.23630467997317,
               39.94806611088862
             ],
@@ -43779,6 +43856,55 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=040-000392"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.09277791954455,
+              39.88065268276786
+            ],
+            [
+              -83.09305264748926,
+              39.88079342959143
+            ],
+            [
+              -83.09324815453822,
+              39.88056378579394
+            ],
+            [
+              -83.09324830617399,
+              39.8805636084927
+            ],
+            [
+              -83.09297222945698,
+              39.88042407495723
+            ],
+            [
+              -83.09277791954455,
+              39.88065268276786
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "040-000393",
+        "OWNERNME1": "CITY OF GROVE CITY",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "4107 ARBUTUS AVE",
+        "ACRES": 0.21227764,
+        "TOTVALUEBASE": 69300,
+        "SALEDATE": 1673326800000,
+        "ZIPCD": "43123",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=040-000393"
       }
     },
     {
@@ -209197,6 +209323,55 @@
         "class_color": "#58a6ff",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-035496"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.97555262228595,
+              39.959875196298825
+            ],
+            [
+              -82.97585885018803,
+              39.95988144194312
+            ],
+            [
+              -82.97586830313527,
+              39.95977407120324
+            ],
+            [
+              -82.97586799294106,
+              39.959774065256
+            ],
+            [
+              -82.97556115612083,
+              39.95976702052555
+            ],
+            [
+              -82.97555262228595,
+              39.959875196298825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-039885",
+        "OWNERNME1": "ALVIS INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "244 - 246 S EIGHTEENTH ST",
+        "ACRES": 0.07762397,
+        "TOTVALUEBASE": 645900,
+        "SALEDATE": 1464757200000,
+        "ZIPCD": "43205",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-039885"
       }
     },
     {
@@ -390651,6 +390826,51 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-009749"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.093884731791,
+              40.10268452165984
+            ],
+            [
+              -83.09302945469751,
+              40.10265331360639
+            ],
+            [
+              -83.09298549487598,
+              40.10323897707187
+            ],
+            [
+              -83.09384882282733,
+              40.10327133272091
+            ],
+            [
+              -83.093884731791,
+              40.10268452165984
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "273-010864",
+        "OWNERNME1": "DUBLIN FOOD PANTRY AN OHIO NONPROFIT CORPORATION",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "6608 DUBLIN CENTER DR",
+        "ACRES": 1.18153437,
+        "TOTVALUEBASE": 1515500,
+        "SALEDATE": 1677214800000,
+        "ZIPCD": "43017",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-010864"
       }
     },
     {
@@ -674762,6 +674982,83 @@
         "coordinates": [
           [
             [
+              -82.78942671545317,
+              40.11942323643326
+            ],
+            [
+              -82.79130463126806,
+              40.11949557378936
+            ],
+            [
+              -82.79131622735254,
+              40.11949590530464
+            ],
+            [
+              -82.79135798334221,
+              40.119497097824635
+            ],
+            [
+              -82.79138219776227,
+              40.119152092127
+            ],
+            [
+              -82.791393655111,
+              40.118988824617
+            ],
+            [
+              -82.79141301259213,
+              40.11871299979341
+            ],
+            [
+              -82.79143216964474,
+              40.118440041110425
+            ],
+            [
+              -82.79143497415576,
+              40.11840007407618
+            ],
+            [
+              -82.79139092227307,
+              40.1183983937493
+            ],
+            [
+              -82.79139072047886,
+              40.11839838704451
+            ],
+            [
+              -82.78949755585965,
+              40.118326202112996
+            ],
+            [
+              -82.78942671545317,
+              40.11942323643326
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "222-002941",
+        "OWNERNME1": "CITY OF NEW ALBANY",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "BEVELHYMER RD",
+        "ACRES": 4.97744161,
+        "TOTVALUEBASE": 198700,
+        "SALEDATE": 1715835600000,
+        "ZIPCD": "43054",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=222-002941"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -82.78606297842569,
               40.111747913359864
             ],
@@ -702933,6 +703230,75 @@
         "coordinates": [
           [
             [
+              -83.17605260011673,
+              40.105662525841524
+            ],
+            [
+              -83.17612574567066,
+              40.10564539978414
+            ],
+            [
+              -83.17616071039089,
+              40.10563833605263
+            ],
+            [
+              -83.1769004358282,
+              40.10549180286565
+            ],
+            [
+              -83.17661714979624,
+              40.10484867000895
+            ],
+            [
+              -83.17652552243436,
+              40.10472331983752
+            ],
+            [
+              -83.17643197294284,
+              40.104599397557195
+            ],
+            [
+              -83.1760577335672,
+              40.104646307643236
+            ],
+            [
+              -83.17602238487433,
+              40.10465062848087
+            ],
+            [
+              -83.17594646190783,
+              40.104661142821925
+            ],
+            [
+              -83.17605260011673,
+              40.105662525841524
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "273-001894",
+        "OWNERNME1": "CITY OF DUBLIN OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "6611 LIGGETT RD",
+        "ACRES": 1.61020257,
+        "TOTVALUEBASE": 449900,
+        "SALEDATE": 1635224400000,
+        "ZIPCD": "43016",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-001894"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -82.81379721499766,
               39.9050331135613
             ],
@@ -708461,6 +708827,63 @@
         "class_color": "#a78bfa",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=150-000728"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.94616273171498,
+              40.027762275989346
+            ],
+            [
+              -82.94617616092555,
+              40.02776918773086
+            ],
+            [
+              -82.94672018428527,
+              40.028049178529535
+            ],
+            [
+              -82.9468304019626,
+              40.02792547867649
+            ],
+            [
+              -82.94659170839482,
+              40.02777436590719
+            ],
+            [
+              -82.94663139550023,
+              40.0269215185308
+            ],
+            [
+              -82.94620264691297,
+              40.02690527421117
+            ],
+            [
+              -82.94616273171498,
+              40.027762275989346
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "445-303204",
+        "OWNERNME1": "MIFFLIN TOWNSHIP BOARD OF TRUSTEES",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "2452 AGLER RD",
+        "ACRES": 1.05033015,
+        "TOTVALUEBASE": 2054400,
+        "SALEDATE": 1637125200000,
+        "ZIPCD": "43224",
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=445-303204"
       }
     },
     {
@@ -730796,6 +731219,87 @@
         "coordinates": [
           [
             [
+              -83.11569431272524,
+              39.9329504009024
+            ],
+            [
+              -83.11571573304676,
+              39.93294987167029
+            ],
+            [
+              -83.11573709394413,
+              39.932951551647676
+            ],
+            [
+              -83.11579927295514,
+              39.932956280220964
+            ],
+            [
+              -83.1158615960617,
+              39.932954178031025
+            ],
+            [
+              -83.11592331511372,
+              39.932945270313354
+            ],
+            [
+              -83.11598368921234,
+              39.932929663999545
+            ],
+            [
+              -83.11655653919738,
+              39.93274519389158
+            ],
+            [
+              -83.11656996972785,
+              39.93269159028321
+            ],
+            [
+              -83.11663258634117,
+              39.932439018190394
+            ],
+            [
+              -83.11660187174773,
+              39.93243478349878
+            ],
+            [
+              -83.11584581654742,
+              39.93233052323218
+            ],
+            [
+              -83.11573832404504,
+              39.93288675473902
+            ],
+            [
+              -83.11569431272524,
+              39.9329504009024
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "570-144444",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "4518 HALL RD",
+        "ACRES": 0.91706953,
+        "TOTVALUEBASE": 48600,
+        "SALEDATE": 1701320400000,
+        "ZIPCD": "43228",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=570-144444"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -82.93076064140985,
               39.98571944444802
             ],
@@ -731030,6 +731534,123 @@
         "class_color": "#58a6ff",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-104472"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.18501582112617,
+              39.92341936976925
+            ],
+            [
+              -83.1877726574353,
+              39.92290832473412
+            ],
+            [
+              -83.19006458838075,
+              39.92165940122679
+            ],
+            [
+              -83.19506341003606,
+              39.91893512065445
+            ],
+            [
+              -83.19635607642779,
+              39.920396295200334
+            ],
+            [
+              -83.19723661929035,
+              39.91991631326904
+            ],
+            [
+              -83.19646492848646,
+              39.919051215080444
+            ],
+            [
+              -83.19984234791683,
+              39.91727521236248
+            ],
+            [
+              -83.19729547303348,
+              39.91444408190852
+            ],
+            [
+              -83.19587031267801,
+              39.91521375620573
+            ],
+            [
+              -83.19516116169822,
+              39.91559658534209
+            ],
+            [
+              -83.19444797727456,
+              39.9159785107854
+            ],
+            [
+              -83.19350333597994,
+              39.91648436971662
+            ],
+            [
+              -83.18964914371254,
+              39.91854819497611
+            ],
+            [
+              -83.18517763751878,
+              39.92094548818555
+            ],
+            [
+              -83.18415784009599,
+              39.92149529121088
+            ],
+            [
+              -83.18403829155666,
+              39.92155974295847
+            ],
+            [
+              -83.18400768218382,
+              39.92199620457535
+            ],
+            [
+              -83.18395280460793,
+              39.92274496124606
+            ],
+            [
+              -83.18395128311384,
+              39.92275748681339
+            ],
+            [
+              -83.18405371621131,
+              39.92273867500617
+            ],
+            [
+              -83.18511422715915,
+              39.92254704325732
+            ],
+            [
+              -83.18501582112617,
+              39.92341936976925
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-000042",
+        "OWNERNME1": "BOARD OF PARK COMMISSIONERS OF THE COLUMBUS & FRANKLIN COUNTY METROPOLITAN PARK DISTRICT",
+        "CLASSCD": "660",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED PARK DIST.PUB",
+        "SITEADDRESS": "ALTON RD",
+        "ACRES": 114.8401114,
+        "TOTVALUEBASE": 650300,
+        "SALEDATE": 1703048400000,
+        "ZIPCD": "43119",
+        "class_label": "Metro Parks/COTA",
+        "class_color": "#eab308",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-000042"
       }
     },
     {
@@ -731328,6 +731949,159 @@
         "class_color": "#eab308",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-001130"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.2147307142758,
+              39.9381589839606
+            ],
+            [
+              -83.21579359227314,
+              39.938109019288895
+            ],
+            [
+              -83.21536319183633,
+              39.93579332786733
+            ],
+            [
+              -83.21533416554571,
+              39.93563715681152
+            ],
+            [
+              -83.21523554383973,
+              39.93510651785611
+            ],
+            [
+              -83.21492716382453,
+              39.93344719947712
+            ],
+            [
+              -83.21488958385753,
+              39.9332449855818
+            ],
+            [
+              -83.2148630230304,
+              39.93310206620575
+            ],
+            [
+              -83.21423237793722,
+              39.92970844058518
+            ],
+            [
+              -83.21422598136864,
+              39.929673756669054
+            ],
+            [
+              -83.2138964750135,
+              39.92788549629363
+            ],
+            [
+              -83.2138325782825,
+              39.92791882385804
+            ],
+            [
+              -83.21378484811379,
+              39.9279437316471
+            ],
+            [
+              -83.21375799725543,
+              39.92795775737213
+            ],
+            [
+              -83.21018463789301,
+              39.92982416920939
+            ],
+            [
+              -83.2101601988925,
+              39.92983679965358
+            ],
+            [
+              -83.20743406137005,
+              39.93124567534364
+            ],
+            [
+              -83.20739584169459,
+              39.931203672299674
+            ],
+            [
+              -83.20473838237479,
+              39.92828292662844
+            ],
+            [
+              -83.20422894696902,
+              39.92772298309993
+            ],
+            [
+              -83.20326072862848,
+              39.926654569897515
+            ],
+            [
+              -83.20270360838529,
+              39.926039399520825
+            ],
+            [
+              -83.20179854680006,
+              39.926520946925656
+            ],
+            [
+              -83.20642037095399,
+              39.931564106735394
+            ],
+            [
+              -83.20644261809223,
+              39.93170037726725
+            ],
+            [
+              -83.20645188762238,
+              39.931757143218185
+            ],
+            [
+              -83.20646246729143,
+              39.93182194700533
+            ],
+            [
+              -83.20715277968311,
+              39.93604983064788
+            ],
+            [
+              -83.20727522068954,
+              39.936817995660114
+            ],
+            [
+              -83.20834604952933,
+              39.936775837637946
+            ],
+            [
+              -83.21442315584426,
+              39.9365034762241
+            ],
+            [
+              -83.2147307142758,
+              39.9381589839606
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-006630",
+        "OWNERNME1": "BD OF PK COMM OF THE COLS FRNKLN CNTY MNCPL PK DST",
+        "CLASSCD": "660",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED PARK DIST.PUB",
+        "SITEADDRESS": "DARBY CREEK DR",
+        "ACRES": 151.34913522,
+        "TOTVALUEBASE": 2652200,
+        "SALEDATE": 1703048400000,
+        "ZIPCD": "43119",
+        "class_label": "Metro Parks/COTA",
+        "class_color": "#eab308",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-006630"
       }
     },
     {
@@ -733559,6 +734333,139 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-013543"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.11204261331248,
+              40.11324473606816
+            ],
+            [
+              -83.11207525767676,
+              40.112568733641844
+            ],
+            [
+              -83.11169934868568,
+              40.11251112053417
+            ],
+            [
+              -83.11167034731014,
+              40.11246597888755
+            ],
+            [
+              -83.11151083951657,
+              40.11221673289053
+            ],
+            [
+              -83.11150155118284,
+              40.11198618492078
+            ],
+            [
+              -83.11149710736198,
+              40.1118758690865
+            ],
+            [
+              -83.11145328278086,
+              40.1114488005422
+            ],
+            [
+              -83.1111391302707,
+              40.11146549977866
+            ],
+            [
+              -83.11085616329188,
+              40.1114806168354
+            ],
+            [
+              -83.1106758964044,
+              40.111431318901985
+            ],
+            [
+              -83.11060416686648,
+              40.11138023958394
+            ],
+            [
+              -83.11058791681515,
+              40.11136866827868
+            ],
+            [
+              -83.11053451541808,
+              40.111494439138674
+            ],
+            [
+              -83.11048522406425,
+              40.1116218768916
+            ],
+            [
+              -83.11044009468772,
+              40.11175084726729
+            ],
+            [
+              -83.11039917483738,
+              40.11188121438079
+            ],
+            [
+              -83.11036338887644,
+              40.11200969141023
+            ],
+            [
+              -83.1103318334736,
+              40.11213927242214
+            ],
+            [
+              -83.11030454254275,
+              40.11226981815049
+            ],
+            [
+              -83.11021553501092,
+              40.112261309060855
+            ],
+            [
+              -83.11020422595993,
+              40.1123235006995
+            ],
+            [
+              -83.11012935885867,
+              40.1129362665988
+            ],
+            [
+              -83.11090633390236,
+              40.11311696044228
+            ],
+            [
+              -83.11097258344356,
+              40.113128969027215
+            ],
+            [
+              -83.11101140835925,
+              40.11299096529472
+            ],
+            [
+              -83.11204261331248,
+              40.11324473606816
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "273-009098",
+        "OWNERNME1": "CITY OF DUBLIN OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "7125 RIVERSIDE DR",
+        "ACRES": 5.38656231,
+        "TOTVALUEBASE": 2651500,
+        "SALEDATE": 1656478800000,
+        "ZIPCD": "43016",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-009098"
       }
     },
     {
@@ -740093,6 +741000,79 @@
         "class_color": "#9ca3af",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-009146"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.89358836439072,
+              39.92298514917716
+            ],
+            [
+              -82.89358845980281,
+              39.92298526594258
+            ],
+            [
+              -82.89390653749948,
+              39.92336962585195
+            ],
+            [
+              -82.89415893662559,
+              39.92367761362541
+            ],
+            [
+              -82.89523399180888,
+              39.923143674283125
+            ],
+            [
+              -82.89488792973482,
+              39.92270994347283
+            ],
+            [
+              -82.8947925258062,
+              39.9224694510303
+            ],
+            [
+              -82.89464998475762,
+              39.92253761619758
+            ],
+            [
+              -82.89463044005306,
+              39.92251426213575
+            ],
+            [
+              -82.89443380118587,
+              39.92260845797005
+            ],
+            [
+              -82.89441449775532,
+              39.922585148094434
+            ],
+            [
+              -82.89358836439072,
+              39.92298514917716
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-009460",
+        "OWNERNME1": "DIRECTIONS FOR YOUTH AND FAMILIES GROUP INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "3840 N KIMBERLY PW",
+        "ACRES": 2.45361322,
+        "TOTVALUEBASE": 4014400,
+        "SALEDATE": 1735534800000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-009460"
       }
     },
     {
