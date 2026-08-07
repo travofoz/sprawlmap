@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-06T08:30:34.719Z",
+  "generated": "2026-08-07T07:10:13.544Z",
   "count": 8640,
   "risk_counts": {
     "low": 3083,
@@ -410891,87 +410891,6 @@
         "coordinates": [
           [
             [
-              -83.05278337609279,
-              40.09032323663049
-            ],
-            [
-              -83.05269863942962,
-              40.09043006397293
-            ],
-            [
-              -83.05263475646557,
-              40.09051059982068
-            ],
-            [
-              -83.05294784386598,
-              40.0919892699348
-            ],
-            [
-              -83.05303781251519,
-              40.091976768659194
-            ],
-            [
-              -83.05322598437088,
-              40.09195094272033
-            ],
-            [
-              -83.05318685424838,
-              40.091758418442076
-            ],
-            [
-              -83.05322146583524,
-              40.09175935432836
-            ],
-            [
-              -83.05304291525734,
-              40.090931800710614
-            ],
-            [
-              -83.0530062383721,
-              40.090930770917694
-            ],
-            [
-              -83.05299579830705,
-              40.090876466284605
-            ],
-            [
-              -83.05287596279372,
-              40.09032551930984
-            ],
-            [
-              -83.0528751066273,
-              40.09032549811899
-            ],
-            [
-              -83.05278337609279,
-              40.09032323663049
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-213841",
-        "OWNERNME1": "HOPE THRU HOUSING INC",
-        "CLASSCD": "680",
-        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
-        "SITEADDRESS": "2340 W GRANVILLE RD",
-        "ACRES": 1.12242517,
-        "TOTVALUEBASE": 208200,
-        "SALEDATE": 1367211600000,
-        "ZIPCD": "43235",
-        "class_label": "Other Exempt",
-        "class_color": "#9ca3af",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-213841"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -83.03530917593433,
               40.09252932949102
             ],
@@ -670827,13 +670746,13 @@
       },
       "properties": {
         "PARCELID": "222-000356",
-        "OWNERNME1": "PLAIN LOCAL SCHOOL DIST BOARD OF EDUCATION",
+        "OWNERNME1": "THE BOARD OF EDUCATION OF THE NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
-        "SITEADDRESS": "5101 SWICKARD WOODS BL",
+        "SITEADDRESS": "5101 SWICKARD WOODS BLVD",
         "ACRES": 6.88899772,
         "TOTVALUEBASE": 828000,
-        "SALEDATE": 1023166800000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -672040,13 +671959,13 @@
       },
       "properties": {
         "PARCELID": "222-002970",
-        "OWNERNME1": "PLAIN LOCAL SCHOOL DISTRT BOARD OF EDUCATION",
+        "OWNERNME1": "THE BOARD OF EDUCATION OF THE NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "7645 SWICKARD WOODS BLVD",
         "ACRES": 7.11747616,
         "TOTVALUEBASE": 613400,
-        "SALEDATE": 1023166800000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -675565,13 +675484,13 @@
       },
       "properties": {
         "PARCELID": "222-000321",
-        "OWNERNME1": "PLAIN LOCAL SCHOOL DIST BD OF EDUCATION",
+        "OWNERNME1": "NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "6705 MCELWEE DR",
         "ACRES": 1.08829049,
         "TOTVALUEBASE": 153500,
-        "SALEDATE": 1578632400000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -675962,13 +675881,13 @@
       },
       "properties": {
         "PARCELID": "222-000922",
-        "OWNERNME1": "THE BOARD OF EDUCATION OF THE NEW ALBANY - PLAIN LOCAL SCHOOL DISTRICT",
+        "OWNERNME1": "NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "55 N HIGH ST",
         "ACRES": 77.47365532,
         "TOTVALUEBASE": 146839700,
-        "SALEDATE": 1592974800000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -676454,13 +676373,13 @@
       },
       "properties": {
         "PARCELID": "222-000433",
-        "OWNERNME1": "PLAIN LOCAL SCHOOL DIST BOARD OF EDUCATION",
+        "OWNERNME1": "NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "6425 NEW ALB CONDIT RD",
         "ACRES": 0.99154429,
         "TOTVALUEBASE": 148500,
-        "SALEDATE": 1398920400000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -677599,13 +677518,13 @@
       },
       "properties": {
         "PARCELID": "222-000451",
-        "OWNERNME1": "PLAIN LOCAL SCHOOL DIST BD OF EDUCATION",
+        "OWNERNME1": "NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "6443 NEW ALB CONDIT RD",
         "ACRES": 0.94967743,
         "TOTVALUEBASE": 138000,
-        "SALEDATE": 1398920400000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -677664,13 +677583,13 @@
       },
       "properties": {
         "PARCELID": "222-000643",
-        "OWNERNME1": "PLAIN LOCAL SCHOOL DIST BOARD OF EDUCATION",
+        "OWNERNME1": "NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "6711 MCELWEE DR",
         "ACRES": 1.09221694,
         "TOTVALUEBASE": 153500,
-        "SALEDATE": 1578632400000,
+        "SALEDATE": 1785992400000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -774139,6 +774058,87 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-083782"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.05269863942962,
+              40.09043006397293
+            ],
+            [
+              -83.05263475646557,
+              40.09051059982068
+            ],
+            [
+              -83.05294784386598,
+              40.0919892699348
+            ],
+            [
+              -83.05303781251519,
+              40.091976768659194
+            ],
+            [
+              -83.05322598437088,
+              40.09195094272033
+            ],
+            [
+              -83.05318685424838,
+              40.091758418442076
+            ],
+            [
+              -83.05312704812803,
+              40.09148437166257
+            ],
+            [
+              -83.05309763447478,
+              40.091349584870144
+            ],
+            [
+              -83.0530062383721,
+              40.090930770917694
+            ],
+            [
+              -83.05299579830705,
+              40.090876466284605
+            ],
+            [
+              -83.05287596279372,
+              40.09032551930984
+            ],
+            [
+              -83.0528751066273,
+              40.09032549811899
+            ],
+            [
+              -83.05278337609279,
+              40.09032323663049
+            ],
+            [
+              -83.05269863942962,
+              40.09043006397293
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-213841",
+        "OWNERNME1": "HOPE THRU HOUSING INC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "2340 W GRANVILLE RD",
+        "ACRES": 1.05381106,
+        "TOTVALUEBASE": 208200,
+        "SALEDATE": 1367211600000,
+        "ZIPCD": "43235",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-213841"
       }
     }
   ]
