@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-07T07:10:13.544Z",
+  "generated": "2026-08-08T06:45:34.786Z",
   "count": 8640,
   "risk_counts": {
     "low": 3083,
@@ -196508,13 +196508,13 @@
       },
       "properties": {
         "PARCELID": "010-022580",
-        "OWNERNME1": "COLUMBUS STATE COMMUNITY COLLEGE DISTRICT",
+        "OWNERNME1": "COLUMBUS STATE COMMUNITY PARTNERS",
         "CLASSCD": "670",
         "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
         "SITEADDRESS": "N GRANT AVE",
         "ACRES": 0.13512959,
         "TOTVALUEBASE": 64700,
-        "SALEDATE": 814165200000,
+        "SALEDATE": 1786078800000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -197639,13 +197639,13 @@
       },
       "properties": {
         "PARCELID": "010-043498",
-        "OWNERNME1": "COLUMBUS STATE COMMUNITY COLLEGE DIST BD OF TRS",
+        "OWNERNME1": "COLUMBUS STATE COMMUNITY PARTNERS",
         "CLASSCD": "670",
         "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
         "SITEADDRESS": "N GRANT AVE",
         "ACRES": 0.14755427,
         "TOTVALUEBASE": 71000,
-        "SALEDATE": 814165200000,
+        "SALEDATE": 1786078800000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -197916,13 +197916,13 @@
       },
       "properties": {
         "PARCELID": "010-048939",
-        "OWNERNME1": "COLUMBUS STATE COMMUNITY COLLEGE DIST BD OF TRS",
+        "OWNERNME1": "COLUMBUS STATE COMMUNITY PARTNERS",
         "CLASSCD": "670",
         "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
         "SITEADDRESS": "164 N GRANT AVE",
         "ACRES": 0.45119563,
         "TOTVALUEBASE": 1351400,
-        "SALEDATE": 814165200000,
+        "SALEDATE": 1786078800000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -773227,236 +773227,6 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.12758490183673,
-              39.916249783256355
-            ],
-            [
-              -83.12781282622713,
-              39.9164594001463
-            ],
-            [
-              -83.12927158422525,
-              39.91694686349539
-            ],
-            [
-              -83.12929033934866,
-              39.91588019199787
-            ],
-            [
-              -83.1320565163779,
-              39.91591006389095
-            ],
-            [
-              -83.13209271586878,
-              39.913899510886104
-            ],
-            [
-              -83.1322148310013,
-              39.91352669637622
-            ],
-            [
-              -83.13222051142978,
-              39.913181383864135
-            ],
-            [
-              -83.13192972460602,
-              39.91308398875156
-            ],
-            [
-              -83.13126728775049,
-              39.91239386587325
-            ],
-            [
-              -83.13105205374981,
-              39.91232211294451
-            ],
-            [
-              -83.13157536218604,
-              39.911383969213176
-            ],
-            [
-              -83.1320251243769,
-              39.91106580132797
-            ],
-            [
-              -83.13203793231159,
-              39.91083751276246
-            ],
-            [
-              -83.13167773846423,
-              39.91082595803339
-            ],
-            [
-              -83.12925975814007,
-              39.91515445324048
-            ],
-            [
-              -83.12760719016624,
-              39.914362300412186
-            ],
-            [
-              -83.12758490183673,
-              39.916249783256355
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "570-347517",
-        "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
-        "CLASSCD": "620",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
-        "SITEADDRESS": "ALKIRE RD",
-        "ACRES": 26.019349,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": null,
-        "class_label": "Franklin County",
-        "class_color": "#8b5cf6",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=570-347517"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.13515425933215,
-              39.91331634745786
-            ],
-            [
-              -83.13511709691063,
-              39.913994630148295
-            ],
-            [
-              -83.13670436558967,
-              39.91404366999292
-            ],
-            [
-              -83.13671579963597,
-              39.91330842541731
-            ],
-            [
-              -83.13671648531476,
-              39.913257364207915
-            ],
-            [
-              -83.13672191231626,
-              39.912853226882525
-            ],
-            [
-              -83.1367292741699,
-              39.91230492765786
-            ],
-            [
-              -83.13672524482604,
-              39.91230479372098
-            ],
-            [
-              -83.13674547225315,
-              39.91109860054429
-            ],
-            [
-              -83.13674594842232,
-              39.91106310952086
-            ],
-            [
-              -83.13674532533975,
-              39.91098842434184
-            ],
-            [
-              -83.13654312598057,
-              39.9109819466101
-            ],
-            [
-              -83.13532212250999,
-              39.91094281888169
-            ],
-            [
-              -83.13441804781354,
-              39.91091383951609
-            ],
-            [
-              -83.13203792997254,
-              39.91083751277505
-            ],
-            [
-              -83.13203419896209,
-              39.91090403248116
-            ],
-            [
-              -83.1320251243769,
-              39.91106580132797
-            ],
-            [
-              -83.13157536218604,
-              39.911383969213176
-            ],
-            [
-              -83.13105205374981,
-              39.91232211294451
-            ],
-            [
-              -83.13126728775049,
-              39.91239386587325
-            ],
-            [
-              -83.13192972460602,
-              39.91308398875156
-            ],
-            [
-              -83.13222051142978,
-              39.913181383864135
-            ],
-            [
-              -83.13221483098492,
-              39.91352669457498
-            ],
-            [
-              -83.13209271586878,
-              39.913899510886104
-            ],
-            [
-              -83.13369495657928,
-              39.91395068586661
-            ],
-            [
-              -83.13370476180903,
-              39.913269754044784
-            ],
-            [
-              -83.13515425933215,
-              39.91331634745786
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "570-347518",
-        "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
-        "CLASSCD": "620",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
-        "SITEADDRESS": "ALKIRE RD",
-        "ACRES": 33.72335128,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": null,
-        "class_label": "Franklin County",
-        "class_color": "#8b5cf6",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=570-347518"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
           [
@@ -773476,6 +773246,10 @@
               [
                 -83.12925975814007,
                 39.91515445324048
+              ],
+              [
+                -83.13161745159658,
+                39.91093388742895
               ],
               [
                 -83.13167773846423,
@@ -773527,7 +773301,7 @@
         "CLASSCD": "620",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
         "SITEADDRESS": "5192 ALKIRE RD",
-        "ACRES": 30.28870774,
+        "ACRES": 30.28871251,
         "TOTVALUEBASE": 600800,
         "SALEDATE": 1354683600000,
         "ZIPCD": "43228",
@@ -774058,6 +773832,212 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-083782"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.12758490183673,
+              39.916249783256355
+            ],
+            [
+              -83.12781282622713,
+              39.9164594001463
+            ],
+            [
+              -83.12927158422525,
+              39.91694686349539
+            ],
+            [
+              -83.12929033934866,
+              39.91588019199787
+            ],
+            [
+              -83.1320565163779,
+              39.91591006389095
+            ],
+            [
+              -83.13209271586878,
+              39.913899510886104
+            ],
+            [
+              -83.1322148310013,
+              39.91352669637622
+            ],
+            [
+              -83.13222051142978,
+              39.913181383864135
+            ],
+            [
+              -83.13192972460602,
+              39.91308398875156
+            ],
+            [
+              -83.13126728775049,
+              39.91239386587325
+            ],
+            [
+              -83.13105205374981,
+              39.91232211294451
+            ],
+            [
+              -83.13157536218604,
+              39.911383969213176
+            ],
+            [
+              -83.1320251243769,
+              39.91106580132797
+            ],
+            [
+              -83.13203177734381,
+              39.91094720321483
+            ],
+            [
+              -83.13161745159658,
+              39.91093388742895
+            ],
+            [
+              -83.12925975814007,
+              39.91515445324048
+            ],
+            [
+              -83.12760719016624,
+              39.914362300412186
+            ],
+            [
+              -83.12758490183673,
+              39.916249783256355
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "570-347517",
+        "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
+        "CLASSCD": "620",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
+        "SITEADDRESS": "ALKIRE RD",
+        "ACRES": 25.91952506,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Franklin County",
+        "class_color": "#8b5cf6",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=570-347517"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.13515425933215,
+              39.91331634745786
+            ],
+            [
+              -83.13511709691063,
+              39.913994630148295
+            ],
+            [
+              -83.13670436558967,
+              39.91404366999292
+            ],
+            [
+              -83.13671579963597,
+              39.91330842541731
+            ],
+            [
+              -83.13671648531476,
+              39.913257364207915
+            ],
+            [
+              -83.13672191231626,
+              39.912853226882525
+            ],
+            [
+              -83.1367292741699,
+              39.91230492765786
+            ],
+            [
+              -83.13672524482604,
+              39.91230479372098
+            ],
+            [
+              -83.13674547225315,
+              39.91109860054429
+            ],
+            [
+              -83.13203177736018,
+              39.910947205016136
+            ],
+            [
+              -83.1320251243769,
+              39.91106580132797
+            ],
+            [
+              -83.13157536218604,
+              39.911383969213176
+            ],
+            [
+              -83.13105205374981,
+              39.91232211294451
+            ],
+            [
+              -83.13126728775049,
+              39.91239386587325
+            ],
+            [
+              -83.13192972460602,
+              39.91308398875156
+            ],
+            [
+              -83.13222051142978,
+              39.913181383864135
+            ],
+            [
+              -83.13221483098492,
+              39.91352669457498
+            ],
+            [
+              -83.13209271586878,
+              39.913899510886104
+            ],
+            [
+              -83.13369495657928,
+              39.91395068586661
+            ],
+            [
+              -83.13370476180903,
+              39.913269754044784
+            ],
+            [
+              -83.13515425933215,
+              39.91331634745786
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "570-347518",
+        "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
+        "CLASSCD": "620",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
+        "SITEADDRESS": "ALKIRE RD",
+        "ACRES": 32.50740332,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Franklin County",
+        "class_color": "#8b5cf6",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=570-347518"
       }
     },
     {
