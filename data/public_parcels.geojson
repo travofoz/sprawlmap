@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-10T07:26:21.209Z",
-  "count": 8640,
+  "generated": "2026-08-11T07:01:20.604Z",
+  "count": 8641,
   "risk_counts": {
     "low": 3083,
-    "med": 4986,
+    "med": 4987,
     "avoid": 571,
     "high": 0
   },
@@ -154215,7 +154215,7 @@
         "SITEADDRESS": "BULEN AVE",
         "ACRES": 0.49584774,
         "TOTVALUEBASE": 38700,
-        "SALEDATE": 1303189200000,
+        "SALEDATE": 1705381200000,
         "ZIPCD": "43207",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -195488,7 +195488,7 @@
         "SITEADDRESS": "145 CLEVELAND AVE",
         "ACRES": 0.08956034,
         "TOTVALUEBASE": 78300,
-        "SALEDATE": 1781154000000,
+        "SALEDATE": 1786338000000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -196013,7 +196013,7 @@
         "SITEADDRESS": "145 CLEVELAND AVE",
         "ACRES": 0.25543224,
         "TOTVALUEBASE": 617000,
-        "SALEDATE": 1781154000000,
+        "SALEDATE": 1786338000000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -196514,7 +196514,7 @@
         "SITEADDRESS": "N GRANT AVE",
         "ACRES": 0.13512959,
         "TOTVALUEBASE": 64700,
-        "SALEDATE": 1786078800000,
+        "SALEDATE": 1786338000000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -197645,7 +197645,7 @@
         "SITEADDRESS": "N GRANT AVE",
         "ACRES": 0.14755427,
         "TOTVALUEBASE": 71000,
-        "SALEDATE": 1786078800000,
+        "SALEDATE": 1786338000000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -197922,7 +197922,7 @@
         "SITEADDRESS": "164 N GRANT AVE",
         "ACRES": 0.45119563,
         "TOTVALUEBASE": 1351400,
-        "SALEDATE": 1786078800000,
+        "SALEDATE": 1786338000000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -198118,7 +198118,7 @@
         "SITEADDRESS": "149 CLEVELAND AVE",
         "ACRES": 0.1048994,
         "TOTVALUEBASE": 101100,
-        "SALEDATE": 1781154000000,
+        "SALEDATE": 1786338000000,
         "ZIPCD": "43215",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -214128,7 +214128,7 @@
         "SITEADDRESS": "782 - 784 LOCKBOURNE AVE",
         "ACRES": 0.35177305,
         "TOTVALUEBASE": 24200,
-        "SALEDATE": 1254286800000,
+        "SALEDATE": 1705381200000,
         "ZIPCD": "43205",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -403465,127 +403465,6 @@
         "class_color": "#58a6ff",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-151263"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.05530538042572,
-              40.08529500106912
-            ],
-            [
-              -83.05526012778468,
-              40.08709723687723
-            ],
-            [
-              -83.05623524249202,
-              40.08711572432922
-            ],
-            [
-              -83.05743340147109,
-              40.08713840498972
-            ],
-            [
-              -83.05736720066047,
-              40.08953516874952
-            ],
-            [
-              -83.05763858591192,
-              40.08954342291009
-            ],
-            [
-              -83.05799250030016,
-              40.089554164028996
-            ],
-            [
-              -83.05797603427524,
-              40.090191874199036
-            ],
-            [
-              -83.05797370754462,
-              40.090248823772825
-            ],
-            [
-              -83.05797191404615,
-              40.090292765068135
-            ],
-            [
-              -83.05796868035019,
-              40.09037194696289
-            ],
-            [
-              -83.06042322059227,
-              40.090432011326406
-            ],
-            [
-              -83.06064032430004,
-              40.09043738047949
-            ],
-            [
-              -83.06110591576758,
-              40.09044889543309
-            ],
-            [
-              -83.06110779268367,
-              40.09036782682485
-            ],
-            [
-              -83.06111070015615,
-              40.09028543479833
-            ],
-            [
-              -83.06120114430868,
-              40.08758165476554
-            ],
-            [
-              -83.06121817950567,
-              40.08707236188063
-            ],
-            [
-              -83.0612352296657,
-              40.086563065217696
-            ],
-            [
-              -83.0612523611559,
-              40.086112824041614
-            ],
-            [
-              -83.06128455577313,
-              40.08526660524086
-            ],
-            [
-              -83.0613038299565,
-              40.08476000393594
-            ],
-            [
-              -83.05532065496995,
-              40.084569404841346
-            ],
-            [
-              -83.05530538042572,
-              40.08529500106912
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-159043",
-        "OWNERNME1": "STATE OF OHIO",
-        "CLASSCD": "610",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
-        "SITEADDRESS": "2555 W DUBLIN GRANVILLE RD",
-        "ACRES": 62.0782767,
-        "TOTVALUEBASE": 5255000,
-        "SALEDATE": -430599600000,
-        "ZIPCD": "43235",
-        "class_label": "State of Ohio",
-        "class_color": "#58a6ff",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-159043"
       }
     },
     {
@@ -752065,7 +751944,7 @@
         "SITEADDRESS": "E MAIN ST",
         "ACRES": 0.1816264,
         "TOTVALUEBASE": 91600,
-        "SALEDATE": -916686000000,
+        "SALEDATE": 1705899600000,
         "ZIPCD": "43081",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -753228,7 +753107,7 @@
         "SITEADDRESS": "580 CHILDRENS DR",
         "ACRES": 3.88138611,
         "TOTVALUEBASE": 3334100,
-        "SALEDATE": 1216011600000,
+        "SALEDATE": 1710392400000,
         "ZIPCD": null,
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
@@ -755076,7 +754955,7 @@
         "SITEADDRESS": "1480 W LANE AVE",
         "ACRES": 2.82322756,
         "TOTVALUEBASE": 12139000,
-        "SALEDATE": 1644987600000,
+        "SALEDATE": 1711429200000,
         "ZIPCD": "43221",
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
@@ -756616,7 +756495,7 @@
         "SITEADDRESS": "45 CLARENDON AVE",
         "ACRES": 2.227382,
         "TOTVALUEBASE": 10057800,
-        "SALEDATE": 1579150800000,
+        "SALEDATE": 1721883600000,
         "ZIPCD": null,
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -758056,7 +757935,7 @@
         "SITEADDRESS": "3650 HOOVER RD",
         "ACRES": 9.07887828,
         "TOTVALUEBASE": 6061000,
-        "SALEDATE": -175374000000,
+        "SALEDATE": 1724302800000,
         "ZIPCD": "43123",
         "class_label": "Township",
         "class_color": "#a78bfa",
@@ -758226,7 +758105,7 @@
         "SITEADDRESS": "1350 STRINGTOWN RD",
         "ACRES": 2.67680092,
         "TOTVALUEBASE": 713800,
-        "SALEDATE": 1717650000000,
+        "SALEDATE": 1728536400000,
         "ZIPCD": "43123",
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
@@ -758592,7 +758471,7 @@
         "SITEADDRESS": "E DUBLIN GRANVILLE RD",
         "ACRES": 90.26697011,
         "TOTVALUEBASE": 1878500,
-        "SALEDATE": 622800000,
+        "SALEDATE": 1729573200000,
         "ZIPCD": "43081",
         "class_label": "Metro Parks/COTA",
         "class_color": "#eab308",
@@ -758749,7 +758628,7 @@
         "SITEADDRESS": "4265 DUBLIN GRANVILLE RD",
         "ACRES": 200.75738165,
         "TOTVALUEBASE": 9614400,
-        "SALEDATE": -655498800000,
+        "SALEDATE": 1729573200000,
         "ZIPCD": "43081",
         "class_label": "Metro Parks/COTA",
         "class_color": "#eab308",
@@ -759061,7 +758940,7 @@
         "SITEADDRESS": "3680 COSGRAY RD",
         "ACRES": 73.31398064,
         "TOTVALUEBASE": 4625200,
-        "SALEDATE": 1681275600000,
+        "SALEDATE": 1730178000000,
         "ZIPCD": "43026",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -759162,12 +759041,207 @@
         "SITEADDRESS": "5959 SCIOTO DARBY RD",
         "ACRES": 20.70886163,
         "TOTVALUEBASE": 715300,
-        "SALEDATE": 1623301200000,
+        "SALEDATE": 1730178000000,
         "ZIPCD": "43026",
         "class_label": "Metro Parks/COTA",
         "class_color": "#eab308",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=050-004486"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -82.88363535152943,
+                40.00757103323121
+              ],
+              [
+                -82.88375479728433,
+                40.007577098654
+              ],
+              [
+                -82.88414722784432,
+                40.00759695240428
+              ],
+              [
+                -82.88458608019309,
+                40.00755488840006
+              ],
+              [
+                -82.88498339326101,
+                40.00757616437558
+              ],
+              [
+                -82.8850929530138,
+                40.00640191716456
+              ],
+              [
+                -82.88425492345289,
+                40.00635523588387
+              ],
+              [
+                -82.88374833604338,
+                40.00632701501042
+              ],
+              [
+                -82.88363535152943,
+                40.00757103323121
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -82.8773274640766,
+                40.00640983674526
+              ],
+              [
+                -82.87806836624742,
+                40.00644314018305
+              ],
+              [
+                -82.87803247322483,
+                40.00706310550435
+              ],
+              [
+                -82.8784923069765,
+                40.007202723430794
+              ],
+              [
+                -82.8805014376893,
+                40.007289660752086
+              ],
+              [
+                -82.88051276717314,
+                40.007169659022345
+              ],
+              [
+                -82.88048733413122,
+                40.00711136359138
+              ],
+              [
+                -82.88045709519555,
+                40.00705541000648
+              ],
+              [
+                -82.88042226401575,
+                40.00700219360105
+              ],
+              [
+                -82.88038308668737,
+                40.00695209036928
+              ],
+              [
+                -82.88033984001316,
+                40.00690545430959
+              ],
+              [
+                -82.88041171219622,
+                40.00614426423121
+              ],
+              [
+                -82.88333607103064,
+                40.00630380229421
+              ],
+              [
+                -82.88339312267956,
+                40.0063068610047
+              ],
+              [
+                -82.88340244049074,
+                40.00619783340094
+              ],
+              [
+                -82.88354410497749,
+                40.004525749581965
+              ],
+              [
+                -82.88348410253919,
+                40.004520181515744
+              ],
+              [
+                -82.8771667117764,
+                40.00408851938393
+              ],
+              [
+                -82.87695708837848,
+                40.00407272268329
+              ],
+              [
+                -82.8748105862111,
+                40.00392312105485
+              ],
+              [
+                -82.87461025789058,
+                40.00390948533633
+              ],
+              [
+                -82.87460660243174,
+                40.00415820570746
+              ],
+              [
+                -82.87464077512975,
+                40.0045374744822
+              ],
+              [
+                -82.87425256090397,
+                40.00496503118381
+              ],
+              [
+                -82.87341470634252,
+                40.00535284043082
+              ],
+              [
+                -82.87323259672597,
+                40.00568336497461
+              ],
+              [
+                -82.87628933348907,
+                40.00672940689182
+              ],
+              [
+                -82.8771005212812,
+                40.006821235774325
+              ],
+              [
+                -82.87721164164233,
+                40.0068337804049
+              ],
+              [
+                -82.8773151954171,
+                40.006845527868606
+              ],
+              [
+                -82.87732681157476,
+                40.006409807319926
+              ],
+              [
+                -82.8773274640766,
+                40.00640983674526
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "520-164555",
+        "OWNERNME1": "COLUMBUS REGIONAL AIRPORT AUTHORITY",
+        "CLASSCD": "620",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
+        "SITEADDRESS": "4656 - 4744 BRIDGEWAY AVE",
+        "ACRES": 56.22957331,
+        "TOTVALUEBASE": 3821000,
+        "SALEDATE": 1661144400000,
+        "ZIPCD": "43219",
+        "class_label": "Franklin County",
+        "class_color": "#8b5cf6",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=520-164555"
       }
     },
     {
@@ -759227,7 +759301,7 @@
         "SITEADDRESS": "LEONARD AVE",
         "ACRES": 4.9110935,
         "TOTVALUEBASE": 346500,
-        "SALEDATE": 1661490000000,
+        "SALEDATE": 1731387600000,
         "ZIPCD": "43203",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -760193,7 +760267,7 @@
         "SITEADDRESS": "1825 TWENTY FIFTH AVE",
         "ACRES": 2.09847848,
         "TOTVALUEBASE": 743200,
-        "SALEDATE": 1719464400000,
+        "SALEDATE": 1738904400000,
         "ZIPCD": "43219",
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
@@ -760248,139 +760322,6 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=040-014779"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.0321738927446,
-              40.03257694743699
-            ],
-            [
-              -83.03217233711419,
-              40.032578054154854
-            ],
-            [
-              -83.03176733439041,
-              40.03259641847189
-            ],
-            [
-              -83.03164827909843,
-              40.03265856051473
-            ],
-            [
-              -83.03170096468037,
-              40.03285495134316
-            ],
-            [
-              -83.03178416540993,
-              40.033165086027864
-            ],
-            [
-              -83.03180194032392,
-              40.033165555843105
-            ],
-            [
-              -83.0318197625908,
-              40.03323092577892
-            ],
-            [
-              -83.03198332555615,
-              40.0338308678304
-            ],
-            [
-              -83.03198562813193,
-              40.03383931432151
-            ],
-            [
-              -83.03390144971019,
-              40.0339254443745
-            ],
-            [
-              -83.0339037501654,
-              40.03381233815158
-            ],
-            [
-              -83.03390711881283,
-              40.033646790559324
-            ],
-            [
-              -83.0339105462212,
-              40.03347822197469
-            ],
-            [
-              -83.03391394179741,
-              40.03331130528063
-            ],
-            [
-              -83.033914741139,
-              40.03327204495928
-            ],
-            [
-              -83.03391776777089,
-              40.03314383453318
-            ],
-            [
-              -83.03392182591838,
-              40.03297197394618
-            ],
-            [
-              -83.03392572242709,
-              40.032806975988805
-            ],
-            [
-              -83.03392699939168,
-              40.032752890907034
-            ],
-            [
-              -83.03393036485637,
-              40.03261039941328
-            ],
-            [
-              -83.03354632367612,
-              40.032592462019586
-            ],
-            [
-              -83.03305191261944,
-              40.03256936831142
-            ],
-            [
-              -83.03251625489756,
-              40.03257069999501
-            ],
-            [
-              -83.03238162637645,
-              40.03257103464483
-            ],
-            [
-              -83.03219440143971,
-              40.03256235886928
-            ],
-            [
-              -83.0321738927446,
-              40.03257694743699
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-103190",
-        "OWNERNME1": "OHIOHEALTH CORPORATION",
-        "CLASSCD": "680",
-        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
-        "SITEADDRESS": "500 THOMAS LN",
-        "ACRES": 6.39619437,
-        "TOTVALUEBASE": 35216800,
-        "SALEDATE": 1739163600000,
-        "ZIPCD": "43214",
-        "class_label": "Other Exempt",
-        "class_color": "#9ca3af",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-103190"
       }
     },
     {
@@ -760965,7 +760906,7 @@
         "SITEADDRESS": "270 E TOWN ST",
         "ACRES": 1.12917504,
         "TOTVALUEBASE": 7417900,
-        "SALEDATE": 1131512400000,
+        "SALEDATE": 1744866000000,
         "ZIPCD": "43215",
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
@@ -761215,7 +761156,7 @@
         "SITEADDRESS": "GIERICH RD",
         "ACRES": 148.69919145,
         "TOTVALUEBASE": 257600,
-        "SALEDATE": 1062997200000,
+        "SALEDATE": 1741323600000,
         "ZIPCD": null,
         "class_label": "Metro Parks/COTA",
         "class_color": "#eab308",
@@ -761405,7 +761346,7 @@
         "SITEADDRESS": "2734 OLE COUNTRY LN",
         "ACRES": 7.82423362,
         "TOTVALUEBASE": 465400,
-        "SALEDATE": 1149742800000,
+        "SALEDATE": 1747285200000,
         "ZIPCD": "43219",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -761470,7 +761411,7 @@
         "SITEADDRESS": "1318 - 320 PARSONS AV",
         "ACRES": 0.26177733,
         "TOTVALUEBASE": 530500,
-        "SALEDATE": 816238800000,
+        "SALEDATE": 1749531600000,
         "ZIPCD": null,
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
@@ -769719,7 +769660,7 @@
         "SITEADDRESS": "7270 NEW ALBANY-CONDIT RD",
         "ACRES": 6.37664323,
         "TOTVALUEBASE": 3507600,
-        "SALEDATE": 1707973200000,
+        "SALEDATE": 1750222800000,
         "ZIPCD": "43054",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
@@ -774119,6 +774060,144 @@
         "class_color": "#9ca3af",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-213841"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.05530538042572,
+              40.08529500106912
+            ],
+            [
+              -83.05526012778468,
+              40.08709723687723
+            ],
+            [
+              -83.05623524249202,
+              40.08711572432922
+            ],
+            [
+              -83.05743347410112,
+              40.08713854243922
+            ],
+            [
+              -83.06121297733839,
+              40.087227895715735
+            ],
+            [
+              -83.06121817950567,
+              40.08707236188063
+            ],
+            [
+              -83.0612352296657,
+              40.086563065217696
+            ],
+            [
+              -83.0612523611559,
+              40.086112824041614
+            ],
+            [
+              -83.06128455577313,
+              40.08526660524086
+            ],
+            [
+              -83.0613038299565,
+              40.08476000393594
+            ],
+            [
+              -83.05532065496995,
+              40.084569404841346
+            ],
+            [
+              -83.05530538042572,
+              40.08529500106912
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-159043",
+        "OWNERNME1": "STATE OF OHIO",
+        "CLASSCD": "610",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
+        "SITEADDRESS": "2555 W DUBLIN GRANVILLE RD",
+        "ACRES": 34.85567239,
+        "TOTVALUEBASE": 5255000,
+        "SALEDATE": -430599600000,
+        "ZIPCD": "43235",
+        "class_label": "State of Ohio",
+        "class_color": "#58a6ff",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-159043"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.05736742439879,
+              40.08953514067039
+            ],
+            [
+              -83.05799250030016,
+              40.089554164028996
+            ],
+            [
+              -83.05796868035019,
+              40.09037194696289
+            ],
+            [
+              -83.06064032430004,
+              40.09043738047949
+            ],
+            [
+              -83.06110591576758,
+              40.09044889543309
+            ],
+            [
+              -83.06111070015615,
+              40.09028543479833
+            ],
+            [
+              -83.06120114430868,
+              40.08758165476554
+            ],
+            [
+              -83.06121297733839,
+              40.087227895715735
+            ],
+            [
+              -83.05743347410112,
+              40.08713854243922
+            ],
+            [
+              -83.05736742439879,
+              40.08953514067039
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347847",
+        "OWNERNME1": "WEST GRANVILLE ROAD OWNER LLC",
+        "CLASSCD": "610",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
+        "SITEADDRESS": "2555 W DUBLIN GRANVILLE RD",
+        "ACRES": 27.22420388,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "State of Ohio",
+        "class_color": "#58a6ff",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347847"
       }
     }
   ]
