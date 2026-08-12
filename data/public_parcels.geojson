@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-11T07:01:20.604Z",
+  "generated": "2026-08-12T07:19:43.146Z",
   "count": 8641,
   "risk_counts": {
     "low": 3083,
@@ -237939,7 +237939,7 @@
         "SITEADDRESS": "290 N CHAMPION AVE",
         "ACRES": 1.23566437,
         "TOTVALUEBASE": 386200,
-        "SALEDATE": 1519362000000,
+        "SALEDATE": 1786424400000,
         "ZIPCD": "43203",
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
