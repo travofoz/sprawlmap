@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-14T07:19:31.161Z",
+  "generated": "2026-08-15T06:32:24.680Z",
   "count": 8641,
   "risk_counts": {
     "low": 3083,
@@ -670631,7 +670631,7 @@
         "SITEADDRESS": "5101 SWICKARD WOODS BLVD",
         "ACRES": 6.88899772,
         "TOTVALUEBASE": 828000,
-        "SALEDATE": 1785992400000,
+        "SALEDATE": 1786683600000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
@@ -675760,13 +675760,13 @@
       },
       "properties": {
         "PARCELID": "222-000922",
-        "OWNERNME1": "NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
+        "OWNERNME1": "THE BOARD OF EDUCATION OF THE NEW ALBANY-PLAIN LOCAL SCHOOL DISTRICT",
         "CLASSCD": "650",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY BD OF EDUC.",
         "SITEADDRESS": "55 N HIGH ST",
         "ACRES": 77.47365532,
         "TOTVALUEBASE": 146839700,
-        "SALEDATE": 1785992400000,
+        "SALEDATE": 1786683600000,
         "ZIPCD": "43054",
         "class_label": "School District",
         "class_color": "#f85149",
