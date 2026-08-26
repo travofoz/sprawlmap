@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-25T06:40:16.741Z",
-  "count": 8639,
+  "generated": "2026-08-26T06:42:11.438Z",
+  "count": 8640,
   "risk_counts": {
     "low": 3082,
-    "med": 4986,
+    "med": 4987,
     "avoid": 571,
     "high": 0
   },
@@ -274024,6 +274024,75 @@
         "class_color": "#eab308",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=530-287926"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.83612637766258,
+              39.91265898046489
+            ],
+            [
+              -82.8363220535996,
+              39.91267279121406
+            ],
+            [
+              -82.83630371490266,
+              39.912859093869855
+            ],
+            [
+              -82.8393293977909,
+              39.913040080284674
+            ],
+            [
+              -82.83941212078152,
+              39.91216713778241
+            ],
+            [
+              -82.83866684199262,
+              39.91212234939111
+            ],
+            [
+              -82.83715762188548,
+              39.91203177270572
+            ],
+            [
+              -82.83684493875364,
+              39.91201299374938
+            ],
+            [
+              -82.83632213618426,
+              39.91198159603448
+            ],
+            [
+              -82.83619381366798,
+              39.91197386889316
+            ],
+            [
+              -82.83612637766258,
+              39.91265898046489
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "530-299757",
+        "OWNERNME1": "POPLAR FEN PLACE LLC",
+        "CLASSCD": "680",
+        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "SITEADDRESS": "5951 CHATTERTON RD",
+        "ACRES": 6.54744528,
+        "TOTVALUEBASE": 3782900,
+        "SALEDATE": 1694667600000,
+        "ZIPCD": "43232",
+        "class_label": "Other Exempt",
+        "class_color": "#9ca3af",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=530-299757"
       }
     },
     {
@@ -759433,7 +759502,7 @@
         "OWNERNME1": "BOARD OF TRUSTEES OF THE COLUMBUS METROPOLITAN LIBRARY",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "3452 E LIVINGSTON AV",
+        "SITEADDRESS": "3434 E LIVINGSTON AV",
         "ACRES": 3.03653379,
         "TOTVALUEBASE": 2490700,
         "SALEDATE": 1742360400000,
@@ -768030,15 +768099,15 @@
       "properties": {
         "PARCELID": "152-002366",
         "OWNERNME1": "BOARD OF PARK COMMISSIONERS OF THE COLUMBUS AND FRANKLIN COUNTY METROPOLITAN PARK DISTRICT",
-        "CLASSCD": "680",
-        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
+        "CLASSCD": "660",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED PARK DIST.PUB",
         "SITEADDRESS": "1570 ROHR RD",
         "ACRES": 58.27003739,
         "TOTVALUEBASE": null,
         "SALEDATE": null,
         "ZIPCD": "43137",
-        "class_label": "Other Exempt",
-        "class_color": "#9ca3af",
+        "class_label": "Metro Parks/COTA",
+        "class_color": "#eab308",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=152-002366"
       }
