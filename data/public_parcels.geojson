@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-08-27T17:18:11.122Z",
+  "generated": "2026-08-28T18:10:38.352Z",
   "count": 8640,
   "risk_counts": {
     "low": 3082,
@@ -190017,13 +190017,13 @@
       },
       "properties": {
         "PARCELID": "010-052390",
-        "OWNERNME1": "SOUTHEAST INC",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
         "CLASSCD": "680",
         "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
         "SITEADDRESS": "84 - 92 N FRONT ST",
         "ACRES": 0.27659572,
         "TOTVALUEBASE": 2110200,
-        "SALEDATE": 1545886800000,
+        "SALEDATE": 1787806800000,
         "ZIPCD": "43215",
         "class_label": "Other Exempt",
         "class_color": "#9ca3af",
