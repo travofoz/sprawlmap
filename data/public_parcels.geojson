@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-09-09T10:44:12.902Z",
+  "generated": "2026-09-10T10:34:14.303Z",
   "count": 8630,
   "risk_counts": {
     "low": 3082,
@@ -85764,13 +85764,13 @@
       },
       "properties": {
         "PARCELID": "010-053030",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "OWNERNME1": "COLUMBUS NEXT GENERATION CORPORATION",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "27 N OAKLEY AVE",
         "ACRES": 0.09585745,
         "TOTVALUEBASE": 127900,
-        "SALEDATE": 1496811600000,
+        "SALEDATE": 1788930000000,
         "ZIPCD": "43204",
         "class_label": "Municipal",
         "class_color": "#3fb950",
