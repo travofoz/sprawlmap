@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-09-14T11:44:42.787Z",
-  "count": 8630,
+  "generated": "2026-09-15T11:02:05.299Z",
+  "count": 8632,
   "risk_counts": {
-    "low": 3082,
-    "med": 4983,
+    "low": 3083,
+    "med": 4984,
     "avoid": 565,
     "high": 0
   },
@@ -430543,79 +430543,6 @@
         "coordinates": [
           [
             [
-              -83.03632028244469,
-              40.117435527896795
-            ],
-            [
-              -83.03582239128694,
-              40.11741410060442
-            ],
-            [
-              -83.03581089737449,
-              40.11741360540182
-            ],
-            [
-              -83.03512078205421,
-              40.11738390148508
-            ],
-            [
-              -83.03499997936488,
-              40.11737870071243
-            ],
-            [
-              -83.03502677497667,
-              40.117806197948696
-            ],
-            [
-              -83.03514248642851,
-              40.11780900374651
-            ],
-            [
-              -83.03597185415582,
-              40.11782910756734
-            ],
-            [
-              -83.03648611223161,
-              40.11781577741651
-            ],
-            [
-              -83.03648053323087,
-              40.11747275650185
-            ],
-            [
-              -83.03648003091743,
-              40.11744255981725
-            ],
-            [
-              -83.03632028244469,
-              40.117435527896795
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-203806",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "7439 OLENTANGY RIVER RD",
-        "ACRES": 1.40366445,
-        "TOTVALUEBASE": 61700,
-        "SALEDATE": 879742800000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-203806"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -83.01605714746363,
               40.12097269894312
             ],
@@ -478086,6 +478013,10 @@
               40.00243528454436
             ],
             [
+              -82.95996552774983,
+              39.999655297817846
+            ],
+            [
               -82.95996643381265,
               39.999642693446724
             ],
@@ -478100,10 +478031,6 @@
             [
               -82.95858579962352,
               39.99947017859099
-            ],
-            [
-              -82.95748437310114,
-              39.99940752657367
             ],
             [
               -82.95747796736168,
@@ -478134,7 +478061,7 @@
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "1800 - 1860 SEVENTEENTH AVE",
-        "ACRES": 18.54556583,
+        "ACRES": 18.54556839,
         "TOTVALUEBASE": 6494400,
         "SALEDATE": 422773200000,
         "ZIPCD": "43219",
@@ -745750,6 +745677,10 @@
               40.100371192724495
             ],
             [
+              -82.86190673643466,
+              40.100353222971464
+            ],
+            [
               -82.86214559992315,
               40.09748026913276
             ],
@@ -745764,6 +745695,10 @@
             [
               -82.86181064212349,
               40.09514010732368
+            ],
+            [
+              -82.86225158838022,
+              40.09515888342329
             ],
             [
               -82.86402882800428,
@@ -745798,8 +745733,8 @@
               40.09531028331952
             ],
             [
-              -82.8660190685241,
-              40.09531924101295
+              -82.86601906518678,
+              40.09531927524618
             ],
             [
               -82.86691406430991,
@@ -745830,12 +745765,12 @@
               40.093081876328284
             ],
             [
-              -82.8609691094871,
-              40.09285295565776
+              -82.86096910596926,
+              40.09285295566859
             ],
             [
-              -82.86096455917884,
-              40.09291458789498
+              -82.86096455448839,
+              40.0929145879094
             ],
             [
               -82.860956389782,
@@ -745910,7 +745845,7 @@
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "4747 CENTRAL COLLEGE RD",
-        "ACRES": 44.53983926,
+        "ACRES": 44.54001955,
         "TOTVALUEBASE": 9174300,
         "SALEDATE": 1695358800000,
         "ZIPCD": "43081",
@@ -771317,6 +771252,10 @@
               40.08713854243922
             ],
             [
+              -83.05899117104872,
+              40.08717538329278
+            ],
+            [
               -83.06121297733839,
               40.087227895715735
             ],
@@ -771357,7 +771296,7 @@
         "CLASSCD": "610",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
         "SITEADDRESS": "2555 W DUBLIN GRANVILLE RD",
-        "ACRES": 34.85567239,
+        "ACRES": 34.85567024,
         "TOTVALUEBASE": 5255000,
         "SALEDATE": -430599600000,
         "ZIPCD": "43235",
@@ -772104,63 +772043,6 @@
         "class_color": "#58a6ff",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347848"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.05736742439879,
-              40.08953514067039
-            ],
-            [
-              -83.05799250030016,
-              40.089554164028996
-            ],
-            [
-              -83.05797338270489,
-              40.09021048893731
-            ],
-            [
-              -83.06111062863035,
-              40.09028543513971
-            ],
-            [
-              -83.06120114430868,
-              40.08758165476554
-            ],
-            [
-              -83.06121297733839,
-              40.087227895715735
-            ],
-            [
-              -83.05743347410112,
-              40.08713854243922
-            ],
-            [
-              -83.05736742439879,
-              40.08953514067039
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-347847",
-        "OWNERNME1": "WEST GRANVILLE ROAD OWNER LLC",
-        "CLASSCD": "610",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
-        "SITEADDRESS": "2555 W DUBLIN GRANVILLE RD",
-        "ACRES": 26.0308699,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": null,
-        "class_label": "State of Ohio",
-        "class_color": "#58a6ff",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347847"
       }
     },
     {
@@ -773525,6 +773407,242 @@
         "class_color": "#eab308",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=170-000110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03502677497667,
+              40.117806197948696
+            ],
+            [
+              -83.03514248642851,
+              40.11780900374651
+            ],
+            [
+              -83.03512078205421,
+              40.11738390148508
+            ],
+            [
+              -83.03499997936488,
+              40.11737870071243
+            ],
+            [
+              -83.03502677497667,
+              40.117806197948696
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347850",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "OLENTANGY RIVER RD",
+        "ACRES": 0.1176934,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347850"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03514248642851,
+              40.11780900374651
+            ],
+            [
+              -83.03597185415582,
+              40.11782910756734
+            ],
+            [
+              -83.03648611223161,
+              40.11781577741651
+            ],
+            [
+              -83.03648053323087,
+              40.11747275650185
+            ],
+            [
+              -83.03648003091743,
+              40.11744255981725
+            ],
+            [
+              -83.03632028244469,
+              40.117435527896795
+            ],
+            [
+              -83.03582239128694,
+              40.11741410060442
+            ],
+            [
+              -83.03581089737449,
+              40.11741360540182
+            ],
+            [
+              -83.03512078205421,
+              40.11738390148508
+            ],
+            [
+              -83.03514248642851,
+              40.11780900374651
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-203806",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "7439 OLENTANGY RIVER RD",
+        "ACRES": 1.28597105,
+        "TOTVALUEBASE": 61700,
+        "SALEDATE": 879742800000,
+        "ZIPCD": "43235",
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-203806"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.05896154394758,
+              40.08837110484264
+            ],
+            [
+              -83.05965241578468,
+              40.08838972723263
+            ],
+            [
+              -83.05960598650505,
+              40.09024950071962
+            ],
+            [
+              -83.0611106473912,
+              40.09028543505016
+            ],
+            [
+              -83.06120114430868,
+              40.08758165476554
+            ],
+            [
+              -83.06121297733839,
+              40.087227895715735
+            ],
+            [
+              -83.05899117104872,
+              40.08717538329278
+            ],
+            [
+              -83.05896154394758,
+              40.08837110484264
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347847",
+        "OWNERNME1": "WEST GRANVILLE ROAD OWNER LLC",
+        "CLASSCD": "610",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
+        "SITEADDRESS": "2555 W DUBLIN GRANVILLE RD",
+        "ACRES": 12.80295988,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "State of Ohio",
+        "class_color": "#58a6ff",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347847"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.05799250030016,
+              40.089554164028996
+            ],
+            [
+              -83.05797338270489,
+              40.09021048893731
+            ],
+            [
+              -83.05960598650505,
+              40.09024950071962
+            ],
+            [
+              -83.05965241578468,
+              40.08838972723263
+            ],
+            [
+              -83.05896154394758,
+              40.08837110484264
+            ],
+            [
+              -83.05899117104872,
+              40.08717538329278
+            ],
+            [
+              -83.05743347410112,
+              40.08713854243922
+            ],
+            [
+              -83.05736718658272,
+              40.08953516791565
+            ],
+            [
+              -83.05763858381306,
+              40.08954345354088
+            ],
+            [
+              -83.05763871494221,
+              40.08954342860235
+            ],
+            [
+              -83.05799250030016,
+              40.089554164028996
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347861",
+        "OWNERNME1": "WEST GRANVILLE ROAD OWNER LLC",
+        "CLASSCD": "610",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
+        "SITEADDRESS": "W DUBLIN GRANVILLE RD",
+        "ACRES": 13.2286786,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "State of Ohio",
+        "class_color": "#58a6ff",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347861"
       }
     }
   ]
