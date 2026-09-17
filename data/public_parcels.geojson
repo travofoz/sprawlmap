@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-09-16T10:49:13.011Z",
+  "generated": "2026-09-17T10:55:45.574Z",
   "count": 8632,
   "risk_counts": {
     "low": 3083,
@@ -574385,7 +574385,7 @@
         "OWNERNME1": "BOARD OF TRUSTEES OF JEFFERSON TOWNSHIP FRANKLIN COUNTY OHIO",
         "CLASSCD": "680",
         "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
-        "SITEADDRESS": "NARROWLEAF DR",
+        "SITEADDRESS": "NARROW LEAF DR",
         "ACRES": 7.30263138,
         "TOTVALUEBASE": 29200,
         "SALEDATE": 1703134800000,
