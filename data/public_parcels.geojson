@@ -1,9 +1,9 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-09-28T12:51:54.387Z",
-  "count": 8633,
+  "generated": "2026-09-29T12:05:50.592Z",
+  "count": 8632,
   "risk_counts": {
-    "low": 3084,
+    "low": 3083,
     "med": 4984,
     "avoid": 565,
     "high": 0
@@ -477140,55 +477140,6 @@
         "coordinates": [
           [
             [
-              -82.97513442042504,
-              40.00024057929481
-            ],
-            [
-              -82.97535553429405,
-              40.00025189513883
-            ],
-            [
-              -82.97546343527037,
-              40.000072741875
-            ],
-            [
-              -82.97524936071241,
-              40.00006305851941
-            ],
-            [
-              -82.97519220525437,
-              40.0001513317549
-            ],
-            [
-              -82.97513442042504,
-              40.00024057929481
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-054231",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "1205 SEVENTEENTH AVE",
-        "ACRES": 0.09365895,
-        "TOTVALUEBASE": 9200,
-        "SALEDATE": 1789016400000,
-        "ZIPCD": "43211",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-054231"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -82.9818486031129,
               39.996649731180625
             ],
@@ -477278,59 +477229,6 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-064315"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.97572266628525,
-              40.000084468261804
-            ],
-            [
-              -82.97546343527037,
-              40.000072741875
-            ],
-            [
-              -82.97535553429405,
-              40.00025189513883
-            ],
-            [
-              -82.97557183110393,
-              40.00026296529067
-            ],
-            [
-              -82.97563555424607,
-              40.00023429652752
-            ],
-            [
-              -82.97572944964423,
-              40.000084715471395
-            ],
-            [
-              -82.97572266628525,
-              40.000084468261804
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-207715",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "CLEVELAND AVE",
-        "ACRES": 0.11254741,
-        "TOTVALUEBASE": 27100,
-        "SALEDATE": 1789016400000,
-        "ZIPCD": "43211",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-207715"
       }
     },
     {
@@ -773810,6 +773708,71 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=530-193324"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.97519220525437,
+              40.0001513317549
+            ],
+            [
+              -82.97513442042504,
+              40.00024057929481
+            ],
+            [
+              -82.97535553429405,
+              40.00025189513883
+            ],
+            [
+              -82.97557183110393,
+              40.00026296529067
+            ],
+            [
+              -82.97563555424607,
+              40.00023429652752
+            ],
+            [
+              -82.97572944964423,
+              40.000084715471395
+            ],
+            [
+              -82.97572266628525,
+              40.000084468261804
+            ],
+            [
+              -82.97546343527037,
+              40.000072741875
+            ],
+            [
+              -82.97524936071241,
+              40.00006305851941
+            ],
+            [
+              -82.97519220525437,
+              40.0001513317549
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-054231",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "1205 SEVENTEENTH AVE",
+        "ACRES": 0.20620636,
+        "TOTVALUEBASE": 9200,
+        "SALEDATE": 1789016400000,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-054231"
       }
     }
   ]
