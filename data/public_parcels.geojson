@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-02T11:51:03.705Z",
+  "generated": "2026-10-03T11:04:06.416Z",
   "count": 8632,
   "risk_counts": {
     "low": 3083,
@@ -67325,7 +67325,7 @@
         "SITEADDRESS": "MIX AVE",
         "ACRES": 0.07665055,
         "TOTVALUEBASE": 27800,
-        "SALEDATE": 1790139600000,
+        "SALEDATE": 1790917200000,
         "ZIPCD": "43228",
         "class_label": "Township",
         "class_color": "#a78bfa",
@@ -67378,7 +67378,7 @@
         "SITEADDRESS": "MIX AVE",
         "ACRES": 0.07629129,
         "TOTVALUEBASE": 2800,
-        "SALEDATE": 1790139600000,
+        "SALEDATE": 1790917200000,
         "ZIPCD": "43228",
         "class_label": "Township",
         "class_color": "#a78bfa",
