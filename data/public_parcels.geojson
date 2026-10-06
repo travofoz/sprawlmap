@@ -1,9 +1,9 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-05T13:33:29.790Z",
-  "count": 8632,
+  "generated": "2026-10-06T12:43:24.075Z",
+  "count": 8629,
   "risk_counts": {
-    "low": 3083,
+    "low": 3080,
     "med": 4984,
     "avoid": 565,
     "high": 0
@@ -429177,161 +429177,6 @@
         "coordinates": [
           [
             [
-              -83.04093017049688,
-              40.116291962572305
-            ],
-            [
-              -83.04072095380509,
-              40.116285248800885
-            ],
-            [
-              -83.0406955541688,
-              40.11669601319713
-            ],
-            [
-              -83.04105498660755,
-              40.11670832587899
-            ],
-            [
-              -83.04107678992884,
-              40.11629665932799
-            ],
-            [
-              -83.04093017049688,
-              40.116291962572305
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163035",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "871 HARD RD",
-        "ACRES": 0.3446539,
-        "TOTVALUEBASE": 9000,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163035"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.04128243618798,
-              40.116303251106764
-            ],
-            [
-              -83.04107678992884,
-              40.11629665932799
-            ],
-            [
-              -83.04105498660755,
-              40.11670832587899
-            ],
-            [
-              -83.04141156440032,
-              40.11672054073047
-            ],
-            [
-              -83.04143791642778,
-              40.116296034891356
-            ],
-            [
-              -83.04128243618798,
-              40.116303251106764
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163036",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "885 HARD RD",
-        "ACRES": 0.34833209,
-        "TOTVALUEBASE": 9100,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163036"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.04163912969643,
-              40.116286696785586
-            ],
-            [
-              -83.04143791642778,
-              40.116296034891356
-            ],
-            [
-              -83.04141156440032,
-              40.11672054073047
-            ],
-            [
-              -83.0417695480055,
-              40.116732802962424
-            ],
-            [
-              -83.04178017547554,
-              40.116537031513715
-            ],
-            [
-              -83.0417870557264,
-              40.11641429725172
-            ],
-            [
-              -83.041794609869,
-              40.11627948099916
-            ],
-            [
-              -83.04163912969643,
-              40.116286696785586
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163037",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "899 HARD RD",
-        "ACRES": 0.36663657,
-        "TOTVALUEBASE": 9600,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163037"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -83.04858177116247,
               40.116857967637955
             ],
@@ -429488,51 +429333,6 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-263644"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.0421288318889,
-              40.116406409116756
-            ],
-            [
-              -83.0417870557264,
-              40.11641429725172
-            ],
-            [
-              -83.04178017547554,
-              40.116537031513715
-            ],
-            [
-              -83.04199205096404,
-              40.11651821348483
-            ],
-            [
-              -83.0421288318889,
-              40.116406409116756
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-273532",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "911 HARD RD",
-        "ACRES": 0.07369155,
-        "TOTVALUEBASE": 7700,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-273532"
       }
     },
     {
@@ -429918,397 +429718,6 @@
         "coordinates": [
           [
             [
-              -83.03650085116762,
-              40.11637374580496
-            ],
-            [
-              -83.03654050093407,
-              40.116553640310286
-            ],
-            [
-              -83.03703762243302,
-              40.116570818116266
-            ],
-            [
-              -83.0370701936113,
-              40.116022602551155
-            ],
-            [
-              -83.03700020403059,
-              40.11603327906262
-            ],
-            [
-              -83.03682787199658,
-              40.116079101300194
-            ],
-            [
-              -83.03645714442418,
-              40.1161776760523
-            ],
-            [
-              -83.03650085116762,
-              40.11637374580496
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163025",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "715 HARD RD",
-        "ACRES": 0.60901411,
-        "TOTVALUEBASE": 5300,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163025"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.03703762243302,
-              40.116570818116266
-            ],
-            [
-              -83.03746678571049,
-              40.116585645821445
-            ],
-            [
-              -83.037477203758,
-              40.1164074456097
-            ],
-            [
-              -83.03748331288512,
-              40.11629759376299
-            ],
-            [
-              -83.0375022677173,
-              40.11595669043717
-            ],
-            [
-              -83.03720838828072,
-              40.11600152052959
-            ],
-            [
-              -83.0370701936113,
-              40.116022602551155
-            ],
-            [
-              -83.03703762243302,
-              40.116570818116266
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163026",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "731 HARD RD",
-        "ACRES": 0.59110077,
-        "TOTVALUEBASE": 5200,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163026"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.03748386084173,
-              40.116297612873296
-            ],
-            [
-              -83.03791112306543,
-              40.11631239900669
-            ],
-            [
-              -83.03792829374831,
-              40.11602468162842
-            ],
-            [
-              -83.03774121783175,
-              40.11596093151914
-            ],
-            [
-              -83.037658729246,
-              40.11593282169317
-            ],
-            [
-              -83.0375947691315,
-              40.11594257849895
-            ],
-            [
-              -83.0375022677173,
-              40.11595669043717
-            ],
-            [
-              -83.03748331288512,
-              40.11629759376299
-            ],
-            [
-              -83.03748386084173,
-              40.116297612873296
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163027",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "HEAR  RD REAR",
-        "ACRES": 0.33995942,
-        "TOTVALUEBASE": 15000,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163027"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.03835025585646,
-              40.11616847646257
-            ],
-            [
-              -83.03809283627044,
-              40.116080755134185
-            ],
-            [
-              -83.03792829374831,
-              40.11602468162842
-            ],
-            [
-              -83.03791112306543,
-              40.11631239900669
-            ],
-            [
-              -83.0379045795217,
-              40.11642196197041
-            ],
-            [
-              -83.03789416491655,
-              40.11660016220828
-            ],
-            [
-              -83.03832082855078,
-              40.11661495410111
-            ],
-            [
-              -83.03833029165371,
-              40.11645213055502
-            ],
-            [
-              -83.0383391026439,
-              40.116326938943786
-            ],
-            [
-              -83.03835025585646,
-              40.11616847646257
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163028",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "767 HARD RD",
-        "ACRES": 0.51248907,
-        "TOTVALUEBASE": 4500,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163028"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.03984515342087,
-              40.11622211773115
-            ],
-            [
-              -83.03965640869332,
-              40.116175747339305
-            ],
-            [
-              -83.03963816038386,
-              40.116494999113115
-            ],
-            [
-              -83.03962907210676,
-              40.11665946825731
-            ],
-            [
-              -83.03998386471389,
-              40.11667162537896
-            ],
-            [
-              -83.04000926675828,
-              40.11626243719482
-            ],
-            [
-              -83.03984515342087,
-              40.11622211773115
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163032",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "833 HARD RD",
-        "ACRES": 0.37266872,
-        "TOTVALUEBASE": 9700,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163032"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.04021668454936,
-              40.116269088446224
-            ],
-            [
-              -83.04000926675828,
-              40.11626243719482
-            ],
-            [
-              -83.03998386471389,
-              40.11667162537896
-            ],
-            [
-              -83.04034220808,
-              40.11668391011476
-            ],
-            [
-              -83.0403633179746,
-              40.116273787827865
-            ],
-            [
-              -83.04021668454936,
-              40.116269088446224
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163033",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "845 HARD RD",
-        "ACRES": 0.34196141,
-        "TOTVALUEBASE": 8900,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163033"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.04034220808,
-              40.11668391011476
-            ],
-            [
-              -83.0406955541688,
-              40.11669601319713
-            ],
-            [
-              -83.04072095380509,
-              40.116285248800885
-            ],
-            [
-              -83.04057253331881,
-              40.11628048873236
-            ],
-            [
-              -83.0403633179746,
-              40.116273787827865
-            ],
-            [
-              -83.04034220808,
-              40.11668391011476
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-163034",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "859 HARD RD",
-        "ACRES": 0.34194039,
-        "TOTVALUEBASE": 8900,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-163034"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -83.03307722514303,
               40.12291014778263
             ],
@@ -430462,100 +429871,6 @@
         "class_color": "#eab308",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-259220"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.03833029165371,
-              40.11645213055502
-            ],
-            [
-              -83.0386231636856,
-              40.11646107544134
-            ],
-            [
-              -83.03862936966976,
-              40.11633629380265
-            ],
-            [
-              -83.0383391026439,
-              40.116326938943786
-            ],
-            [
-              -83.03833029165371,
-              40.11645213055502
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-274084",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "783 HARD RD",
-        "ACRES": 0.0854037,
-        "TOTVALUEBASE": 1100,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-274084"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.037477203758,
-              40.1164074456097
-            ],
-            [
-              -83.0379045795217,
-              40.11642196197041
-            ],
-            [
-              -83.03791112306543,
-              40.11631239900669
-            ],
-            [
-              -83.03748386084173,
-              40.116297612873296
-            ],
-            [
-              -83.03748331288512,
-              40.11629759376299
-            ],
-            [
-              -83.037477203758,
-              40.1164074456097
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "610-287413",
-        "OWNERNME1": "CITY OF COLUMBUS",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "HARD RD",
-        "ACRES": 0.10994504,
-        "TOTVALUEBASE": 1000,
-        "SALEDATE": 1787202000000,
-        "ZIPCD": "43235",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-287413"
       }
     },
     {
@@ -773773,6 +773088,588 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-054231"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.04163633043713,
+              40.116414866297845
+            ],
+            [
+              -83.0417870557264,
+              40.11641429725172
+            ],
+            [
+              -83.041794609869,
+              40.11627948099916
+            ],
+            [
+              -83.04163912969643,
+              40.116286696785586
+            ],
+            [
+              -83.04163633043713,
+              40.116414866297845
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347851",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.04704408,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347851"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.04127655511913,
+              40.1164153995652
+            ],
+            [
+              -83.04143043938964,
+              40.116416480750836
+            ],
+            [
+              -83.04163633043713,
+              40.116414866297845
+            ],
+            [
+              -83.04163912969643,
+              40.116286696785586
+            ],
+            [
+              -83.04143791642778,
+              40.116296034891356
+            ],
+            [
+              -83.04128243618798,
+              40.116303251106764
+            ],
+            [
+              -83.04127655511913,
+              40.1164153995652
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347852",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.10115185,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347852"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.04092205662023,
+              40.11641163500542
+            ],
+            [
+              -83.04107056785351,
+              40.11641415531917
+            ],
+            [
+              -83.04127655511913,
+              40.1164153995652
+            ],
+            [
+              -83.04128243618798,
+              40.116303251106764
+            ],
+            [
+              -83.04107678992884,
+              40.11629665932799
+            ],
+            [
+              -83.04093017049688,
+              40.116291962572305
+            ],
+            [
+              -83.04092205662023,
+              40.11641163500542
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347853",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.09632716,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347853"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03963816038386,
+              40.116494999113115
+            ],
+            [
+              -83.04070577709788,
+              40.1165307056878
+            ],
+            [
+              -83.04106404284411,
+              40.1165373282937
+            ],
+            [
+              -83.04142278821692,
+              40.11653971657097
+            ],
+            [
+              -83.04178017547554,
+              40.116537031513715
+            ],
+            [
+              -83.04199205096404,
+              40.11651821348483
+            ],
+            [
+              -83.0421288318889,
+              40.116406409116756
+            ],
+            [
+              -83.0417870557264,
+              40.11641429725172
+            ],
+            [
+              -83.04163633043713,
+              40.116414866297845
+            ],
+            [
+              -83.04143043938964,
+              40.116416480750836
+            ],
+            [
+              -83.04127655511913,
+              40.1164153995652
+            ],
+            [
+              -83.04107056785351,
+              40.11641415531917
+            ],
+            [
+              -83.04092205662023,
+              40.11641163500542
+            ],
+            [
+              -83.04071337576899,
+              40.11640779437793
+            ],
+            [
+              -83.04056464492825,
+              40.116402981689156
+            ],
+            [
+              -83.04020891222861,
+              40.11639135299133
+            ],
+            [
+              -83.03983304023366,
+              40.116378430532
+            ],
+            [
+              -83.03964522433964,
+              40.11637141758273
+            ],
+            [
+              -83.03963816038386,
+              40.116494999113115
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347858",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.69042743,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347858"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.04056464492825,
+              40.116402981689156
+            ],
+            [
+              -83.04071337576899,
+              40.11640779437793
+            ],
+            [
+              -83.04092205662023,
+              40.11641163500542
+            ],
+            [
+              -83.04093017049688,
+              40.116291962572305
+            ],
+            [
+              -83.04057253331881,
+              40.11628048873236
+            ],
+            [
+              -83.04056464492825,
+              40.116402981689156
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347854",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.10195538,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347854"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.04020891222861,
+              40.11639135299133
+            ],
+            [
+              -83.04056464492825,
+              40.116402981689156
+            ],
+            [
+              -83.04057253331881,
+              40.11628048873236
+            ],
+            [
+              -83.0403633179746,
+              40.116273787827865
+            ],
+            [
+              -83.04021668454936,
+              40.116269088446224
+            ],
+            [
+              -83.04020891222861,
+              40.11639135299133
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347855",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.1020584,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347855"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03983304023366,
+              40.116378430532
+            ],
+            [
+              -83.04020891222861,
+              40.11639135299133
+            ],
+            [
+              -83.04021668454936,
+              40.116269088446224
+            ],
+            [
+              -83.04000926675828,
+              40.11626243719482
+            ],
+            [
+              -83.03984515342087,
+              40.11622211773115
+            ],
+            [
+              -83.03983304023366,
+              40.116378430532
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347856",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.11394854,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347856"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03964522433964,
+              40.11637141758273
+            ],
+            [
+              -83.03983304023366,
+              40.116378430532
+            ],
+            [
+              -83.03984515342087,
+              40.11622211773115
+            ],
+            [
+              -83.03965640869332,
+              40.116175747339305
+            ],
+            [
+              -83.03964522433964,
+              40.11637141758273
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347857",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.07823557,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347857"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03833029165371,
+              40.11645213055502
+            ],
+            [
+              -83.0386231636856,
+              40.11646107544134
+            ],
+            [
+              -83.03862936966976,
+              40.11633629380265
+            ],
+            [
+              -83.0383391026439,
+              40.116326938943786
+            ],
+            [
+              -83.03647626351908,
+              40.11626344594634
+            ],
+            [
+              -83.03650085116762,
+              40.11637374580496
+            ],
+            [
+              -83.037477203758,
+              40.1164074456097
+            ],
+            [
+              -83.0379045795217,
+              40.11642196197041
+            ],
+            [
+              -83.03833029165371,
+              40.11645213055502
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347859",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 0.56729857,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347859"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03647626351908,
+              40.11626344594634
+            ],
+            [
+              -83.0383391026439,
+              40.116326938943786
+            ],
+            [
+              -83.03835025585646,
+              40.11616847646257
+            ],
+            [
+              -83.03792829374831,
+              40.11602468162842
+            ],
+            [
+              -83.037658729246,
+              40.11593282169317
+            ],
+            [
+              -83.0375947691315,
+              40.11594257849895
+            ],
+            [
+              -83.0375022677173,
+              40.11595669043717
+            ],
+            [
+              -83.03720838828072,
+              40.11600152052959
+            ],
+            [
+              -83.0370701936113,
+              40.116022602551155
+            ],
+            [
+              -83.03700020403059,
+              40.11603327906262
+            ],
+            [
+              -83.03682787199658,
+              40.116079101300194
+            ],
+            [
+              -83.03645714442418,
+              40.1161776760523
+            ],
+            [
+              -83.03647626351908,
+              40.11626344594634
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "610-347860",
+        "OWNERNME1": "CITY OF COLUMBUS",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "0 HARD RD",
+        "ACRES": 1.11280677,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347860"
       }
     }
   ]
