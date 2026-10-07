@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-06T12:43:24.075Z",
+  "generated": "2026-10-07T12:37:09.440Z",
   "count": 8629,
   "risk_counts": {
     "low": 3080,
@@ -754707,7 +754707,7 @@
         "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
         "SITEADDRESS": "1350 STRINGTOWN RD",
         "ACRES": 2.67680092,
-        "TOTVALUEBASE": 713800,
+        "TOTVALUEBASE": 1300000,
         "SALEDATE": 1728536400000,
         "ZIPCD": "43123",
         "class_label": "Other Exempt",
