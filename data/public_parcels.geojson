@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-07T12:37:09.440Z",
-  "count": 8629,
+  "generated": "2026-10-08T12:47:03.073Z",
+  "count": 8631,
   "risk_counts": {
     "low": 3080,
-    "med": 4984,
+    "med": 4986,
     "avoid": 565,
     "high": 0
   },
@@ -197534,59 +197534,6 @@
         "class_color": "#9ca3af",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-047546"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.99182863038209,
-              39.96671754399915
-            ],
-            [
-              -82.99185416538577,
-              39.96685334324041
-            ],
-            [
-              -82.99187974549933,
-              39.966989382754534
-            ],
-            [
-              -82.99237568519553,
-              39.966935412950804
-            ],
-            [
-              -82.99234895228876,
-              39.96679804361162
-            ],
-            [
-              -82.99232273215125,
-              39.966663314615886
-            ],
-            [
-              -82.99182863038209,
-              39.96671754399915
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-048940",
-        "OWNERNME1": "CFA DEVELOPMENT PARTNERS LLC",
-        "CLASSCD": "670",
-        "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
-        "SITEADDRESS": "161 N GRANT AVE",
-        "ACRES": 0.32217586,
-        "TOTVALUEBASE": 2804000,
-        "SALEDATE": 1755666000000,
-        "ZIPCD": "43215",
-        "class_label": "Religious/Charity",
-        "class_color": "#6b7280",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-048940"
       }
     },
     {
@@ -401328,87 +401275,6 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-009086"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.08720678714262,
-              40.06447573095633
-            ],
-            [
-              -83.08723214941965,
-              40.06447505484811
-            ],
-            [
-              -83.08725394992585,
-              40.06391247772801
-            ],
-            [
-              -83.08683707144623,
-              40.06389860380204
-            ],
-            [
-              -83.08640716446217,
-              40.06388429266228
-            ],
-            [
-              -83.08597724829386,
-              40.063869981797744
-            ],
-            [
-              -83.08595130095833,
-              40.06455830992885
-            ],
-            [
-              -83.08637595752818,
-              40.06457044242296
-            ],
-            [
-              -83.08680192855584,
-              40.06458261004999
-            ],
-            [
-              -83.08722744482931,
-              40.06459476399608
-            ],
-            [
-              -83.08722815369421,
-              40.06455193671435
-            ],
-            [
-              -83.08722842987879,
-              40.06454232838493
-            ],
-            [
-              -83.08720413079176,
-              40.064541626629925
-            ],
-            [
-              -83.08720678714262,
-              40.06447573095633
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "590-242311",
-        "OWNERNME1": "KEISER MANAGEMENT GROUP INC",
-        "CLASSCD": "680",
-        "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
-        "SITEADDRESS": "2495 - 2503 BETHEL RD",
-        "ACRES": 2.04606194,
-        "TOTVALUEBASE": 2380600,
-        "SALEDATE": 1760590800000,
-        "ZIPCD": "43220",
-        "class_label": "Other Exempt",
-        "class_color": "#9ca3af",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=590-242311"
       }
     },
     {
@@ -758252,93 +758118,8 @@
         "coordinates": [
           [
             [
-              -83.12329922580439,
-              39.94552229633187
-            ],
-            [
-              -83.12327600456237,
-              39.94560339575657
-            ],
-            [
-              -83.12318592596085,
-              39.945917969339575
-            ],
-            [
-              -83.12317142069509,
-              39.94596862140315
-            ],
-            [
-              -83.12354959820723,
-              39.94603419690495
-            ],
-            [
-              -83.12355196681543,
-              39.9460346085284
-            ],
-            [
-              -83.12356567151642,
-              39.94598735797916
-            ],
-            [
-              -83.12358906050999,
-              39.94590671965596
-            ],
-            [
-              -83.12361181151611,
-              39.94582827693434
-            ],
-            [
-              -83.12363567597866,
-              39.945745997760575
-            ],
-            [
-              -83.12365765734637,
-              39.945670211573706
-            ],
-            [
-              -83.12368120618166,
-              39.94558902296702
-            ],
-            [
-              -83.12370423169136,
-              39.94550963666329
-            ],
-            [
-              -83.12332210441183,
-              39.94544240200846
-            ],
-            [
-              -83.12329922580439,
-              39.94552229633187
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "240-000968",
-        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
-        "CLASSCD": "630",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
-        "SITEADDRESS": "329 MIX AVE",
-        "ACRES": 0.49360809,
-        "TOTVALUEBASE": 78500,
-        "SALEDATE": 1790312400000,
-        "ZIPCD": "43228",
-        "class_label": "Township",
-        "class_color": "#a78bfa",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-000968"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.12350473883994,
-              39.94640075175546
+              -83.12350513051706,
+              39.946399410385915
             ],
             [
               -83.12345064238067,
@@ -758355,10 +758136,6 @@
             [
               -83.12350513051706,
               39.946399410385915
-            ],
-            [
-              -83.12350473883994,
-              39.94640075175546
             ]
           ]
         ]
@@ -758369,7 +758146,7 @@
         "CLASSCD": "630",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
         "SITEADDRESS": "4619 - 4625 STILES AVE",
-        "ACRES": 0.15167564,
+        "ACRES": 0.15167581,
         "TOTVALUEBASE": 26200,
         "SALEDATE": 1248066000000,
         "ZIPCD": "43228",
@@ -766606,103 +766383,6 @@
         "coordinates": [
           [
             [
-              -83.12316221083007,
-              39.946000786217944
-            ],
-            [
-              -83.12313943938224,
-              39.946080274624705
-            ],
-            [
-              -83.12311593037573,
-              39.94616234014022
-            ],
-            [
-              -83.12301633958342,
-              39.946509991406906
-            ],
-            [
-              -83.123394978982,
-              39.94657587028207
-            ],
-            [
-              -83.12345064238067,
-              39.94658555474667
-            ],
-            [
-              -83.12350473883994,
-              39.94640075175546
-            ],
-            [
-              -83.12350513051706,
-              39.946399410385915
-            ],
-            [
-              -83.12344898447525,
-              39.946389651055036
-            ],
-            [
-              -83.12347213770694,
-              39.94630983362523
-            ],
-            [
-              -83.12349603101035,
-              39.94622825415819
-            ],
-            [
-              -83.12349581301285,
-              39.94622821568755
-            ],
-            [
-              -83.12351936450183,
-              39.946147019911535
-            ],
-            [
-              -83.12354230180298,
-              39.946067934046845
-            ],
-            [
-              -83.12355196681543,
-              39.9460346085284
-            ],
-            [
-              -83.12354959820723,
-              39.94603419690495
-            ],
-            [
-              -83.12317142069509,
-              39.94596862140315
-            ],
-            [
-              -83.12316221083007,
-              39.946000786217944
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "240-001317",
-        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
-        "CLASSCD": "630",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
-        "SITEADDRESS": "299 - 305 MIX AVE",
-        "ACRES": 0.53157093,
-        "TOTVALUEBASE": 71100,
-        "SALEDATE": 1790312400000,
-        "ZIPCD": "43228",
-        "class_label": "Township",
-        "class_color": "#a78bfa",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-001317"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -83.11309155451784,
               40.10246413615183
             ],
@@ -773670,6 +773350,340 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=610-347860"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.12327189835376,
+              39.94561773723824
+            ],
+            [
+              -83.12365346562663,
+              39.94568466520579
+            ],
+            [
+              -83.12370423169136,
+              39.94550963666329
+            ],
+            [
+              -83.12332210441183,
+              39.94544240200846
+            ],
+            [
+              -83.12327189835376,
+              39.94561773723824
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-007287",
+        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "MIX AVE",
+        "ACRES": 0.16478674,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-007287"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.12322161028992,
+              39.94579335117555
+            ],
+            [
+              -83.12360271750275,
+              39.94585963507586
+            ],
+            [
+              -83.12365346562663,
+              39.94568466520579
+            ],
+            [
+              -83.12327189835376,
+              39.94561773723824
+            ],
+            [
+              -83.12325417769306,
+              39.94567962147572
+            ],
+            [
+              -83.12323107880896,
+              39.94576028431489
+            ],
+            [
+              -83.12322161028992,
+              39.94579335117555
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-007288",
+        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "MIX AVE",
+        "ACRES": 0.16462345,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-007288"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.12322161028992,
+              39.94579335117555
+            ],
+            [
+              -83.12320818868683,
+              39.94584022280445
+            ],
+            [
+              -83.12318592596085,
+              39.945917969339575
+            ],
+            [
+              -83.12317142069509,
+              39.94596862140315
+            ],
+            [
+              -83.12355196681543,
+              39.9460346085284
+            ],
+            [
+              -83.12360271750275,
+              39.94585963507586
+            ],
+            [
+              -83.12322161028992,
+              39.94579335117555
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-000968",
+        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "329 MIX AVE",
+        "ACRES": 0.16419825,
+        "TOTVALUEBASE": 78500,
+        "SALEDATE": 1790312400000,
+        "ZIPCD": null,
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-000968"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.12312052574809,
+              39.94614629831646
+            ],
+            [
+              -83.12350045087052,
+              39.94621222315959
+            ],
+            [
+              -83.12351936450183,
+              39.946147019911535
+            ],
+            [
+              -83.12354230180298,
+              39.946067934046845
+            ],
+            [
+              -83.12355196681543,
+              39.9460346085284
+            ],
+            [
+              -83.12317142069509,
+              39.94596862140315
+            ],
+            [
+              -83.12316221083007,
+              39.946000786217944
+            ],
+            [
+              -83.12313943938224,
+              39.946080274624705
+            ],
+            [
+              -83.12312052574809,
+              39.94614629831646
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-007289",
+        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "299 - 305 MIX AVE",
+        "ACRES": 0.16629745,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-007289"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.1230697892952,
+              39.94632340963711
+            ],
+            [
+              -83.12344898447525,
+              39.946389651055036
+            ],
+            [
+              -83.12347213770694,
+              39.94630983362523
+            ],
+            [
+              -83.12349581301285,
+              39.94622821568755
+            ],
+            [
+              -83.12350045087052,
+              39.94621222315959
+            ],
+            [
+              -83.12312052574809,
+              39.94614629831646
+            ],
+            [
+              -83.12311593037573,
+              39.94616234014022
+            ],
+            [
+              -83.12309288426884,
+              39.946242791000614
+            ],
+            [
+              -83.1230697892952,
+              39.94632340963711
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-007290",
+        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "MIX AVE",
+        "ACRES": 0.16568057,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-007290"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.12301633958342,
+              39.946509991406906
+            ],
+            [
+              -83.123394978982,
+              39.94657587028207
+            ],
+            [
+              -83.12345064238067,
+              39.94658555474667
+            ],
+            [
+              -83.12350513051706,
+              39.946399410385915
+            ],
+            [
+              -83.12344898447525,
+              39.946389651055036
+            ],
+            [
+              -83.1230697892952,
+              39.94632340963711
+            ],
+            [
+              -83.12304711526292,
+              39.946402562451446
+            ],
+            [
+              -83.12301710321904,
+              39.946507325888604
+            ],
+            [
+              -83.12301633958342,
+              39.946509991406906
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "240-001317",
+        "OWNERNME1": "THE BOARD OF TRUSTEES OF PRAIRIE TOWNSHIP FRANKLIN CO OHIO",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "299 - 305 MIX AVE",
+        "ACRES": 0.19957025,
+        "TOTVALUEBASE": 71100,
+        "SALEDATE": 1790312400000,
+        "ZIPCD": null,
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-001317"
       }
     }
   ]
