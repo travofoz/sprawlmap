@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-15T10:49:55.868Z",
+  "generated": "2026-10-16T10:39:40.543Z",
   "count": 8631,
   "risk_counts": {
     "low": 3080,
@@ -276814,13 +276814,13 @@
       },
       "properties": {
         "PARCELID": "530-222760",
-        "OWNERNME1": "YOUNG MENS CHRISTIAN ASSOCIATION OF CENTRAL OH",
+        "OWNERNME1": "COLUMBUS METROPOLITAN HOUSING AUTHORITY",
         "CLASSCD": "670",
         "CLASSDSCRP": "EXEMPT PROP OWNED COL-ACAD-PRI SCHOO",
         "SITEADDRESS": "3470 HARROW RUN CT",
         "ACRES": 9.13222579,
         "TOTVALUEBASE": 4727900,
-        "SALEDATE": null,
+        "SALEDATE": 1792040400000,
         "ZIPCD": "43110",
         "class_label": "Religious/Charity",
         "class_color": "#6b7280",
