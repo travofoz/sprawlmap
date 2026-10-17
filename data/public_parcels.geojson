@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-16T10:39:40.543Z",
+  "generated": "2026-10-17T10:07:07.486Z",
   "count": 8631,
   "risk_counts": {
     "low": 3080,
@@ -260107,7 +260107,7 @@
         "SITEADDRESS": "E BROAD ST",
         "ACRES": 0.08992807,
         "TOTVALUEBASE": 17600,
-        "SALEDATE": -1287774000000,
+        "SALEDATE": 1792126800000,
         "ZIPCD": "43205",
         "class_label": "Municipal",
         "class_color": "#3fb950",
