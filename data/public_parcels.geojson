@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-23T10:58:52.869Z",
+  "generated": "2026-10-24T10:15:19.969Z",
   "count": 8630,
   "risk_counts": {
     "low": 3080,
@@ -655023,7 +655023,7 @@
         "OWNERNME1": "CITY OF WESTERVILLE",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "480 HEMPSTEAD RD",
+        "SITEADDRESS": "480 S HEMPSTEAD RD",
         "ACRES": 6.64194516,
         "TOTVALUEBASE": 323000,
         "SALEDATE": 1463374800000,
