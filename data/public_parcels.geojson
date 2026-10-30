@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-10-29T12:15:43.136Z",
-  "count": 8631,
+  "generated": "2026-10-30T12:05:53.381Z",
+  "count": 8629,
   "risk_counts": {
     "low": 3079,
-    "med": 4987,
+    "med": 4985,
     "avoid": 565,
     "high": 0
   },
@@ -67278,112 +67278,6 @@
         "class_color": "#a78bfa",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-001415"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.12380306796675,
-              39.943162119552944
-            ],
-            [
-              -83.12380325078004,
-              39.943162150104136
-            ],
-            [
-              -83.12382650132024,
-              39.94308160605418
-            ],
-            [
-              -83.12382623997536,
-              39.943081560609336
-            ],
-            [
-              -83.12344157577029,
-              39.94301453529298
-            ],
-            [
-              -83.12341797641484,
-              39.943095635029124
-            ],
-            [
-              -83.12380306796675,
-              39.943162119552944
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "240-001416",
-        "OWNERNME1": "SUTTLE SHAWN",
-        "CLASSCD": "630",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
-        "SITEADDRESS": "MIX AVE",
-        "ACRES": 0.07665055,
-        "TOTVALUEBASE": 27800,
-        "SALEDATE": 1790917200000,
-        "ZIPCD": "43228",
-        "class_label": "Township",
-        "class_color": "#a78bfa",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-001416"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -83.12382623997536,
-              39.943081560609336
-            ],
-            [
-              -83.12382650132024,
-              39.94308160605418
-            ],
-            [
-              -83.12384967457041,
-              39.94300132179977
-            ],
-            [
-              -83.12384941672791,
-              39.94300127543571
-            ],
-            [
-              -83.1234650536549,
-              39.942933857706514
-            ],
-            [
-              -83.12344157577029,
-              39.94301453529298
-            ],
-            [
-              -83.12382623997536,
-              39.943081560609336
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "240-001417",
-        "OWNERNME1": "SUTTLE SHAWN",
-        "CLASSCD": "630",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
-        "SITEADDRESS": "MIX AVE",
-        "ACRES": 0.07629129,
-        "TOTVALUEBASE": 2800,
-        "SALEDATE": 1790917200000,
-        "ZIPCD": "43228",
-        "class_label": "Township",
-        "class_color": "#a78bfa",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=240-001417"
       }
     },
     {
@@ -765815,8 +765709,12 @@
                 40.0409246069408
               ],
               [
-                -82.95713265154795,
-                40.037683505464614
+                -82.95626907849622,
+                40.04029789377546
+              ],
+              [
+                -82.95640000201927,
+                40.039901540207225
               ],
               [
                 -82.95723689145053,
@@ -766015,8 +765913,8 @@
                 40.04924660330145
               ],
               [
-                -82.95265621890016,
-                40.04935076272332
+                -82.95265621890026,
+                40.0493507627234
               ],
               [
                 -82.95257865025391,
@@ -766136,7 +766034,7 @@
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "INNIS RD REAR",
-        "ACRES": 9.28142149,
+        "ACRES": 9.28138334,
         "TOTVALUEBASE": 366700,
         "SALEDATE": 1773118800000,
         "ZIPCD": "43224",
@@ -770552,91 +770450,6 @@
         "coordinates": [
           [
             [
-              -83.0352847994118,
-              39.9732066324456
-            ],
-            [
-              -83.03530023322925,
-              39.973208804671266
-            ],
-            [
-              -83.03532138119438,
-              39.97321178123103
-            ],
-            [
-              -83.0371967291875,
-              39.973475632951825
-            ],
-            [
-              -83.03750837527211,
-              39.973519477260176
-            ],
-            [
-              -83.03753813924745,
-              39.97352366496399
-            ],
-            [
-              -83.03755297887534,
-              39.973326483361
-            ],
-            [
-              -83.03757313852671,
-              39.973058606034336
-            ],
-            [
-              -83.03758682905635,
-              39.972882686811175
-            ],
-            [
-              -83.0376092587307,
-              39.97259444793579
-            ],
-            [
-              -83.03761005630831,
-              39.97258421199052
-            ],
-            [
-              -83.0376088515901,
-              39.9725840400809
-            ],
-            [
-              -83.03727016422157,
-              39.97253600392114
-            ],
-            [
-              -83.03536129473291,
-              39.97226524701957
-            ],
-            [
-              -83.0352847994118,
-              39.9732066324456
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-351936",
-        "OWNERNME1": "GVX APARTMENTS III LLC",
-        "CLASSCD": "620",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
-        "SITEADDRESS": "DUBLIN RD",
-        "ACRES": 5.01638381,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": null,
-        "class_label": "Franklin County",
-        "class_color": "#8b5cf6",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-351936"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -82.98653870746567,
               39.969866359646296
             ],
@@ -774266,6 +774079,91 @@
         "class_color": "#6b7280",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-352005"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -83.03746164230574,
+              39.9737250638642
+            ],
+            [
+              -83.03750837527211,
+              39.973519477260176
+            ],
+            [
+              -83.03753813924745,
+              39.97352366496399
+            ],
+            [
+              -83.03755297887534,
+              39.973326483361
+            ],
+            [
+              -83.03755402363575,
+              39.97332201765437
+            ],
+            [
+              -83.0376546423542,
+              39.97289230584049
+            ],
+            [
+              -83.03772441124109,
+              39.972610869735675
+            ],
+            [
+              -83.0376092587307,
+              39.97259444793579
+            ],
+            [
+              -83.03761005630831,
+              39.97258421199052
+            ],
+            [
+              -83.0376088515901,
+              39.9725840400809
+            ],
+            [
+              -83.03727016422157,
+              39.97253600392114
+            ],
+            [
+              -83.03536129473291,
+              39.97226524701957
+            ],
+            [
+              -83.0352847994118,
+              39.9732066324456
+            ],
+            [
+              -83.03526901755184,
+              39.9734010152146
+            ],
+            [
+              -83.03746164230574,
+              39.9737250638642
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-351936",
+        "OWNERNME1": "GVX APARTMENTS III LLC",
+        "CLASSCD": "620",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
+        "SITEADDRESS": "DUBLIN RD",
+        "ACRES": 6.17298393,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Franklin County",
+        "class_color": "#8b5cf6",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-351936"
       }
     }
   ]
