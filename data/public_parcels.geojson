@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-11-05T13:57:30.794Z",
+  "generated": "2026-11-06T13:42:48.736Z",
   "count": 8631,
   "risk_counts": {
     "low": 3078,
@@ -496774,8 +496774,8 @@
               39.99802577180079
             ],
             [
-              -82.92636415559178,
-              39.99802169298643
+              -82.92636413477862,
+              39.99802078251847
             ],
             [
               -82.92626995185174,
@@ -496798,7 +496798,7 @@
         "CLASSCD": "610",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
         "SITEADDRESS": "JOHNSTOWN RD",
-        "ACRES": 1.41882548,
+        "ACRES": 1.41909982,
         "TOTVALUEBASE": 61600,
         "SALEDATE": 453618000000,
         "ZIPCD": "43219",
@@ -498392,8 +498392,8 @@
               39.99768182329823
             ],
             [
-              -82.92636415559178,
-              39.99802169298643
+              -82.92636413477862,
+              39.99802078251847
             ],
             [
               -82.92652587086828,
@@ -498448,7 +498448,7 @@
         "CLASSCD": "610",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
         "SITEADDRESS": "JOHNSTOWN RD",
-        "ACRES": 6.94407123,
+        "ACRES": 6.94447697,
         "TOTVALUEBASE": 12000,
         "SALEDATE": -238186800000,
         "ZIPCD": "43219",
@@ -595164,6 +595164,10 @@
               40.04271739268881
             ],
             [
+              -82.78747077799018,
+              40.042840585329145
+            ],
+            [
               -82.78736361044659,
               40.044119456594636
             ],
@@ -595240,7 +595244,7 @@
         "CLASSCD": "630",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
         "SITEADDRESS": "CLARK STATE RD",
-        "ACRES": 9.81026744,
+        "ACRES": 9.81026691,
         "TOTVALUEBASE": 49000,
         "SALEDATE": 1609390800000,
         "ZIPCD": "43054",
@@ -768856,7 +768860,7 @@
         "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
         "CLASSCD": "620",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
-        "SITEADDRESS": "ALKIRE RD",
+        "SITEADDRESS": "570 ALKIRE RD",
         "ACRES": 32.50740332,
         "TOTVALUEBASE": null,
         "SALEDATE": null,
@@ -769140,7 +769144,7 @@
         "OWNERNME1": "CITY OF COLUMBUS OHIO",
         "CLASSCD": "660",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED PARK DIST.PUB",
-        "SITEADDRESS": "STIMMEL RD",
+        "SITEADDRESS": "1100 HARMON AV",
         "ACRES": 19.66351305,
         "TOTVALUEBASE": null,
         "SALEDATE": null,
