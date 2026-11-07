@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-11-06T13:42:48.736Z",
+  "generated": "2026-11-07T12:25:41.586Z",
   "count": 8631,
   "risk_counts": {
     "low": 3078,
@@ -149235,13 +149235,13 @@
       },
       "properties": {
         "PARCELID": "153-000006",
-        "OWNERNME1": "VILLAGE OF OBETZ OHIO",
+        "OWNERNME1": "BIG WALNUT AREA COMMUNITY IMPROVEMENT CORPORATION",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "1875 WILLIAMS RD",
         "ACRES": 12.21895345,
         "TOTVALUEBASE": 616000,
-        "SALEDATE": 1513314000000,
+        "SALEDATE": 1793941200000,
         "ZIPCD": "43207",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -149430,13 +149430,13 @@
       },
       "properties": {
         "PARCELID": "152-000866",
-        "OWNERNME1": "VILLAGE OF OBETZ OHIO",
+        "OWNERNME1": "BIG WALNUT AREA COMMUNITY IMPROVEMENT CORPORATION",
         "CLASSCD": "640",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
         "SITEADDRESS": "1823 WILLIAMS RD",
         "ACRES": 1.47649045,
         "TOTVALUEBASE": 5000,
-        "SALEDATE": 1513314000000,
+        "SALEDATE": 1793941200000,
         "ZIPCD": "43207",
         "class_label": "Municipal",
         "class_color": "#3fb950",
@@ -767509,103 +767509,6 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.97948369954455,
-              39.958250972655755
-            ],
-            [
-              -82.97936536612588,
-              39.95826537212156
-            ],
-            [
-              -82.979220660957,
-              39.95985889437353
-            ],
-            [
-              -82.97933548518014,
-              39.95986219910155
-            ],
-            [
-              -82.97931611950303,
-              39.96007270728697
-            ],
-            [
-              -82.97987030349088,
-              39.96008225787799
-            ],
-            [
-              -82.97999760153579,
-              39.960084449979284
-            ],
-            [
-              -82.98177187811034,
-              39.960115091572035
-            ],
-            [
-              -82.98178628343456,
-              39.95991743760438
-            ],
-            [
-              -82.98181191662941,
-              39.95956725360562
-            ],
-            [
-              -82.98172430676725,
-              39.95895992470659
-            ],
-            [
-              -82.9817032987508,
-              39.95879714780341
-            ],
-            [
-              -82.98167789839778,
-              39.95863499824581
-            ],
-            [
-              -82.98164812427088,
-              39.95847359453355
-            ],
-            [
-              -82.98162643686601,
-              39.95836647174814
-            ],
-            [
-              -82.98154039192661,
-              39.95831131141325
-            ],
-            [
-              -82.9797637865474,
-              39.95821688734151
-            ],
-            [
-              -82.97948369954455,
-              39.958250972655755
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-067006",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "240 S PARSONS AVE",
-        "ACRES": 10.47994284,
-        "TOTVALUEBASE": 30141200,
-        "SALEDATE": 1356930000000,
-        "ZIPCD": "43215",
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-067006"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
           [
@@ -767944,115 +767847,6 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=222-002282"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -82.98154039192661,
-              39.95831131141325
-            ],
-            [
-              -82.98162643686601,
-              39.95836647174814
-            ],
-            [
-              -82.98164812427088,
-              39.95847359453355
-            ],
-            [
-              -82.98167789839857,
-              39.95863499824568
-            ],
-            [
-              -82.9817032987516,
-              39.958797147803296
-            ],
-            [
-              -82.98172430676725,
-              39.95895992470659
-            ],
-            [
-              -82.98181191662941,
-              39.95956725360562
-            ],
-            [
-              -82.98178628343456,
-              39.95991743760438
-            ],
-            [
-              -82.98177187811034,
-              39.960115091572035
-            ],
-            [
-              -82.98179327866795,
-              39.96011574584147
-            ],
-            [
-              -82.9818063044105,
-              39.959941270397486
-            ],
-            [
-              -82.98180802855434,
-              39.9599181679122
-            ],
-            [
-              -82.98192840512209,
-              39.95830564566054
-            ],
-            [
-              -82.98193546859028,
-              39.9582110220695
-            ],
-            [
-              -82.98156598055797,
-              39.958208427595295
-            ],
-            [
-              -82.97949166333176,
-              39.95816439286943
-            ],
-            [
-              -82.97937476198803,
-              39.95816191007833
-            ],
-            [
-              -82.97936536612588,
-              39.95826537212156
-            ],
-            [
-              -82.97948369954455,
-              39.958250972655755
-            ],
-            [
-              -82.9797637865474,
-              39.95821688734151
-            ],
-            [
-              -82.98154039192661,
-              39.95831131141325
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "010-351656",
-        "OWNERNME1": "CITY OF COLUMBUS OHIO",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "S PARSONS AVE",
-        "ACRES": 0.98214824,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": null,
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-351656"
       }
     },
     {
@@ -774326,6 +774120,196 @@
         "class_color": "#58a6ff",
         "risk": "med",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=185-003066"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.97937476198803,
+              39.95816191007833
+            ],
+            [
+              -82.97949166424728,
+              39.958164355938955
+            ],
+            [
+              -82.9815659782173,
+              39.95820842760488
+            ],
+            [
+              -82.98165105050953,
+              39.95826325507128
+            ],
+            [
+              -82.9816708808867,
+              39.958377349320045
+            ],
+            [
+              -82.98169774157562,
+              39.958537781593726
+            ],
+            [
+              -82.98172023656728,
+              39.95869888400339
+            ],
+            [
+              -82.98173834927661,
+              39.9588605377717
+            ],
+            [
+              -82.98182344118447,
+              39.95956907423515
+            ],
+            [
+              -82.98178265623699,
+              39.960115421089554
+            ],
+            [
+              -82.98179327866795,
+              39.96011574584147
+            ],
+            [
+              -82.98193479400096,
+              39.958220068287154
+            ],
+            [
+              -82.98193546859028,
+              39.9582110220695
+            ],
+            [
+              -82.98194292512733,
+              39.95811114515824
+            ],
+            [
+              -82.9793846351993,
+              39.95805317006127
+            ],
+            [
+              -82.97937476198803,
+              39.95816191007833
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-351656",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "S PARSONS AVE",
+        "ACRES": 1.12139212,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-351656"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.97936536612588,
+              39.95826537212156
+            ],
+            [
+              -82.979220660957,
+              39.95985889437353
+            ],
+            [
+              -82.97920142347125,
+              39.960070730475955
+            ],
+            [
+              -82.97931611950303,
+              39.96007270728697
+            ],
+            [
+              -82.97987030349088,
+              39.96008225787799
+            ],
+            [
+              -82.97999760153579,
+              39.960084449979284
+            ],
+            [
+              -82.98159522773622,
+              39.96011204209162
+            ],
+            [
+              -82.98177187811034,
+              39.960115091572035
+            ],
+            [
+              -82.98178265623699,
+              39.960115421089554
+            ],
+            [
+              -82.98182344118447,
+              39.95956907423515
+            ],
+            [
+              -82.98173834927661,
+              39.9588605377717
+            ],
+            [
+              -82.98172023656728,
+              39.95869888400339
+            ],
+            [
+              -82.98169774157562,
+              39.958537781593726
+            ],
+            [
+              -82.9816708808867,
+              39.958377349320045
+            ],
+            [
+              -82.98165105050953,
+              39.95826325507128
+            ],
+            [
+              -82.9815659782173,
+              39.95820842760488
+            ],
+            [
+              -82.97949166424728,
+              39.958164355938955
+            ],
+            [
+              -82.97937476198803,
+              39.95816191007833
+            ],
+            [
+              -82.97936536612588,
+              39.95826537212156
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "010-067006",
+        "OWNERNME1": "CITY OF COLUMBUS OHIO",
+        "CLASSCD": "640",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
+        "SITEADDRESS": "240 S PARSONS AVE",
+        "ACRES": 11.03807405,
+        "TOTVALUEBASE": 30141200,
+        "SALEDATE": 1356930000000,
+        "ZIPCD": null,
+        "class_label": "Municipal",
+        "class_color": "#3fb950",
+        "risk": "low",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-067006"
       }
     }
   ]
