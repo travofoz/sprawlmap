@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-11-16T14:44:31.709Z",
+  "generated": "2026-11-17T15:28:28.309Z",
   "count": 8631,
   "risk_counts": {
     "low": 3078,
@@ -589409,13 +589409,13 @@
       },
       "properties": {
         "PARCELID": "170-002445",
-        "OWNERNME1": "JEFFERSON WATER & SEWER DISTRICT",
+        "OWNERNME1": "ANDERSON JULIE TTEE",
         "CLASSCD": "620",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
         "SITEADDRESS": "6820 HAVENS RD",
         "ACRES": 1.0167892,
         "TOTVALUEBASE": 84200,
-        "SALEDATE": 1472792400000,
+        "SALEDATE": 1794805200000,
         "ZIPCD": "43004",
         "class_label": "Franklin County",
         "class_color": "#8b5cf6",
@@ -767939,95 +767939,6 @@
         "coordinates": [
           [
             [
-              -82.90964754013167,
-              40.01036805962656
-            ],
-            [
-              -82.90940939238979,
-              40.010934229254204
-            ],
-            [
-              -82.90924954362515,
-              40.013220010146505
-            ],
-            [
-              -82.91020938830209,
-              40.013265310575136
-            ],
-            [
-              -82.91133944108432,
-              40.01331848562694
-            ],
-            [
-              -82.91137551750815,
-              40.013320189336376
-            ],
-            [
-              -82.91141343568763,
-              40.01332217298301
-            ],
-            [
-              -82.91166423374763,
-              40.0133352925785
-            ],
-            [
-              -82.91177117316991,
-              40.01185259232028
-            ],
-            [
-              -82.91030907622573,
-              40.01178744552025
-            ],
-            [
-              -82.91040893341703,
-              40.01030703199185
-            ],
-            [
-              -82.91187897390901,
-              40.010374489454705
-            ],
-            [
-              -82.9119151167437,
-              40.00987906375176
-            ],
-            [
-              -82.91044761250076,
-              40.009812504837214
-            ],
-            [
-              -82.91045179360191,
-              40.00973480441028
-            ],
-            [
-              -82.90964754013167,
-              40.01036805962656
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "445-346975",
-        "OWNERNME1": "BRIGHTON RESERVE LLC",
-        "CLASSCD": "630",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
-        "SITEADDRESS": "1976 STELZER RD",
-        "ACRES": 13.67192776,
-        "TOTVALUEBASE": null,
-        "SALEDATE": null,
-        "ZIPCD": "43219",
-        "class_label": "Township",
-        "class_color": "#a78bfa",
-        "risk": "med",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=445-346975"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -83.1131818172012,
               39.83908557959834
             ],
@@ -768650,7 +768561,7 @@
         "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
         "CLASSCD": "620",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
-        "SITEADDRESS": "570 ALKIRE RD",
+        "SITEADDRESS": "5220 ALKIRE RD",
         "ACRES": 32.50740332,
         "TOTVALUEBASE": null,
         "SALEDATE": null,
@@ -774306,6 +774217,123 @@
         "class_color": "#3fb950",
         "risk": "low",
         "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=010-067006"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -82.90924954362515,
+              40.013220010146505
+            ],
+            [
+              -82.91020938830209,
+              40.013265310575136
+            ],
+            [
+              -82.91133944108432,
+              40.01331848562694
+            ],
+            [
+              -82.91137551750815,
+              40.013320189336376
+            ],
+            [
+              -82.91141343568763,
+              40.01332217298301
+            ],
+            [
+              -82.91166423374763,
+              40.0133352925785
+            ],
+            [
+              -82.91177117316991,
+              40.01185259232028
+            ],
+            [
+              -82.91030907622573,
+              40.01178744552025
+            ],
+            [
+              -82.91040893341703,
+              40.01030703199185
+            ],
+            [
+              -82.91187897390901,
+              40.010374489454705
+            ],
+            [
+              -82.9119151167437,
+              40.00987906375176
+            ],
+            [
+              -82.91044761250076,
+              40.009812504837214
+            ],
+            [
+              -82.91045179360191,
+              40.00973480441028
+            ],
+            [
+              -82.90964754013167,
+              40.01036805962656
+            ],
+            [
+              -82.90940939238979,
+              40.010934229254204
+            ],
+            [
+              -82.90920380678263,
+              40.01144004247374
+            ],
+            [
+              -82.90837633063919,
+              40.01211602959662
+            ],
+            [
+              -82.90785677224943,
+              40.01232956551122
+            ],
+            [
+              -82.90778730885093,
+              40.013153413876395
+            ],
+            [
+              -82.90778635891088,
+              40.013165773828916
+            ],
+            [
+              -82.90913119361659,
+              40.01322682961975
+            ],
+            [
+              -82.90913214683185,
+              40.01321446964441
+            ],
+            [
+              -82.90924954362515,
+              40.013220010146505
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "PARCELID": "445-346975",
+        "OWNERNME1": "BRIGHTON RESERVE LLC",
+        "CLASSCD": "630",
+        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY TOWNSHIP",
+        "SITEADDRESS": "1976 STELZER RD",
+        "ACRES": 18.2343372,
+        "TOTVALUEBASE": null,
+        "SALEDATE": null,
+        "ZIPCD": "43219",
+        "class_label": "Township",
+        "class_color": "#a78bfa",
+        "risk": "med",
+        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=445-346975"
       }
     }
   ]
