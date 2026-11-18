@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-11-17T15:28:28.309Z",
+  "generated": "2026-11-18T15:03:37.144Z",
   "count": 8631,
   "risk_counts": {
     "low": 3078,
@@ -739690,10 +739690,6 @@
               39.87814057829248
             ],
             [
-              -82.8742035077373,
-              39.8790147174798
-            ],
-            [
               -82.87418264424102,
               39.87901365014697
             ],
@@ -740038,7 +740034,7 @@
         "CLASSCD": "610",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY STATE OF OH",
         "SITEADDRESS": "S HAMILTON RD",
-        "ACRES": 152.9019971,
+        "ACRES": 152.92348192,
         "TOTVALUEBASE": 539900,
         "SALEDATE": 1793077200000,
         "ZIPCD": "43125",
