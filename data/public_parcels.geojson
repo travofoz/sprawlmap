@@ -1,9 +1,9 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-11-25T16:45:42.636Z",
-  "count": 8631,
+  "generated": "2026-11-26T16:21:04.675Z",
+  "count": 8630,
   "risk_counts": {
-    "low": 3078,
+    "low": 3077,
     "med": 4988,
     "avoid": 565,
     "high": 0
@@ -640125,7 +640125,7 @@
       },
       "properties": {
         "PARCELID": "080-008079",
-        "OWNERNME1": "080-008079",
+        "OWNERNME1": "ST ANNS HOSPITAL OF COLUMBUS INC",
         "CLASSCD": "680",
         "CLASSDSCRP": "CHARIT EXEMT HOSP HOMS AGED ETC,PRIV",
         "SITEADDRESS": "495 COOPER RD",
@@ -762046,75 +762046,6 @@
         "coordinates": [
           [
             [
-              -83.11232657332434,
-              40.1005237077537
-            ],
-            [
-              -83.11236651388154,
-              40.10058790345423
-            ],
-            [
-              -83.11259734561915,
-              40.10095890888892
-            ],
-            [
-              -83.11270956811171,
-              40.10113927700881
-            ],
-            [
-              -83.11296371642662,
-              40.1010898633247
-            ],
-            [
-              -83.11292190800384,
-              40.10103164412869
-            ],
-            [
-              -83.11298102911867,
-              40.10102472634483
-            ],
-            [
-              -83.1129074287695,
-              40.100899224208334
-            ],
-            [
-              -83.11268694132241,
-              40.10052298784471
-            ],
-            [
-              -83.11262328499306,
-              40.10041436341116
-            ],
-            [
-              -83.11232657332434,
-              40.1005237077537
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "PARCELID": "273-013976",
-        "OWNERNME1": "CSD DUBLIN LLC",
-        "CLASSCD": "640",
-        "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY MUNICIPALS",
-        "SITEADDRESS": "N RIVERVIEW ST",
-        "ACRES": 0.51838859,
-        "TOTVALUEBASE": 223700,
-        "SALEDATE": 1769058000000,
-        "ZIPCD": null,
-        "class_label": "Municipal",
-        "class_color": "#3fb950",
-        "risk": "low",
-        "property_card": "https://property.franklincountyauditor.com/_web/propertycard/propertycard.aspx?pin=273-013976"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
               -82.92633370754281,
               39.917978576895905
             ],
@@ -768445,7 +768376,7 @@
       },
       "properties": {
         "PARCELID": "570-347517",
-        "OWNERNME1": "C5/OPG COLUMBUS SW LAND LLC",
+        "OWNERNME1": "C5 COLUMBUS SW BUILDING 2 LLC",
         "CLASSCD": "620",
         "CLASSDSCRP": "EXEMPT PROPERTY OWNED BY COUNTIES",
         "SITEADDRESS": "ALKIRE RD",
